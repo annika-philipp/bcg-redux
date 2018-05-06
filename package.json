@@ -1,0 +1,57 @@
+{
+  "name": "BCG3000REDUX",
+  "version": "0.1.0",
+  "description": "Personal Bootcamp Project",
+  "repository": "https://github.com/annika-philipp/bcg3000.git",
+  "main": "server/index.js",
+  "scripts": {
+    "postinstall": "webpack && knex migrate:latest",
+    "dev": "nodemon --watch server & webpack --watch",
+    "start": "node server/index",
+    "test": "jest",
+    "watch": "nodemon -e js,jsx -x npm test",
+    "h:deploy": "git push heroku master",
+    "h:migrate": "heroku run knex migrate:latest",
+    "h:rollback": "heroku run knex migrate:rollback",
+    "h:seed": "heroku run knex seed:run",
+    "knex": "knex"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Annika Philipp",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "enzyme": "^3.3.0",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.8.2",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "nodemon": "^1.14.12",
+    "sqlite3": "^3.1.13",
+    "supertest": "^3.0.0"
+  }
+}
