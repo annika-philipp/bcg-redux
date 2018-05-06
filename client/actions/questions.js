@@ -6,32 +6,33 @@
 
 import request from 'superagent'
 
-export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS'
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 
-export const requestQuestions = () => {
+export function receiveQuestions(questions) {
     return {
-        type: REQUEST_QUESTIONS
-    }
-}
-
-export const receiveQuestions = () => {
-    return {
-        type: RECEIVE_QUESTIONS,
+        type: 'RECEIVE_QUESTIONS',
         questions
     }
 }
 
-export function fetchQuestions () {
+export function fetchQuestions() {
     return(dispatch) => {
-        dispatch(requestQuestions())
         return request
         .get('/api/v1')
         .then(res => {
+            console.log("RES BODY, ", res.body)
             dispatch(receiveQuestions(res.body))
         })
         .catch(err => {
             dispatch(showError(err.message))
         })
+    }
+}
+
+export function increaseIndex (index, questions) {
+    return {
+        type: 'INCREASE_INDEX',
+        index,
+        questions
+
     }
 }
