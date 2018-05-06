@@ -10,6 +10,12 @@ class Display extends React.Component{
         }
     }
 
+
+    componentWillReceiveProps(nextProps) {
+        this.updateIndexAndScore()
+        
+    }
+
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
 
