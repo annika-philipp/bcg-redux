@@ -11,20 +11,20 @@ test('Questions Reducer initial state', () => {
 
   
   test('RECEIVE_QUESTIONS', () => {
-    const questionsobject = [{name: "Harrison"}, {name: "Kelly"}]
+    const questionsarray = [{name: "Harrison"}, {name: "Kelly"}]
     const expected = [
-        questionsobject
+        questionsarray
     ]
     
 
     const action = {
         type: 'RECEIVE_QUESTIONS',
-        questionsobject
+        questionsarray
     }
 
     const actual = questions([], action)
 
-    expect(actual).toEqual(questionsobject)
+    expect(actual).toEqual(questionsarray)
     expect(actual).toHaveLength(2)
     expect(actual[0].name == "Kelly").toBeFalsy()
 

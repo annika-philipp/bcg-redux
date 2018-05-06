@@ -1,11 +1,7 @@
-// question: '',
-// answers: [],
-// currentQuestionObject: null, 
-
 const questions = (state = [], action) => {
     switch(action.type) {
         case 'RECEIVE_QUESTIONS':
-            return action.questionsobject
+            return action.questionsarray
         default:
             return state
     }

@@ -1,16 +1,14 @@
-// questions: [],
-// question: '',
+
 // answers: [],
 // currentQuestionObject: null, 
-// index: 0,
 
 import request from 'superagent'
 
 
-export function receiveQuestions(questionsobject) {
+export function receiveQuestions(questionsarray) {
     return {
         type: 'RECEIVE_QUESTIONS',
-        questionsobject
+        questionsarray
     }
 }
 
@@ -33,6 +31,6 @@ export function increaseIndex (num, questions) {
         type: 'INCREASE_INDEX',
         num,
         questions
-
     }
 }
+

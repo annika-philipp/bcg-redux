@@ -21240,17 +21240,13 @@ exports.default = (0, _redux.combineReducers)({
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-// question: '',
-// answers: [],
-// currentQuestionObject: null, 
-
 var questions = function questions() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
     switch (action.type) {
         case 'RECEIVE_QUESTIONS':
-            return action.questionsobject;
+            return action.questionsarray;
         default:
             return state;
     }
@@ -21363,7 +21359,7 @@ exports.default = App;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21385,98 +21381,88 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Display = function (_React$Component) {
-    _inherits(Display, _React$Component);
+  _inherits(Display, _React$Component);
 
-    function Display() {
-        _classCallCheck(this, Display);
+  function Display() {
+    _classCallCheck(this, Display);
 
-        return _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).apply(this, arguments));
+  }
+
+  _createClass(Display, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.dispatch((0, _questions.fetchQuestions)());
     }
+  }, {
+    key: 'updateIndex',
+    value: function updateIndex() {
+      this.props.dispatch((0, _questions.increaseIndex)(this.props.index, this.props.questions));
+      console.log(this.props.index);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var question = this.props.questions[this.props.index];
+      {
+        question = question || '';
+      }
+      var answers = question.answers;
+      {
+        answers = answers || '';
+      }
+      // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'score' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'score'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'screen' },
+          _react2.default.createElement(
+            'div',
+            { className: 'question' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              question.question
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'button',
+            { onClick: this.updateIndex.bind(this), value: 'button1', className: 'button' },
+            answers[0]
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.updateIndex.bind(this), value: 'button2', className: 'button' },
+            answers[1]
+          )
+        )
+      );
+    }
+  }]);
 
-    _createClass(Display, [{
-        key: 'componentDidMount',
-
-        // constructor(props){
-        //     super(props)
-        //     this.state = {
-        //         index: this.props.index
-        //     }
-        // }
-
-
-        // componentWillReceiveProps(nextProps) {
-        //     this.updateIndexAndScore()
-
-        // }
-
-        value: function componentDidMount() {
-            this.props.dispatch((0, _questions.fetchQuestions)());
-        }
-    }, {
-        key: 'updateIndex',
-        value: function updateIndex() {
-            this.props.dispatch((0, _questions.increaseIndex)(this.props.index, this.props.questions));
-            console.log(this.props.index);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var question = this.props.questions[this.props.index];
-            {
-                question = question || '';
-            }
-            // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'score' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'score'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'screen' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'question' },
-                        _react2.default.createElement(
-                            'h3',
-                            null,
-                            question.question
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.updateIndex.bind(this), value: 'button1', className: 'button' },
-                        'Answer 1'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.updateIndex.bind(this), value: 'button2', className: 'button' },
-                        'Answer 2'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Display;
+  return Display;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
-    return {
-        questions: state.questions,
-        index: state.index
-    };
+  return {
+    questions: state.questions,
+    index: state.index
+  };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
@@ -21501,16 +21487,14 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function receiveQuestions(questionsobject) {
+function receiveQuestions(questionsarray) {
     return {
         type: 'RECEIVE_QUESTIONS',
-        questionsobject: questionsobject
+        questionsarray: questionsarray
     };
-} // questions: [],
-// question: '',
+}
 // answers: [],
 // currentQuestionObject: null, 
-// index: 0,
 
 function fetchQuestions() {
     return function (dispatch) {
@@ -21528,7 +21512,6 @@ function increaseIndex(num, questions) {
         type: 'INCREASE_INDEX',
         num: num,
         questions: questions
-
     };
 }
 

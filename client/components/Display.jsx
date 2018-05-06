@@ -3,18 +3,7 @@ import { connect } from 'react-redux'
 import { fetchQuestions, increaseIndex } from '../actions/questions';
 
 class Display extends React.Component{
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //         index: this.props.index
-    //     }
-    // }
 
-
-    // componentWillReceiveProps(nextProps) {
-    //     this.updateIndexAndScore()
-        
-    // }
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
@@ -32,6 +21,8 @@ class Display extends React.Component{
     render () {
         var question = this.props.questions[this.props.index]
         {question = question || ''}
+        var answers = question.answers
+        {answers = answers || ''}
         // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
     return (
       <div>
@@ -42,13 +33,14 @@ class Display extends React.Component{
         <div className="screen">
           <div className="question">
           <h3>{question.question}</h3>
+          {/* {console.log(question.answers[1])} */}
           </div> 
         </div>
         <div>   
         {/* <button onClick={() => updateIndex(question.scores[0])} value='button1' className="button">{question.answers[0]}</button> */}
         {/* <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 1</button> */}
-        <button onClick = {this.updateIndex.bind(this)} value="button1" className="button">Answer 1</button>
-        <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">Answer 2</button>
+        <button onClick = {this.updateIndex.bind(this)} value="button1" className="button">{answers[0]}</button>
+        <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">{answers[1]}</button>
         </div>
       </div>
     )
