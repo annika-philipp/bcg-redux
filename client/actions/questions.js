@@ -29,8 +29,9 @@ export function fetchQuestions() {
 export function increaseIndex (num, questions) {
     return {
         type: 'INCREASE_INDEX',
-        num,
-        questions
+        num
+        // num,
+        // questions
     }
 }
 

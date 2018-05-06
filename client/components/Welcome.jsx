@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {gamePlaying} from '../actions/game'
+import {navigate} from '../actions/navigate'
 
 
 
 class Welcome extends React.Component {
 
-    changeGameState() {
-        this.props.dispatch(gamePlaying())
+    changeLocation() {
+        this.props.dispatch(navigate('display'))
     }
 
     render() {
@@ -17,7 +17,7 @@ class Welcome extends React.Component {
                     <h3>of fun...</h3> 
                 </div>  
                 <div className='row'>  
-                <button onClick={this.changeGameState.bind(this)} className="button">Start Game</button>
+                <button onClick={this.changeLocation.bind(this)} className="button">Start Game</button>
                 </div>
             </div>    
 

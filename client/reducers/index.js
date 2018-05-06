@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-// import gameState from './gameState'
 import questions from './questions'
 import index from './indexReducer'
+import location from './location'
 
 export default combineReducers({
-// gameState
 questions,
-index: index
+index,
+location
 })

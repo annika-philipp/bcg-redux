@@ -4,18 +4,20 @@ import { fetchQuestions, increaseIndex } from '../actions/questions';
 
 class Display extends React.Component{
 
+//   componentWillReceiveProps(nextProps) {
+//     //get questions and answers
+//     if (this.props.questions[this.props.index] !== this.props.questions[nextProps.index]) {
+//       console.log("WHAT?")
+//   }
+// }
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
-
     }
 
     updateIndex() {
-        this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
-        console.log(this.props.index)
+        this.props.dispatch(increaseIndex(this.props.index))
     }
-
-
 
 
     render () {
@@ -33,12 +35,10 @@ class Display extends React.Component{
         <div className="screen">
           <div className="question">
           <h3>{question.question}</h3>
-          {/* {console.log(question.answers[1])} */}
           </div> 
         </div>
         <div>   
         {/* <button onClick={() => updateIndex(question.scores[0])} value='button1' className="button">{question.answers[0]}</button> */}
-        {/* <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 1</button> */}
         <button onClick = {this.updateIndex.bind(this)} value="button1" className="button">{answers[0]}</button>
         <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">{answers[1]}</button>
         </div>

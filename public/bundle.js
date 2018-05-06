@@ -21221,13 +21221,16 @@ var _indexReducer = __webpack_require__(66);
 
 var _indexReducer2 = _interopRequireDefault(_indexReducer);
 
+var _location = __webpack_require__(77);
+
+var _location2 = _interopRequireDefault(_location);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import gameState from './gameState'
 exports.default = (0, _redux.combineReducers)({
-  // gameState
   questions: _questions2.default,
-  index: _indexReducer2.default
+  index: _indexReducer2.default,
+  location: _location2.default
 });
 
 /***/ }),
@@ -21269,7 +21272,7 @@ var index = function index() {
 
     switch (action.type) {
         case 'INCREASE_INDEX':
-            return increaseIndex(action.num, action.questions);
+            return action.num + 1;
         default:
             return state;
     }
@@ -21277,11 +21280,11 @@ var index = function index() {
 
 exports.default = index;
 
-
-function increaseIndex(num, array) {
-    var next = num == array.length ? 0 : num + 1;
-    return next;
-}
+// function increaseIndex(num, array) {
+//     // var next = num == array.length ? 0 : num + 1 
+//     var next = num + 1
+//     return next
+// }
 
 /***/ }),
 /* 67 */
@@ -21300,28 +21303,21 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(9);
 
-var _Display = __webpack_require__(68);
+var _Welcome = __webpack_require__(78);
+
+var _Welcome2 = _interopRequireDefault(_Welcome);
+
+var _Display = __webpack_require__(76);
 
 var _Display2 = _interopRequireDefault(_Display);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import GameOver from './GameOver'
-// import AddScore from './AddScore'
+// import Display from './DisplayZ'
 
-// import {beforeGame} from '../actions/game'
-// import { fetchQuestions, increaseIndex } from '../actions/questions';
 
-// class App extends React.Component {
 var App = function App(props) {
 
-  //   componentDidMount() {
-  //     this.props.dispatch(fetchQuestions())
-
-  // }
-
-
-  // render () {
   return _react2.default.createElement(
     'div',
     { className: 'container' },
@@ -21334,140 +21330,20 @@ var App = function App(props) {
         'BCG 3000'
       )
     ),
-    _react2.default.createElement(_Display2.default, null)
+    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
-// }
-
-// function mapStateToProps(state) {
-//   return {
-//   questions: state.questions,
-//   index: state.index
-//   }
-// }
-
-// export default connect(mapStateToProps)(App)
-
-// import Welcome from './Welcome'
-exports.default = App;
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(9);
-
-var _questions = __webpack_require__(69);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Display = function (_React$Component) {
-  _inherits(Display, _React$Component);
-
-  function Display() {
-    _classCallCheck(this, Display);
-
-    return _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).apply(this, arguments));
-  }
-
-  _createClass(Display, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.dispatch((0, _questions.fetchQuestions)());
-    }
-  }, {
-    key: 'updateIndex',
-    value: function updateIndex() {
-      this.props.dispatch((0, _questions.increaseIndex)(this.props.index, this.props.questions));
-      console.log(this.props.index);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var question = this.props.questions[this.props.index];
-      {
-        question = question || '';
-      }
-      var answers = question.answers;
-      {
-        answers = answers || '';
-      }
-      // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          { className: 'score' },
-          _react2.default.createElement(
-            'h2',
-            null,
-            'score'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'screen' },
-          _react2.default.createElement(
-            'div',
-            { className: 'question' },
-            _react2.default.createElement(
-              'h3',
-              null,
-              question.question
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'button',
-            { onClick: this.updateIndex.bind(this), value: 'button1', className: 'button' },
-            answers[0]
-          ),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.updateIndex.bind(this), value: 'button2', className: 'button' },
-            answers[1]
-          )
-        )
-      );
-    }
-  }]);
-
-  return Display;
-}(_react2.default.Component);
 
 function mapStateToProps(state) {
   return {
-    questions: state.questions,
-    index: state.index
+    location: state.location
   };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ }),
+/* 68 */,
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21510,8 +21386,9 @@ function fetchQuestions() {
 function increaseIndex(num, questions) {
     return {
         type: 'INCREASE_INDEX',
-        num: num,
-        questions: questions
+        num: num
+        // num,
+        // questions
     };
 }
 
@@ -23555,6 +23432,252 @@ Agent.prototype._setDefaults = function(req) {
 
 module.exports = Agent;
 
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(9);
+
+var _questions = __webpack_require__(69);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Display = function (_React$Component) {
+  _inherits(Display, _React$Component);
+
+  function Display() {
+    _classCallCheck(this, Display);
+
+    return _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).apply(this, arguments));
+  }
+
+  _createClass(Display, [{
+    key: 'componentDidMount',
+
+
+    //   componentWillReceiveProps(nextProps) {
+    //     //get questions and answers
+    //     if (this.props.questions[this.props.index] !== this.props.questions[nextProps.index]) {
+    //       console.log("WHAT?")
+    //   }
+    // }
+
+    value: function componentDidMount() {
+      this.props.dispatch((0, _questions.fetchQuestions)());
+    }
+  }, {
+    key: 'updateIndex',
+    value: function updateIndex() {
+      this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var question = this.props.questions[this.props.index];
+      {
+        question = question || '';
+      }
+      var answers = question.answers;
+      {
+        answers = answers || '';
+      }
+      // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'score' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'score'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'screen' },
+          _react2.default.createElement(
+            'div',
+            { className: 'question' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              question.question
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'button',
+            { onClick: this.updateIndex.bind(this), value: 'button1', className: 'button' },
+            answers[0]
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.updateIndex.bind(this), value: 'button2', className: 'button' },
+            answers[1]
+          )
+        )
+      );
+    }
+  }]);
+
+  return Display;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+  return {
+    questions: state.questions,
+    index: state.index
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var location = function location() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'welcome';
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'NAVIGATE':
+      return action.destination;
+    default:
+      return state;
+  }
+};
+
+exports.default = location;
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(9);
+
+var _navigate = __webpack_require__(79);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Welcome = function (_React$Component) {
+    _inherits(Welcome, _React$Component);
+
+    function Welcome() {
+        _classCallCheck(this, Welcome);
+
+        return _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).apply(this, arguments));
+    }
+
+    _createClass(Welcome, [{
+        key: 'changeLocation',
+        value: function changeLocation() {
+            this.props.dispatch((0, _navigate.navigate)('display'));
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'welcome' },
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Welcome to 6 weeks'
+                    ),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'of fun...'
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.changeLocation.bind(this), className: 'button' },
+                        'Start Game'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Welcome;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRedux.connect)()(Welcome);
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var navigate = exports.navigate = function navigate(destination) {
+  return {
+    type: 'NAVIGATE',
+    destination: destination
+  };
+};
 
 /***/ })
 /******/ ]);

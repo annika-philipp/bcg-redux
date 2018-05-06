@@ -16,8 +16,6 @@ class App extends React.Component {
             totalscore: 0,
             topScores: [],
             questions: [],
-            question: '',
-            answers: [],
             currentQuestionObject: null, 
             index: 0,
             beforeGame: true,
