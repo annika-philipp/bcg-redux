@@ -4,10 +4,10 @@
 // currentQuestionObject: null, 
 // index: 0,
 
-const questions = (state = true, action) => {
+const questions = (state = [], action) => {
     switch(action.type) {
         case 'RECEIVE_QUESTIONS':
-            return action.questions
+            return action.questionsobject
         default:
             return state
     }

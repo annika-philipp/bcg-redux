@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test indexreducer
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -15,7 +15,7 @@ Platform:
 
 npm manifest: 
   {
-    "name": "BCG3000 - redux version",
+    "name": "BCG3000REDUX",
     "version": "0.1.0",
     "description": "Personal Bootcamp Project",
     "repository": "https://github.com/annika-philipp/bcg3000.git",
@@ -6026,11 +6026,17 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: package.json: Name contains illegal characters
-      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at module.exports.exports.default (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:37549:13)
-      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:52434:51
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
-      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
-      at <anonymous>
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c jest indexreducer
+  Directory: /Users/annika/workspace/bootcamp/bcg-redux
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

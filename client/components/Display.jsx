@@ -3,28 +3,28 @@ import { connect } from 'react-redux'
 import { fetchQuestions, increaseIndex } from '../actions/questions';
 
 class Display extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            index: this.props.index
-        }
-    }
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         index: this.props.index
+    //     }
+    // }
 
 
-    componentWillReceiveProps(nextProps) {
-        this.updateIndexAndScore()
+    // componentWillReceiveProps(nextProps) {
+    //     this.updateIndexAndScore()
         
-    }
+    // }
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
 
     }
 
-    updateIndexAndScore() {
-        this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
-        console.log(this.props.index)
-    }
+    // updateIndexAndScore() {
+    //     this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
+    //     console.log(this.props.index)
+    // }
 
 
 
@@ -41,13 +41,14 @@ class Display extends React.Component{
         </div>
         <div className="screen">
           <div className="question">
-          <h1>{question.question}</h1>
+          <h3>{question.question}</h3>
           </div> 
         </div>
         <div>   
         {/* <button onClick={() => updateIndex(question.scores[0])} value='button1' className="button">{question.answers[0]}</button> */}
-        <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 1</button>
-        <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 2</button>
+        {/* <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 1</button> */}
+        <button value="button1" className="button">Answer 1</button>
+        <button value="button2" className="button">Answer 2</button>
         </div>
       </div>
     )

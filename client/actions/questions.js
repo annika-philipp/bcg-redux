@@ -7,10 +7,10 @@
 import request from 'superagent'
 
 
-export function receiveQuestions(questions) {
+export function receiveQuestions(questionsobject) {
     return {
         type: 'RECEIVE_QUESTIONS',
-        questions
+        questionsobject
     }
 }
 
@@ -28,10 +28,10 @@ export function fetchQuestions() {
     }
 }
 
-export function increaseIndex (index, questions) {
+export function increaseIndex (num, questions) {
     return {
         type: 'INCREASE_INDEX',
-        index,
+        num,
         questions
 
     }

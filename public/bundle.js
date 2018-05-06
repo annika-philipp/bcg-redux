@@ -651,6 +651,25 @@ module.exports = ReactPropTypesSecret;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(44);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
+
+
+
+
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = warning;
 /**
  * Prints a warning in the console if it exists.
@@ -675,7 +694,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1279,7 +1298,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1318,7 +1337,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1399,7 +1418,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1441,7 +1460,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1512,7 +1531,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1555,7 +1574,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1583,25 +1602,6 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(44);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
-
-
-
-
-
 
 /***/ }),
 /* 18 */
@@ -2079,7 +2079,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifyPlainObject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(10);
 
 
 
@@ -2140,9 +2140,9 @@ var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = __webpack_require__(17);
+var _reactRedux = __webpack_require__(9);
 
-var _redux = __webpack_require__(10);
+var _redux = __webpack_require__(11);
 
 var _reduxThunk = __webpack_require__(63);
 
@@ -2152,7 +2152,7 @@ var _reducers = __webpack_require__(64);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _App = __webpack_require__(66);
+var _App = __webpack_require__(67);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -3625,7 +3625,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(2),l=__webpack_require__(11),B=__webpack_require__(3),C=__webpack_require__(1),ba=__webpack_require__(12),da=__webpack_require__(13),ea=__webpack_require__(14),fa=__webpack_require__(15),ia=__webpack_require__(16),D=__webpack_require__(5);
+var aa=__webpack_require__(2),l=__webpack_require__(12),B=__webpack_require__(3),C=__webpack_require__(1),ba=__webpack_require__(13),da=__webpack_require__(14),ea=__webpack_require__(15),fa=__webpack_require__(16),ia=__webpack_require__(17),D=__webpack_require__(5);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -3925,14 +3925,14 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(2);
 var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(11);
+var ExecutionEnvironment = __webpack_require__(12);
 var _assign = __webpack_require__(3);
 var emptyFunction = __webpack_require__(1);
-var EventListener = __webpack_require__(12);
-var getActiveElement = __webpack_require__(13);
-var shallowEqual = __webpack_require__(14);
-var containsNode = __webpack_require__(15);
-var focusNode = __webpack_require__(16);
+var EventListener = __webpack_require__(13);
+var getActiveElement = __webpack_require__(14);
+var shallowEqual = __webpack_require__(15);
+var containsNode = __webpack_require__(16);
+var focusNode = __webpack_require__(17);
 var emptyObject = __webpack_require__(5);
 var checkPropTypes = __webpack_require__(7);
 var hyphenateStyleName = __webpack_require__(34);
@@ -19469,7 +19469,7 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20554,7 +20554,7 @@ function shallowEqual(objA, objB) {
 /* unused harmony export whenMapDispatchToPropsIsFunction */
 /* unused harmony export whenMapDispatchToPropsIsMissing */
 /* unused harmony export whenMapDispatchToPropsIsObject */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(22);
 
 
@@ -21152,7 +21152,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifySubselectors;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(10);
 
 
 function verify(selector, methodName, displayName) {
@@ -21211,13 +21211,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(10);
+var _redux = __webpack_require__(11);
 
 var _questions = __webpack_require__(65);
 
 var _questions2 = _interopRequireDefault(_questions);
 
-var _indexReducer = __webpack_require__(75);
+var _indexReducer = __webpack_require__(66);
 
 var _indexReducer2 = _interopRequireDefault(_indexReducer);
 
@@ -21247,12 +21247,12 @@ Object.defineProperty(exports, "__esModule", {
 // index: 0,
 
 var questions = function questions() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
     switch (action.type) {
         case 'RECEIVE_QUESTIONS':
-            return action.questions;
+            return action.questionsobject;
         default:
             return state;
     }
@@ -21267,6 +21267,37 @@ exports.default = questions;
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var index = function index() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'INCREASE_INDEX':
+            return increaseIndex(action.index, action.questions);
+        default:
+            return state;
+    }
+};
+
+exports.default = index;
+
+
+function increaseIndex(index, array) {
+    console.log("array, ", array);
+    var next = index == array.length - 1 == index + 1;
+    return next;
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -21274,9 +21305,9 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(17);
+var _reactRedux = __webpack_require__(9);
 
-var _Display = __webpack_require__(67);
+var _Display = __webpack_require__(68);
 
 var _Display2 = _interopRequireDefault(_Display);
 
@@ -21328,14 +21359,14 @@ var App = function App(props) {
 exports.default = App;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21344,9 +21375,9 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(17);
+var _reactRedux = __webpack_require__(9);
 
-var _questions = __webpack_require__(68);
+var _questions = __webpack_require__(69);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21357,95 +21388,105 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Display = function (_React$Component) {
-    _inherits(Display, _React$Component);
+  _inherits(Display, _React$Component);
 
-    function Display(props) {
-        _classCallCheck(this, Display);
+  function Display() {
+    _classCallCheck(this, Display);
 
-        var _this = _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).call(this, props));
+    return _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).apply(this, arguments));
+  }
 
-        _this.state = {
-            index: _this.props.index
-        };
-        return _this;
+  _createClass(Display, [{
+    key: 'componentDidMount',
+
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         index: this.props.index
+    //     }
+    // }
+
+
+    // componentWillReceiveProps(nextProps) {
+    //     this.updateIndexAndScore()
+
+    // }
+
+    value: function componentDidMount() {
+      this.props.dispatch((0, _questions.fetchQuestions)());
     }
 
-    _createClass(Display, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.props.dispatch((0, _questions.fetchQuestions)());
-        }
-    }, {
-        key: 'updateIndexAndScore',
-        value: function updateIndexAndScore() {
-            this.props.dispatch((0, _questions.increaseIndex)(this.props.index, this.props.questions));
-            console.log(this.props.index);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var question = this.props.questions[this.props.index];
-            {
-                question = question || '';
-            }
-            // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'score' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'score'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'screen' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'question' },
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            question.question
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.updateIndexAndScore.bind(this), value: 'button2', className: 'button' },
-                        'Answer 1'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.updateIndexAndScore.bind(this), value: 'button2', className: 'button' },
-                        'Answer 2'
-                    )
-                )
-            );
-        }
-    }]);
+    // updateIndexAndScore() {
+    //     this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
+    //     console.log(this.props.index)
+    // }
 
-    return Display;
+
+  }, {
+    key: 'render',
+    value: function render() {
+      var question = this.props.questions[this.props.index];
+      {
+        question = question || '';
+      }
+      // what is happening in the above line, could this be done with componentwillReceiveProps and then a state for display?
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'score' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'score'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'screen' },
+          _react2.default.createElement(
+            'div',
+            { className: 'question' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              question.question
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'button',
+            { value: 'button1', className: 'button' },
+            'Answer 1'
+          ),
+          _react2.default.createElement(
+            'button',
+            { value: 'button2', className: 'button' },
+            'Answer 2'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Display;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
-    return {
-        questions: state.questions,
-        index: state.index
-    };
+  return {
+    questions: state.questions,
+    index: state.index
+  };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21458,7 +21499,7 @@ exports.receiveQuestions = receiveQuestions;
 exports.fetchQuestions = fetchQuestions;
 exports.increaseIndex = increaseIndex;
 
-var _superagent = __webpack_require__(69);
+var _superagent = __webpack_require__(70);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -21496,7 +21537,7 @@ function increaseIndex(index, questions) {
 }
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -21513,11 +21554,11 @@ if (typeof window !== 'undefined') { // Browser window
   root = this;
 }
 
-var Emitter = __webpack_require__(70);
-var RequestBase = __webpack_require__(71);
+var Emitter = __webpack_require__(71);
+var RequestBase = __webpack_require__(72);
 var isObject = __webpack_require__(25);
-var ResponseBase = __webpack_require__(72);
-var Agent = __webpack_require__(74);
+var ResponseBase = __webpack_require__(73);
+var Agent = __webpack_require__(75);
 
 /**
  * Noop.
@@ -22422,7 +22463,7 @@ request.put = function(url, data, fn) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -22591,7 +22632,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23292,7 +23333,7 @@ RequestBase.prototype._setTimeouts = function() {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23302,7 +23343,7 @@ RequestBase.prototype._setTimeouts = function() {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(73);
+var utils = __webpack_require__(74);
 
 /**
  * Expose `ResponseBase`.
@@ -23433,7 +23474,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23511,7 +23552,7 @@ exports.cleanHeader = function(header, changesOrigin){
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 function Agent() {
@@ -23535,37 +23576,6 @@ Agent.prototype._setDefaults = function(req) {
 
 module.exports = Agent;
 
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var questions = function questions() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var action = arguments[1];
-
-    switch (action.type) {
-        case 'INCREASE_INDEX':
-            return increaseIndex(action.index, action.questions);
-        default:
-            return state;
-    }
-};
-
-exports.default = questions;
-
-
-function increaseIndex(index, array) {
-    console.log("array, ", array);
-    var next = index == array.length - 1 == index + 1;
-    return next;
-}
 
 /***/ })
 /******/ ]);
