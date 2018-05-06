@@ -1,8 +1,6 @@
-// questions: [],
 // question: '',
 // answers: [],
 // currentQuestionObject: null, 
-// index: 0,
 
 const questions = (state = [], action) => {
     switch(action.type) {

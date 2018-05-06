@@ -26,4 +26,3 @@ test('Increase index case', () => {
   
     expect(actual).toEqual(expected)
   })
-    // expect(actual[0]).toBe(cat)

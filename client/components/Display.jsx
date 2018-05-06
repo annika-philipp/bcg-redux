@@ -21,10 +21,10 @@ class Display extends React.Component{
 
     }
 
-    // updateIndexAndScore() {
-    //     this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
-    //     console.log(this.props.index)
-    // }
+    updateIndex() {
+        this.props.dispatch(increaseIndex(this.props.index, this.props.questions))
+        console.log(this.props.index)
+    }
 
 
 
@@ -47,8 +47,8 @@ class Display extends React.Component{
         <div>   
         {/* <button onClick={() => updateIndex(question.scores[0])} value='button1' className="button">{question.answers[0]}</button> */}
         {/* <button onClick={this.updateIndexAndScore.bind(this)} value="button2" className="button">Answer 1</button> */}
-        <button value="button1" className="button">Answer 1</button>
-        <button value="button2" className="button">Answer 2</button>
+        <button onClick = {this.updateIndex.bind(this)} value="button1" className="button">Answer 1</button>
+        <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">Answer 2</button>
         </div>
       </div>
     )
