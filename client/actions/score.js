@@ -20,10 +20,10 @@ export const addNewTotalscore = (totalscore) => {
     }
 }
 
-export const addToTotalscore = (score) => {
+export const addToTotalscore = (scoreValue) => {
     return {
         type: 'ADD_TO_TOTALSCORE',
-        score
+        scoreValue
     }
 }
 

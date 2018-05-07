@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchQuestions, increaseIndex } from '../actions/questions';
+import { addToTotalscore } from '../actions/score'
+import { fetchQuestions, increaseIndex } from '../actions/questions'
 
 class Display extends React.Component{
 
@@ -21,7 +22,7 @@ class Display extends React.Component{
       <div>
         <div className="score">
         {/* <h2 style={{color: scoreIncreased ? 'green' : 'red'}}>score: {totalscore}</h2> */}
-        <h2>score</h2>
+        <h2>{this.props.score.totalScore}</h2>
         </div>
         <div className="screen">
           <div className="question">
@@ -41,7 +42,8 @@ class Display extends React.Component{
 function mapStateToProps(state) {
     return {
     questions: state.questions,
-    index: state.index
+    index: state.index,
+    score: state.score
     }
 }
 

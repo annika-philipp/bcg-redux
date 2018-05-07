@@ -6,7 +6,7 @@ test('addToTotalScore adds to totalScore', () => {
 
   const expected = {
         type: 'ADD_TO_TOTALSCORE',
-        score
+        scoreValue: score
 
   }
 
