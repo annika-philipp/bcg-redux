@@ -1,4 +1,4 @@
-import index from '../client/reducers/indexReducer'
+import index from '../../../client/reducers/indexReducer'
 
 test('Index Reducer initial state', () => {
   const expected = 0
@@ -10,15 +10,12 @@ test('Index Reducer initial state', () => {
 })
 
 test('Increase index case', () => {
-    const num = 4
-    const questions = [{},{}, {}, {}]
-
-    const expected = 0
+    const num = 2
+    const expected = 3
 
     const action = {
       type: 'INCREASE_INDEX',
-      num,
-      questions
+      num
     }
   
     const actual = index(0, action)
