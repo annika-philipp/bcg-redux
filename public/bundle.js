@@ -22251,7 +22251,6 @@ exports.default = location;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
 var initialState = {
     totalScore: 0,
     topScores: [],
@@ -22274,11 +22273,9 @@ var score = function score() {
             //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });
         // return { ...state, totalScore: (state.totalScore + action.scoreValue)}
-        case 'IS_POSITIVE_TOTALSCORE':
+        case 'IS_POSITIVE_SCORE':
             //to see if game over or not
-            if (state.totalScore > 0)
-                //     console.log("reducer, ", state.totalScore)
-                return Object.assign({}, state, { isPositiveScore: true });
+            return Object.assign({}, state, { isPositiveScore: state.totalScore > 0 });
         // case 'IS_TOPSCORE': // to see if to add to Scoreboard
         //     return (action.totalScore > topScores[9]) //to return true if larger than current 10th score 
         case 'SCORE_INCREASED':
@@ -22570,8 +22567,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.scoreIncreased = exports.isTopScore = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTotalscore = exports.receiveScores = exports.requestScores = undefined;
-exports.fetchScores = fetchScores;
+exports.scoreIncreased = exports.isTopScore = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTotalscore = exports.receiveScores = undefined;
 exports.getScoresApi = getScoresApi;
 exports.addScoreApi = addScoreApi;
 
@@ -22581,11 +22577,11 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var requestScores = exports.requestScores = function requestScores() {
-    return {
-        type: 'REQUEST_SCORES'
-    };
-};
+// export const requestScores = () => {
+//     return {
+//         type: 'REQUEST_SCORES'
+//     }
+// }
 
 var receiveScores = exports.receiveScores = function receiveScores() {
     return {
@@ -22628,40 +22624,54 @@ var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue
     };
 };
 
-function fetchScores() {
+// export function fetchScores () {
+//     return(dispatch) => {
+//         // dispatch(requestScores())
+//         return request
+//         .get('/api/v2')
+//         .then(res => {
+//             dispatch(receiveScores(res.body))
+//         })
+//         .catch(err => {
+//             dispatch(showError(err.message))
+//         })
+//     }
+// }
+
+
+function getScoresApi(callback) {
     return function (dispatch) {
-        dispatch(requestSores());
-        return _superagent2.default.get('/api/v2').then(function (res) {
-            dispatch(receiveScores(res.body));
+        return _superagent2.default.get('/api/v2').then(function (items) {
+            // console.log("items.body ", items.body)
+            var data = items.body;
+            var scoreList = data.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            var topScoresApi = [];
+            for (var i = 0; i < 10; i++) {
+                topScoresApi.push(scoreList[i]);
+            }
+            // console.log({scoreList})
+            // console.log("Api Topscores, ", topScoresApi)
+            dispatch(receiveScores(topScoresApi));
         }).catch(function (err) {
             dispatch(showError(err.message));
         });
     };
 }
 
-function getScoresApi(callback) {
-    _superagent2.default.get(scores).then(function (items) {
-        // console.log("items.body ", items.body)
-        var data = items.body;
-        var scoreList = data.sort(function (a, b) {
-            return b.score - a.score;
-        });
-        var topScoresApi = [];
-        for (var i = 0; i < 10; i++) {
-            topScoresApi.push(scoreList[i]);
-        }
-        // console.log({scoreList})
-        // console.log("Api Topscores, ", topScoresApi)
-        callback(topScoresApi);
-    });
-}
-
 function addScoreApi(score, callback) {
     // console.log("score in api, ", score)
-    _superagent2.default.post(scores).send(score).end(function (err, res) {
-        callback(res);
-    });
+    return function (dispatch) {
+        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
+            dispatch(savedScore(score));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
 }
+
+//check esp last function
 
 /***/ }),
 /* 75 */

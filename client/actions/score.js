@@ -1,10 +1,10 @@
 import request from 'superagent'
 
-export const requestScores = () => {
-    return {
-        type: 'REQUEST_SCORES'
-    }
-}
+// export const requestScores = () => {
+//     return {
+//         type: 'REQUEST_SCORES'
+//     }
+// }
 
 export const receiveScores = () => {
     return {
@@ -48,46 +48,57 @@ export const scoreIncreased = (scoreValue) => {
 }
 
 
-export function fetchScores () {
+// export function fetchScores () {
+//     return(dispatch) => {
+//         // dispatch(requestScores())
+//         return request
+//         .get('/api/v2')
+//         .then(res => {
+//             dispatch(receiveScores(res.body))
+//         })
+//         .catch(err => {
+//             dispatch(showError(err.message))
+//         })
+//     }
+// }
+
+
+export function getScoresApi (callback) {
     return(dispatch) => {
-        dispatch(requestSores())
         return request
         .get('/api/v2')
-        .then(res => {
-            dispatch(receiveScores(res.body))
-        })
+        .then(items => {
+            // console.log("items.body ", items.body)
+            let data  = items.body
+            let scoreList = data.sort(function(a,b) {
+                return b.score - a.score
+            })
+            var topScoresApi = []
+            for (var i = 0; i < 10; i++){
+                topScoresApi.push(scoreList[i])
+            }
+            // console.log({scoreList})
+            // console.log("Api Topscores, ", topScoresApi)
+            dispatch(receiveScores(topScoresApi))
+        }) 
         .catch(err => {
             dispatch(showError(err.message))
         })
     }
-}
-
-
-export function getScoresApi (callback) {
-    request
-    .get(scores)
-    .then(items => {
-      // console.log("items.body ", items.body)
-      let data  = items.body
-      let scoreList = data.sort(function(a,b) {
-        return b.score - a.score
-      })
-      var topScoresApi = []
-      for (var i = 0; i < 10; i++){
-        topScoresApi.push(scoreList[i])
-      }
-      // console.log({scoreList})
-      // console.log("Api Topscores, ", topScoresApi)
-      callback(topScoresApi)
-    }) 
   }
   
   export function addScoreApi (score, callback) {
     // console.log("score in api, ", score)
-    request
-    .post(scores)
-    .send(score)
-    .end((err, res) => {
-      callback(res)
-    })
+    return (dispatch) =>
+        request
+            .post('/api/v2')
+            .send(score)
+            .then (res => {
+                dispatch(savedScore(score))
+            })
+            .catch(err => {
+                dispatch(showError(err.message))
+              })
   }
+
+  //check esp last function
