@@ -22,7 +22,7 @@ class Display extends React.Component{
       <div>
         <div className="score">
         {/* <h2 style={{color: scoreIncreased ? 'green' : 'red'}}>score: {totalscore}</h2> */}
-        <h2>{this.props.score.totalScore}</h2>
+        <h2>{this.props.questions.length > 0 && this.props.score.totalScore}</h2>
         </div>
         <div className="screen">
           <div className="question">
@@ -30,9 +30,9 @@ class Display extends React.Component{
           </div> 
         </div>
         <div>   
-        {/* <button onClick={() => updateIndex(question.scores[0])} value='button1' className="button">{question.answers[0]}</button> */}
         <button onClick = {() => this.updateIndex(question.scores[0])} value="button1" className="button">{this.props.questions.length > 0 && question.answers[0]}</button>
-        <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button>
+        <button onClick = {() => this.updateIndex(question.scores[1])} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button>
+        {/* <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button> */}
         </div>
       </div>
     )

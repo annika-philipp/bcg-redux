@@ -6,12 +6,14 @@ import request from 'superagent'
 //     }
 // }
 
-export const receiveScores = () => {
+export const receiveScoresFromAPI = () => {
     return {
-        type: 'RECEIVE_SCORES',
-        scores
+        type: 'RECEIVE_TOPSCORES_API',
+        topScoresApi
     }
 }
+//done reducer but not tested
+
 
 export const addNewTotalscore = (totalscore) => {
     return {
@@ -19,6 +21,8 @@ export const addNewTotalscore = (totalscore) => {
         totalscore
     }
 }
+//to do and test
+
 
 export const addToTotalscore = (scoreValue) => {
     return {
@@ -26,12 +30,15 @@ export const addToTotalscore = (scoreValue) => {
         scoreValue
     }
 }
+//reducer done and tested
 
 export const isPositiveTotalscore = () => {
     return {
-        type: 'IS_POSITIVE_SCORE',
+        type: 'IS_POSITIVE_TOTALSCORE',
     }
 }
+//reducer done and tested, but not sure if test is right?
+
 
 export const isTopScore = (totalScore) => {
     return {
@@ -47,20 +54,6 @@ export const scoreIncreased = (scoreValue) => {
     }
 }
 
-
-// export function fetchScores () {
-//     return(dispatch) => {
-//         // dispatch(requestScores())
-//         return request
-//         .get('/api/v2')
-//         .then(res => {
-//             dispatch(receiveScores(res.body))
-//         })
-//         .catch(err => {
-//             dispatch(showError(err.message))
-//         })
-//     }
-// }
 
 
 export function getScoresApi (callback) {
@@ -79,7 +72,7 @@ export function getScoresApi (callback) {
             }
             // console.log({scoreList})
             // console.log("Api Topscores, ", topScoresApi)
-            dispatch(receiveScores(topScoresApi))
+            dispatch(receiveScoresFromAPI(topScoresApi))
         }) 
         .catch(err => {
             dispatch(showError(err.message))

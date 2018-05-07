@@ -38,7 +38,7 @@ test('Score Reducer initial state', () => {
       expect(actual).toEqual(expected)
     })
 
-    test('IS_POSITIVE_SCORE returns true if positive - EXPECT THIS TO FAIL IN TEST', () => {
+    test('IS_POSITIVE_TOTALSCORE returns true if positive - EXPECT THIS TO FAIL IN TEST', () => {
         const totalScore = 0
         const expected = {
           totalScore: 0,
@@ -49,7 +49,7 @@ test('Score Reducer initial state', () => {
       }
     
         const action = {
-            type: 'IS_POSITIVE_SCORE'
+            type: 'IS_POSITIVE_TOTALSCORE'
         }
   
       
@@ -59,7 +59,7 @@ test('Score Reducer initial state', () => {
         expect(actual).toEqual(expected)
       })
 
-      test('IS_POSITIVE_SCORE returns false if negative totalscore - EXPECT THIS TO FAIL IN TEST', () => {
+      test('IS_POSITIVE_TOTALSCORE returns false if negative totalscore - EXPECT THIS TO FAIL IN TEST', () => {
         // const totalScore =  -10
         const expected = {
           totalScore: -12,
@@ -70,7 +70,7 @@ test('Score Reducer initial state', () => {
       }
     
         const action = {
-            type: 'IS_POSITIVE_SCORE',
+            type: 'IS_POSITIVE_TOTALSCORE',
         }
   
       
