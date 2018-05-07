@@ -1,5 +1,5 @@
 const initialState = {
-    totalScore: -12,
+    totalScore: 0,
     topScores: [],
     isPositiveScore: true,
     isTopScore: false,
