@@ -26,12 +26,11 @@ export function fetchQuestions() {
     }
 }
 
-export function increaseIndex (num, questions) {
+export function increaseIndex (num) {
     return {
         type: 'INCREASE_INDEX',
         num
-        // num,
-        // questions
+
     }
 }
 

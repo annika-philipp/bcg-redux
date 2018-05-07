@@ -1,4 +1,4 @@
-const {increaseIndex} = require('../client/actions/questions')
+const {increaseIndex} = require('../../../client/actions/questions')
 
 test('increaseIndex is totally correct', () => {
   //Arrange
@@ -6,13 +6,12 @@ test('increaseIndex is totally correct', () => {
   const array = []
   const expected = {
         type: 'INCREASE_INDEX',
-        index: num,
-        questions: array
+        num: num
 
   }
 
   //Act
-  const actual = increaseIndex(1, array)
+  const actual = increaseIndex(num)
 
   //Assert
   expect(actual).toEqual(expected)
