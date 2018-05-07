@@ -8,9 +8,9 @@ const GameOver = ({resetGame}) => {
                     <h3>GAME OVER</h3>
                     <h3>Consult your nearest handbook...</h3> 
                 </div>
-                <div className='row'>  
+                {/* <div className='row'>  
                     <button onClick={resetGame} className="button">Play again</button>
-                </div>
+                </div> */}
             </div>
     )
 }

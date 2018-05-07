@@ -1,63 +1,50 @@
-// totalscore: 0, - add to totalscore
-// topScores: [], - receive scores
-// isPositiveScore: true, - is positive score
-// isTopScore: false,
-// scoreIncreased: true
-
 import request from 'superagent'
-
-export const REQUEST_SCORES = 'REQUEST_SCORES'
-export const RECEIVE_SCORES = 'RECEIVE_SCORES'
-export const ADD_NEW_TOTALSCORE = 'ADD_NEW_TOTALSCORE'
-export const ADD_TO_TOTALSCORE = 'ADD_TO_TOTALSCORE'
-export const IS_POSITIVE_SCORE = 'IS_POSITIVE_SCORE'
-export const IS_TOPSCORE = 'IS_TOPSCORE'
-export const SCORE_INCREASED = 'SCORE_INCREASED'
 
 export const requestScores = () => {
     return {
-        type: REQUEST_SCORES
+        type: 'REQUEST_SCORES'
     }
 }
 
 export const receiveScores = () => {
     return {
-        type: RECEIVE_SCORES,
+        type: 'RECEIVE_SCORES',
         scores
     }
 }
 
 export const addNewTotalscore = (totalscore) => {
     return {
-        type: ADD_NEW_TOTALSCORE,
+        type: 'ADD_NEW_TOTALSCORE',
         totalscore
     }
 }
 
 export const addToTotalscore = (score) => {
     return {
-        type: ADD_TO_TOTALSCORE,
+        type: 'ADD_TO_TOTALSCORE',
         score
     }
 }
 
-export const isPositiveScore = (score) => {
+export const isPositiveTotalscore = (totalScore) => {
     return {
-        type: IS_POSITIVE_SCORE,
-        score
+        type: 'IS_POSITIVE_SCORE',
+        totalScore
     }
 }
 
-export const isTopScore = (score) => {
+export const isTopScore = (totalScore) => {
     return {
-        type: IS_TOPSCORE,
-        score
+        type: 'IS_TOPSCORE',
+        totalScore
     }
 }
 
 export const scoreIncreased = (score) => {
     return {
-        type: SCORE_INCREASED
+        type: 'SCORE_INCREASED',
+        score
     }
 }
 
