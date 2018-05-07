@@ -22243,10 +22243,53 @@ exports.default = location;
 
 /***/ }),
 /* 69 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (24:27)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m        \u001b[36mcase\u001b[39m \u001b[32m'ADD_TO_TOTALSCORE'\u001b[39m\u001b[33m:\u001b[39m \u001b[90m//adds new value to currentscore (goes up or down)\u001b[39m\n \u001b[90m 23 | \u001b[39m            \u001b[90m// let newState= Object.assign({},state,{totalScore: (state.totalScore + action.scoreValue)});\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m            let newState\u001b[33m=\u001b[39m {\u001b[33m...\u001b[39mstate\u001b[33m,\u001b[39m totalScore\u001b[33m:\u001b[39m (state\u001b[33m.\u001b[39mtotalScore \u001b[33m+\u001b[39m action\u001b[33m.\u001b[39mscoreValue)}\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 | \u001b[39m            \u001b[36mreturn\u001b[39m newState\u001b[33m;\u001b[39m  \n \u001b[90m 26 | \u001b[39m        \u001b[36mreturn\u001b[39m action\u001b[33m.\u001b[39mscoreValue\n \u001b[90m 27 | \u001b[39m            \u001b[90m// if (state.totalScore = null) \u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var initialState = {
+    totalScore: 0,
+    topScores: [],
+    isPositiveScore: true,
+    isTopScore: false,
+    scoreIncreased: false
+
+};
+
+var score = function score() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        // case 'RECEIVE_SCORES': //from api/db
+        //     return action.scores
+        // case 'ADD_NEW_TOTALSCORE':  //to api/db and back
+        //     return
+        case 'ADD_TO_TOTALSCORE':
+            //adds new value to currentscore (goes up or down)
+            return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });
+        // return { ...state, totalScore: (state.totalScore + action.scoreValue)}
+        case 'IS_POSITIVE_TOTALSCORE':
+            //to see if game over or not
+            if (state.totalScore > 0)
+                //     console.log("reducer, ", state.totalScore)
+                return Object.assign({}, state, { isPositiveScore: true });
+        // case 'IS_TOPSCORE': // to see if to add to Scoreboard
+        //     return (action.totalScore > topScores[9]) //to return true if larger than current 10th score 
+        case 'SCORE_INCREASED':
+            //to change colour of score
+            return Object.assign({}, state, { scoreIncreased: action.scoreValue > 0 });
+        default:
+            return state;
+    }
+};
+
+exports.default = score;
 
 /***/ }),
 /* 70 */
@@ -22565,10 +22608,9 @@ var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreVa
     };
 };
 
-var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore(totalScore) {
+var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
     return {
-        type: 'IS_POSITIVE_SCORE',
-        totalScore: totalScore
+        type: 'IS_POSITIVE_SCORE'
     };
 };
 
@@ -22579,10 +22621,10 @@ var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
     };
 };
 
-var scoreIncreased = exports.scoreIncreased = function scoreIncreased(score) {
+var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
     return {
         type: 'SCORE_INCREASED',
-        score: score
+        scoreValue: scoreValue
     };
 };
 

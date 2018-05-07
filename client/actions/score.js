@@ -27,10 +27,9 @@ export const addToTotalscore = (scoreValue) => {
     }
 }
 
-export const isPositiveTotalscore = (totalScore) => {
+export const isPositiveTotalscore = () => {
     return {
         type: 'IS_POSITIVE_SCORE',
-        totalScore
     }
 }
 
@@ -41,10 +40,10 @@ export const isTopScore = (totalScore) => {
     }
 }
 
-export const scoreIncreased = (score) => {
+export const scoreIncreased = (scoreValue) => {
     return {
         type: 'SCORE_INCREASED',
-        score
+        scoreValue
     }
 }
 
