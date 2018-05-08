@@ -1,6 +1,6 @@
 /* global beforeEach afterEach test expect */
 const testEnv = require('./test-environment')
-const db = require('../server/db/db')
+const db = require('../../server/db/db')
 
 let testDb = null
 

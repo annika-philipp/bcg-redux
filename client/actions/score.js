@@ -94,4 +94,4 @@ export function getScoresApi (callback) {
               })
   }
 
-  //check esp last function
+  //check esp last function, don't have savedScore in here yet!!!
