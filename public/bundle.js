@@ -22490,8 +22490,9 @@ var Display = function (_React$Component) {
     }
   }, {
     key: 'updateIndex',
-    value: function updateIndex() {
+    value: function updateIndex(scoreValue) {
       this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
+      this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
     }
   }, {
     key: 'render',

@@ -8,15 +8,16 @@ class Display extends React.Component{
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
-    }
+  }
 
-    updateIndex() {
-        this.props.dispatch(increaseIndex(this.props.index))
-    }
+  updateIndex(scoreValue) {
+      this.props.dispatch(increaseIndex(this.props.index))
+      this.props.dispatch(addToTotalscore(scoreValue))
+  }
 
 
-    render () {
-      var question = this.props.questions[this.props.index]
+  render () {
+    var question = this.props.questions[this.props.index]
 
     return (
       <div>
@@ -32,7 +33,6 @@ class Display extends React.Component{
         <div>   
         <button onClick = {() => this.updateIndex(question.scores[0])} value="button1" className="button">{this.props.questions.length > 0 && question.answers[0]}</button>
         <button onClick = {() => this.updateIndex(question.scores[1])} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button>
-        {/* <button onClick = {this.updateIndex.bind(this)} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button> */}
         </div>
       </div>
     )
