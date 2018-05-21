@@ -11,7 +11,10 @@ class Display extends React.Component{
   }
 
   updateIndex(scoreValue) {
-      this.props.dispatch(increaseIndex(this.props.index))
+    //can I put something in here like: if (this.props.index == this.props.length -1) dispatch(navigate or whatever I called it(gameOver))
+    //  else 
+      // this.props.dispatch(scoreIncreased(scoreValue))
+      this.props.dispatch(increaseIndex(this.props.index));
       this.props.dispatch(addToTotalscore(scoreValue))
       this.props.dispatch(scoreIncreased(scoreValue))
   }
@@ -23,8 +26,7 @@ class Display extends React.Component{
     return (
       <div>
         <div className="score">
-        <h2 style={{color: scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
-        {/* <h2>{this.props.questions.length > 0 && this.props.score.totalScore}</h2> */}
+        <h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
         </div>
         <div className="screen">
           <div className="question">

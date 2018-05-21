@@ -22491,6 +22491,9 @@ var Display = function (_React$Component) {
   }, {
     key: 'updateIndex',
     value: function updateIndex(scoreValue) {
+      //can I put something in here like: if (this.props.index == this.props.length -1) dispatch(navigate or whatever I called it(gameOver))
+      //  else 
+      // this.props.dispatch(scoreIncreased(scoreValue))
       this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
       this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
       this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
@@ -22510,7 +22513,7 @@ var Display = function (_React$Component) {
           { className: 'score' },
           _react2.default.createElement(
             'h2',
-            { style: { color: _score.scoreIncreased ? 'green' : 'red' } },
+            { style: { color: this.props.score.scoreIncreased ? 'green' : 'red' } },
             'score: ',
             this.props.questions.length > 0 && this.props.score.totalScore
           )
