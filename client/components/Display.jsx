@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addToTotalscore } from '../actions/score'
+import { addToTotalscore, scoreIncreased } from '../actions/score'
 import { fetchQuestions, increaseIndex } from '../actions/questions'
 
 class Display extends React.Component{
@@ -13,6 +13,7 @@ class Display extends React.Component{
   updateIndex(scoreValue) {
       this.props.dispatch(increaseIndex(this.props.index))
       this.props.dispatch(addToTotalscore(scoreValue))
+      this.props.dispatch(scoreIncreased(scoreValue))
   }
 
 
@@ -22,8 +23,8 @@ class Display extends React.Component{
     return (
       <div>
         <div className="score">
-        {/* <h2 style={{color: scoreIncreased ? 'green' : 'red'}}>score: {totalscore}</h2> */}
-        <h2>{this.props.questions.length > 0 && this.props.score.totalScore}</h2>
+        <h2 style={{color: scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
+        {/* <h2>{this.props.questions.length > 0 && this.props.score.totalScore}</h2> */}
         </div>
         <div className="screen">
           <div className="question">

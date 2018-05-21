@@ -22493,6 +22493,7 @@ var Display = function (_React$Component) {
     value: function updateIndex(scoreValue) {
       this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
       this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
+      this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
     }
   }, {
     key: 'render',
@@ -22509,7 +22510,8 @@ var Display = function (_React$Component) {
           { className: 'score' },
           _react2.default.createElement(
             'h2',
-            null,
+            { style: { color: _score.scoreIncreased ? 'green' : 'red' } },
+            'score: ',
             this.props.questions.length > 0 && this.props.score.totalScore
           )
         ),
