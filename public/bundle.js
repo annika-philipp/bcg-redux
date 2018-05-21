@@ -22274,14 +22274,14 @@ var score = function score() {
             //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });
         // return { ...state, totalScore: (state.totalScore + action.scoreValue)}
+        case 'SCORE_INCREASED':
+            //to change colour of score
+            return Object.assign({}, state, { scoreIncreased: action.scoreValue > 0 });
         case 'IS_POSITIVE_TOTALSCORE':
             //to see if game over or not
             return Object.assign({}, state, { isPositiveScore: state.totalScore > 0 });
         // case 'IS_TOPSCORE': // to see if to add to Scoreboard
         //     return (action.totalScore > topScores[9]) //to return true if larger than current 10th score 
-        case 'SCORE_INCREASED':
-            //to change colour of score
-            return Object.assign({}, state, { scoreIncreased: action.scoreValue > 0 });
         default:
             return state;
     }
@@ -22333,7 +22333,7 @@ var App = function App(props) {
         'BCG 3000'
       )
     ),
-    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : _react2.default.createElement(_Display2.default, null)
+    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : props.location === 'gameover' ? _react2.default.createElement(_GameOver2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
 
@@ -22466,6 +22466,8 @@ var _score = __webpack_require__(74);
 
 var _questions = __webpack_require__(80);
 
+var _navigate = __webpack_require__(72);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22491,12 +22493,11 @@ var Display = function (_React$Component) {
   }, {
     key: 'updateIndex',
     value: function updateIndex(scoreValue) {
-      //can I put something in here like: if (this.props.index == this.props.length -1) dispatch(navigate or whatever I called it(gameOver))
-      //  else 
-      // this.props.dispatch(scoreIncreased(scoreValue))
-      this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
-      this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
-      this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
+      if (this.props.index == this.props.questions.length - 1) this.props.dispatch((0, _navigate.navigate)('gameover'));else {
+        this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
+        this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
+        this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
+      }
     }
   }, {
     key: 'render',

@@ -8,15 +8,13 @@ import GameOver from './GameOver'
 const App = props => {
   return (
     <div className="container">
-            <div className="row">
-                <h1>BCG 3000</h1>
-            </div>  
-            {props.location === 'welcome' ? <Welcome /> : <Display />}
-            {/* {props.location === 'gameover' && <GameOver />} */}
+      <div className="row">
+        <h1>BCG 3000</h1>
+      </div>  
+      {props.location === 'welcome' ? <Welcome /> : props.location === 'gameover' ? <GameOver /> : <Display />}      
     </div>
   )
 }
-
 
 function mapStateToProps(state) {
   return {

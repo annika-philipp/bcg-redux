@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addToTotalscore, scoreIncreased } from '../actions/score'
 import { fetchQuestions, increaseIndex } from '../actions/questions'
+import {navigate} from '../actions/navigate'
+
 
 class Display extends React.Component{
 
@@ -11,12 +13,12 @@ class Display extends React.Component{
   }
 
   updateIndex(scoreValue) {
-    //can I put something in here like: if (this.props.index == this.props.length -1) dispatch(navigate or whatever I called it(gameOver))
-    //  else 
-      // this.props.dispatch(scoreIncreased(scoreValue))
-      this.props.dispatch(increaseIndex(this.props.index));
-      this.props.dispatch(addToTotalscore(scoreValue))
-      this.props.dispatch(scoreIncreased(scoreValue))
+    if (this.props.index == this.props.questions.length -1) this.props.dispatch(navigate('gameover'))
+      else {
+            this.props.dispatch(scoreIncreased(scoreValue))
+            this.props.dispatch(increaseIndex(this.props.index))
+            this.props.dispatch(addToTotalscore(scoreValue))
+          }
   }
 
 
