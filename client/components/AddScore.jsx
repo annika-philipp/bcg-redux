@@ -1,9 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getScoresApi} from '../actions/score'
+import {getScoresApi, isTopScore} from '../actions/score'
 // import Scoreboard from './Scoreboard'
-
-// import {addScoreApi} from '../api'
 
 class AddScore extends React.Component {
     // constructor(props) {
@@ -33,6 +31,7 @@ class AddScore extends React.Component {
     componentDidMount(){
         this.props.dispatch(getScoresApi())
         console.log("dispatching for scores")
+        this.props.dispatch(isTopScore(this.props.score.totalScore))
     }
     render () {
         return (
