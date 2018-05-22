@@ -1,12 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addToTotalscore, scoreIncreased } from '../actions/score'
+import { addToTotalscore, scoreIncreased, isPositiveTotalscore } from '../actions/score'
 import { fetchQuestions, increaseIndex } from '../actions/questions'
 import {navigate} from '../actions/navigate'
+import GameOver from './GameOver'
 
 
 class Display extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      gamePlaying: true
+    }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    var totalScoreCheck = nextProps.score.isPositiveTotalScore
+    this.setState ({
+        gamePlaying: totalScoreCheck
+    })
+  }
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
@@ -18,6 +31,7 @@ class Display extends React.Component{
             this.props.dispatch(scoreIncreased(scoreValue))
             this.props.dispatch(increaseIndex(this.props.index))
             this.props.dispatch(addToTotalscore(scoreValue))
+            this.props.dispatch(isPositiveTotalscore())
           }
   }
 
@@ -27,6 +41,9 @@ class Display extends React.Component{
 
     return (
       <div>
+        {this.state.gamePlaying 
+        ?
+        <div>
         <div className="score">
         <h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
         </div>
@@ -39,6 +56,9 @@ class Display extends React.Component{
         <button onClick = {() => this.updateIndex(question.scores[0])} value="button1" className="button">{this.props.questions.length > 0 && question.answers[0]}</button>
         <button onClick = {() => this.updateIndex(question.scores[1])} value="button2" className="button">{this.props.questions.length > 0 && question.answers[1]}</button>
         </div>
+        </div>
+        : <GameOver />
+        }
       </div>
     )
   }

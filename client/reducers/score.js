@@ -1,7 +1,7 @@
 const initialState = {
     totalScore: 0,
     topScores: [],
-    isPositiveScore: true,
+    isPositiveTotalScore: true,
     isTopScore: false,
     scoreIncreased: false
 
@@ -19,7 +19,7 @@ const score = (state = initialState, action) => {
         case 'SCORE_INCREASED': //to change colour of score
             return Object.assign({}, state, {scoreIncreased: (action.scoreValue > 0)})
         case 'IS_POSITIVE_TOTALSCORE': //to see if game over or not
-            return Object.assign({}, state, {isPositiveScore: (state.totalScore > 0)})
+            return Object.assign({}, state, {isPositiveTotalScore: (state.totalScore > 0)})
         // case 'IS_TOPSCORE': // to see if to add to Scoreboard
         //     return (action.totalScore > topScores[9]) //to return true if larger than current 10th score 
         case 'RESET':

@@ -28,8 +28,8 @@ export function increaseIndex (num) {
     }
 }
 
-export function reset() {
-    return {
-        type: 'RESET'
-    }
-}
+// export function reset() {
+//     return {
+//         type: 'RESET'
+//     }
+// }
