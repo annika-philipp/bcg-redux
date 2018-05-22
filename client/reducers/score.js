@@ -22,6 +22,8 @@ const score = (state = initialState, action) => {
             return Object.assign({}, state, {isPositiveScore: (state.totalScore > 0)})
         // case 'IS_TOPSCORE': // to see if to add to Scoreboard
         //     return (action.totalScore > topScores[9]) //to return true if larger than current 10th score 
+        case 'RESET':
+            return initialState
         default:
             return state
     }

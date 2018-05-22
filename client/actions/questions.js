@@ -1,9 +1,4 @@
-
-// answers: [],
-// currentQuestionObject: null, 
-
 import request from 'superagent'
-
 
 export function receiveQuestions(questionsarray) {
     return {
@@ -30,7 +25,11 @@ export function increaseIndex (num) {
     return {
         type: 'INCREASE_INDEX',
         num
-
     }
 }
 
+export function reset() {
+    return {
+        type: 'RESET'
+    }
+}

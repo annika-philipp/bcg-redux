@@ -39,6 +39,12 @@ export const isPositiveTotalscore = () => {
 }
 //reducer done and tested, but not sure if test is right?
 
+export const reset = () => {
+    return {
+        type: 'RESET'
+    }
+}
+
 
 export const isTopScore = (totalScore) => {
     return {
@@ -53,7 +59,6 @@ export const scoreIncreased = (scoreValue) => {
         scoreValue
     }
 }
-
 
 
 export function getScoresApi (callback) {
