@@ -66,6 +66,7 @@ export function getScoresApi (callback) {
         return request
         .get('/api/v2')
         .then(items => {
+            console.log("hitting the scores api")
             // console.log("items.body ", items.body)
             let data  = items.body
             let scoreList = data.sort(function(a,b) {

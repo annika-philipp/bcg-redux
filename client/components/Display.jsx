@@ -26,7 +26,7 @@ class Display extends React.Component{
   }
 
   updateIndex(scoreValue) {
-    if (this.props.index == this.props.questions.length -1) this.props.dispatch(navigate('gameover'))
+    if (this.props.index == this.props.questions.length -1) this.props.dispatch(navigate('scoreboard'))
       else {
             this.props.dispatch(scoreIncreased(scoreValue))
             this.props.dispatch(increaseIndex(this.props.index))

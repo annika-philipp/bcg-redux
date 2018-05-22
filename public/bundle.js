@@ -312,6 +312,25 @@ module.exports = emptyFunction;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(48);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
+
+
+
+
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -408,7 +427,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -466,25 +485,6 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(48);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
-
-
-
-
-
 
 /***/ }),
 /* 6 */
@@ -594,7 +594,7 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(4);
+  var invariant = __webpack_require__(5);
   var warning = __webpack_require__(7);
   var ReactPropTypesSecret = __webpack_require__(9);
   var loggedTypeFailures = {};
@@ -2202,6 +2202,7 @@ var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue
 function getScoresApi(callback) {
     return function (dispatch) {
         return _superagent2.default.get('/api/v2').then(function (items) {
+            console.log("hitting the scores api");
             // console.log("items.body ", items.body)
             var data = items.body;
             var scoreList = data.sort(function (a, b) {
@@ -3196,7 +3197,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(3);
 
 var _score = __webpack_require__(26);
 
@@ -3257,7 +3258,7 @@ var _reactDom = __webpack_require__(33);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(3);
 
 var _redux = __webpack_require__(11);
 
@@ -3300,7 +3301,7 @@ document.addEventListener('DOMContentLoaded', function () {
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(3),n=__webpack_require__(6),p=__webpack_require__(2),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(4),n=__webpack_require__(6),p=__webpack_require__(2),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -3336,9 +3337,9 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var emptyObject = __webpack_require__(6);
-var invariant = __webpack_require__(4);
+var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(8);
@@ -4742,7 +4743,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),l=__webpack_require__(13),B=__webpack_require__(3),C=__webpack_require__(2),ba=__webpack_require__(14),da=__webpack_require__(15),ea=__webpack_require__(16),fa=__webpack_require__(17),ia=__webpack_require__(18),D=__webpack_require__(6);
+var aa=__webpack_require__(1),l=__webpack_require__(13),B=__webpack_require__(4),C=__webpack_require__(2),ba=__webpack_require__(14),da=__webpack_require__(15),ea=__webpack_require__(16),fa=__webpack_require__(17),ia=__webpack_require__(18),D=__webpack_require__(6);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -5040,10 +5041,10 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var React = __webpack_require__(1);
-var invariant = __webpack_require__(4);
+var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var ExecutionEnvironment = __webpack_require__(13);
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(2);
 var EventListener = __webpack_require__(14);
 var getActiveElement = __webpack_require__(15);
@@ -20676,9 +20677,9 @@ function createProvider() {
 
 
 var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(4);
+var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
-var assign = __webpack_require__(3);
+var assign = __webpack_require__(4);
 
 var ReactPropTypesSecret = __webpack_require__(9);
 var checkPropTypes = __webpack_require__(8);
@@ -21226,7 +21227,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(4);
+var invariant = __webpack_require__(5);
 var ReactPropTypesSecret = __webpack_require__(9);
 
 module.exports = function() {
@@ -22493,7 +22494,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(3);
 
 var _Welcome = __webpack_require__(74);
 
@@ -22506,6 +22507,10 @@ var _Display2 = _interopRequireDefault(_Display);
 var _GameOver = __webpack_require__(29);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
+
+var _AddScore = __webpack_require__(82);
+
+var _AddScore2 = _interopRequireDefault(_AddScore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22522,7 +22527,7 @@ var App = function App(props) {
         'BCG 3000'
       )
     ),
-    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : _react2.default.createElement(_Display2.default, null)
+    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
 
@@ -22551,7 +22556,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(3);
 
 var _navigate = __webpack_require__(12);
 
@@ -22632,7 +22637,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(3);
 
 var _score = __webpack_require__(26);
 
@@ -22682,7 +22687,7 @@ var Display = function (_React$Component) {
   }, {
     key: 'updateIndex',
     value: function updateIndex(scoreValue) {
-      if (this.props.index == this.props.questions.length - 1) this.props.dispatch((0, _navigate.navigate)('gameover'));else {
+      if (this.props.index == this.props.questions.length - 1) this.props.dispatch((0, _navigate.navigate)('scoreboard'));else {
         this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
         this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
         this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
@@ -23926,6 +23931,120 @@ function increaseIndex(num) {
 //         type: 'RESET'
 //     }
 // }
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(3);
+
+var _score = __webpack_require__(26);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import Scoreboard from './Scoreboard'
+
+// import {addScoreApi} from '../api'
+
+var AddScore = function (_React$Component) {
+    _inherits(AddScore, _React$Component);
+
+    function AddScore() {
+        _classCallCheck(this, AddScore);
+
+        return _possibleConstructorReturn(this, (AddScore.__proto__ || Object.getPrototypeOf(AddScore)).apply(this, arguments));
+    }
+
+    _createClass(AddScore, [{
+        key: 'componentDidMount',
+
+        // constructor(props) {
+        //     super(props)
+        //     this.state = {
+        //         name: '',
+        //         score: this.props.totalscore,
+        //         isTopScore: this.props.isTopScore,
+        //     }
+        //     this.handleChange = this.handleChange.bind(this)
+        //     this.addScore = this.addScore.bind(this)
+        // }
+
+        // handleChange (e) {
+        //     this.setState({
+        //         [e.target.name]: e.target.value
+        //     })
+        // }
+
+
+        // addScore (e) {
+        //     // console.log(this.state)
+        //     e.preventDefault()
+        //     addScoreApi(this.state, this.props.refreshScores)
+        // }
+
+        value: function componentDidMount() {
+            this.props.dispatch((0, _score.getScoresApi)());
+            console.log("dispatching for scores");
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'welcome' },
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Well done!'
+                    ),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Deploy yourself into phase 3'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'Your totalscore is: ',
+                        this.props.score.totalScore
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AddScore;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+    return {
+        score: state.score
+    };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 
 /***/ })
 /******/ ]);
