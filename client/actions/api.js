@@ -13,7 +13,6 @@ export function getQuestions (callback) {
         callback(questionList)
       })
       .catch(err => {
-        // console.log('err', err)
         throw Error('Cannot GET Questions!')
       })
 }

@@ -6,7 +6,7 @@ import request from 'superagent'
 //     }
 // }
 
-export const receiveScoresFromAPI = () => {
+export const receiveScoresFromAPI = (topScoresApi) => {
     return {
         type: 'RECEIVE_TOPSCORES_API',
         topScoresApi
@@ -53,6 +53,8 @@ export const isTopScore = (totalScore) => {
     }
 }
 
+//not yet tested
+
 export const scoreIncreased = (scoreValue) => {
     return {
         type: 'SCORE_INCREASED',
@@ -67,7 +69,7 @@ export function getScoresApi (callback) {
         .get('/api/v2')
         .then(items => {
             console.log("hitting the scores api")
-            // console.log("items.body ", items.body)
+            console.log("items.body ", items.body)
             let data  = items.body
             let scoreList = data.sort(function(a,b) {
                 return b.score - a.score
@@ -77,7 +79,7 @@ export function getScoresApi (callback) {
                 topScoresApi.push(scoreList[i])
             }
             // console.log({scoreList})
-            // console.log("Api Topscores, ", topScoresApi)
+            console.log("Api Topscores, ", topScoresApi)
             dispatch(receiveScoresFromAPI(topScoresApi))
         }) 
         .catch(err => {

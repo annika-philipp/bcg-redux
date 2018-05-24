@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addToTotalscore, scoreIncreased, isPositiveTotalscore } from '../actions/score'
+import { getScoresApi, addToTotalscore, scoreIncreased, isPositiveTotalscore, isTopScore } from '../actions/score'
 import { fetchQuestions, increaseIndex } from '../actions/questions'
+
 import {navigate} from '../actions/navigate'
 import GameOver from './GameOver'
 
@@ -23,10 +24,14 @@ class Display extends React.Component{
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions())
+    this.props.dispatch(getScoresApi())
   }
 
   updateIndex(scoreValue) {
-    if (this.props.index == this.props.questions.length -1) this.props.dispatch(navigate('scoreboard'))
+    if (this.props.index == this.props.questions.length -1){
+      this.props.dispatch(navigate('scoreboard'))
+      this.props.dispatch(isTopScore(this.props.score.totalScore))
+    }
       else {
             this.props.dispatch(scoreIncreased(scoreValue))
             this.props.dispatch(increaseIndex(this.props.index))

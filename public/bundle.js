@@ -317,7 +317,7 @@ module.exports = emptyFunction;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(48);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
@@ -1319,120 +1319,6 @@ var navigate = exports.navigate = function navigate(destination) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTotalscore = exports.receiveScoresFromAPI = undefined;
-exports.getScoresApi = getScoresApi;
-exports.addScoreApi = addScoreApi;
-
-var _superagent = __webpack_require__(27);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// export const requestScores = () => {
-//     return {
-//         type: 'REQUEST_SCORES'
-//     }
-// }
-
-var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI() {
-    return {
-        type: 'RECEIVE_TOPSCORES_API',
-        topScoresApi: topScoresApi
-    };
-};
-//done reducer but not tested
-
-
-var addNewTotalscore = exports.addNewTotalscore = function addNewTotalscore(totalscore) {
-    return {
-        type: 'ADD_NEW_TOTALSCORE',
-        totalscore: totalscore
-    };
-};
-//to do and test
-
-
-var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
-    return {
-        type: 'ADD_TO_TOTALSCORE',
-        scoreValue: scoreValue
-    };
-};
-//reducer done and tested
-
-var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
-    return {
-        type: 'IS_POSITIVE_TOTALSCORE'
-    };
-};
-//reducer done and tested, but not sure if test is right?
-
-var reset = exports.reset = function reset() {
-    return {
-        type: 'RESET'
-    };
-};
-
-var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
-    return {
-        type: 'IS_TOPSCORE',
-        totalScore: totalScore
-    };
-};
-
-var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
-    return {
-        type: 'SCORE_INCREASED',
-        scoreValue: scoreValue
-    };
-};
-
-function getScoresApi(callback) {
-    return function (dispatch) {
-        return _superagent2.default.get('/api/v2').then(function (items) {
-            console.log("hitting the scores api");
-            // console.log("items.body ", items.body)
-            var data = items.body;
-            var scoreList = data.sort(function (a, b) {
-                return b.score - a.score;
-            });
-            var topScoresApi = [];
-            for (var i = 0; i < 10; i++) {
-                topScoresApi.push(scoreList[i]);
-            }
-            // console.log({scoreList})
-            // console.log("Api Topscores, ", topScoresApi)
-            dispatch(receiveScoresFromAPI(topScoresApi));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-function addScoreApi(score, callback) {
-    // console.log("score in api, ", score)
-    return function (dispatch) {
-        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
-            dispatch(savedScore(score));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-//check esp last function, don't have savedScore in here yet!!!
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1468,7 +1354,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1549,7 +1435,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1591,7 +1477,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1662,7 +1548,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1705,7 +1591,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1735,7 +1621,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1770,13 +1656,13 @@ if (process.env.NODE_ENV !== 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subscriptionShape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return storeShape; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
 
 
@@ -1794,7 +1680,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 });
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1806,7 +1692,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(20);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2099,7 +1985,7 @@ selectorFactory) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2126,14 +2012,14 @@ module.exports = g;
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = wrapMapToPropsConstant;
 /* unused harmony export getDependsOnOwnProps */
 /* harmony export (immutable) */ __webpack_exports__["b"] = wrapMapToPropsFunc;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(24);
 
 
 function wrapMapToPropsConstant(getConstant) {
@@ -2204,7 +2090,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2221,7 +2107,7 @@ function verifyPlainObject(value, displayName, methodName) {
 }
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2233,6 +2119,122 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 
 /* harmony default export */ __webpack_exports__["a"] = (Symbol);
 
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTotalscore = exports.receiveScoresFromAPI = undefined;
+exports.getScoresApi = getScoresApi;
+exports.addScoreApi = addScoreApi;
+
+var _superagent = __webpack_require__(27);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// export const requestScores = () => {
+//     return {
+//         type: 'REQUEST_SCORES'
+//     }
+// }
+
+var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
+    return {
+        type: 'RECEIVE_TOPSCORES_API',
+        topScoresApi: topScoresApi
+    };
+};
+//done reducer but not tested
+
+
+var addNewTotalscore = exports.addNewTotalscore = function addNewTotalscore(totalscore) {
+    return {
+        type: 'ADD_NEW_TOTALSCORE',
+        totalscore: totalscore
+    };
+};
+//to do and test
+
+
+var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
+    return {
+        type: 'ADD_TO_TOTALSCORE',
+        scoreValue: scoreValue
+    };
+};
+//reducer done and tested
+
+var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
+    return {
+        type: 'IS_POSITIVE_TOTALSCORE'
+    };
+};
+//reducer done and tested, but not sure if test is right?
+
+var reset = exports.reset = function reset() {
+    return {
+        type: 'RESET'
+    };
+};
+
+var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
+    return {
+        type: 'IS_TOPSCORE',
+        totalScore: totalScore
+    };
+};
+
+//not yet tested
+
+var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
+    return {
+        type: 'SCORE_INCREASED',
+        scoreValue: scoreValue
+    };
+};
+
+function getScoresApi(callback) {
+    return function (dispatch) {
+        return _superagent2.default.get('/api/v2').then(function (items) {
+            console.log("hitting the scores api");
+            console.log("items.body ", items.body);
+            var data = items.body;
+            var scoreList = data.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            var topScoresApi = [];
+            for (var i = 0; i < 10; i++) {
+                topScoresApi.push(scoreList[i]);
+            }
+            // console.log({scoreList})
+            console.log("Api Topscores, ", topScoresApi);
+            dispatch(receiveScoresFromAPI(topScoresApi));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+function addScoreApi(score, callback) {
+    // console.log("score in api, ", score)
+    return function (dispatch) {
+        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
+            dispatch(savedScore(score));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+//check esp last function, don't have savedScore in here yet!!!
 
 /***/ }),
 /* 27 */
@@ -3199,7 +3201,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(26);
 
 var _navigate = __webpack_require__(12);
 
@@ -4743,7 +4745,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),l=__webpack_require__(14),B=__webpack_require__(4),C=__webpack_require__(2),ba=__webpack_require__(15),da=__webpack_require__(16),ea=__webpack_require__(17),fa=__webpack_require__(18),ia=__webpack_require__(19),D=__webpack_require__(6);
+var aa=__webpack_require__(1),l=__webpack_require__(13),B=__webpack_require__(4),C=__webpack_require__(2),ba=__webpack_require__(14),da=__webpack_require__(15),ea=__webpack_require__(16),fa=__webpack_require__(17),ia=__webpack_require__(18),D=__webpack_require__(6);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -5043,14 +5045,14 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
-var ExecutionEnvironment = __webpack_require__(14);
+var ExecutionEnvironment = __webpack_require__(13);
 var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(2);
-var EventListener = __webpack_require__(15);
-var getActiveElement = __webpack_require__(16);
-var shallowEqual = __webpack_require__(17);
-var containsNode = __webpack_require__(18);
-var focusNode = __webpack_require__(19);
+var EventListener = __webpack_require__(14);
+var getActiveElement = __webpack_require__(15);
+var shallowEqual = __webpack_require__(16);
+var containsNode = __webpack_require__(17);
+var focusNode = __webpack_require__(18);
 var emptyObject = __webpack_require__(6);
 var checkPropTypes = __webpack_require__(8);
 var hyphenateStyleName = __webpack_require__(38);
@@ -20584,9 +20586,9 @@ module.exports = camelize;
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = createProvider;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21517,7 +21519,7 @@ var Subscription = function () {
 
 "use strict";
 /* unused harmony export createConnect */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(63);
@@ -21673,7 +21675,7 @@ function shallowEqual(objA, objB) {
 /* unused harmony export whenMapDispatchToPropsIsMissing */
 /* unused harmony export whenMapDispatchToPropsIsObject */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(23);
 
 
 
@@ -21721,7 +21723,7 @@ if (typeof self !== 'undefined') {
 var result = Object(__WEBPACK_IMPORTED_MODULE_0__ponyfill_js__["a" /* default */])(root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23), __webpack_require__(52)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(22), __webpack_require__(52)(module)))
 
 /***/ }),
 /* 52 */
@@ -21855,7 +21857,7 @@ function isPlainObject(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(59);
 
@@ -21915,14 +21917,14 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(22)))
 
 /***/ }),
 /* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(25);
 
 
 /** Used for built-in method references. */
@@ -22079,7 +22081,7 @@ function isObjectLike(value) {
 "use strict";
 /* unused harmony export whenMapStateToPropsIsFunction */
 /* unused harmony export whenMapStateToPropsIsMissing */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wrapMapToProps__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wrapMapToProps__ = __webpack_require__(23);
 
 
 function whenMapStateToPropsIsFunction(mapStateToProps) {
@@ -22103,7 +22105,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 /* unused harmony export wrapMergePropsFunc */
 /* unused harmony export whenMergePropsIsFunction */
 /* unused harmony export whenMergePropsIsOmitted */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(24);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -22470,7 +22472,7 @@ var score = function score() {
             return Object.assign({}, state, { isPositiveTotalScore: state.totalScore > 0 });
         case 'IS_TOPSCORE':
             // to see if to add to Scoreboard
-            return Object.assign({}, state, { isTopScore: action.totalScore > state.topScores[9] }); //to return true if larger than current 10th score 
+            return Object.assign({}, state, { isTopScore: action.totalScore > state.topScores[9].score }); //to return true if larger than current 10th score 
         case 'RESET':
             return initialState;
         default:
@@ -22640,7 +22642,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(26);
 
 var _questions = __webpack_require__(81);
 
@@ -22684,11 +22686,15 @@ var Display = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.dispatch((0, _questions.fetchQuestions)());
+      this.props.dispatch((0, _score.getScoresApi)());
     }
   }, {
     key: 'updateIndex',
     value: function updateIndex(scoreValue) {
-      if (this.props.index == this.props.questions.length - 1) this.props.dispatch((0, _navigate.navigate)('scoreboard'));else {
+      if (this.props.index == this.props.questions.length - 1) {
+        this.props.dispatch((0, _navigate.navigate)('scoreboard'));
+        this.props.dispatch((0, _score.isTopScore)(this.props.score.totalScore));
+      } else {
         this.props.dispatch((0, _score.scoreIncreased)(scoreValue));
         this.props.dispatch((0, _questions.increaseIndex)(this.props.index));
         this.props.dispatch((0, _score.addToTotalscore)(scoreValue));
@@ -23952,9 +23958,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(26);
+
+var _navigate = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23964,46 +23974,42 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // import Scoreboard from './Scoreboard'
 
+//tomorrow: add Scoreboard and fix api call (still needs a save scoreboard action - see actions!)
+
 var AddScore = function (_React$Component) {
     _inherits(AddScore, _React$Component);
 
-    function AddScore() {
+    function AddScore(props) {
         _classCallCheck(this, AddScore);
 
-        return _possibleConstructorReturn(this, (AddScore.__proto__ || Object.getPrototypeOf(AddScore)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (AddScore.__proto__ || Object.getPrototypeOf(AddScore)).call(this, props));
+
+        _this.state = {
+            name: '',
+            score: _this.props.score.totalscore
+        };
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.addScore = _this.addScore.bind(_this);
+        return _this;
     }
 
     _createClass(AddScore, [{
-        key: 'componentDidMount',
-
-        // constructor(props) {
-        //     super(props)
-        //     this.state = {
-        //         name: '',
-        //         score: this.props.totalscore,
-        //         isTopScore: this.props.isTopScore,
-        //     }
-        //     this.handleChange = this.handleChange.bind(this)
-        //     this.addScore = this.addScore.bind(this)
-        // }
-
-        // handleChange (e) {
-        //     this.setState({
-        //         [e.target.name]: e.target.value
-        //     })
-        // }
-
-
-        // addScore (e) {
-        //     // console.log(this.state)
-        //     e.preventDefault()
-        //     addScoreApi(this.state, this.props.refreshScores)
-        // }
-
-        value: function componentDidMount() {
-            this.props.dispatch((0, _score.getScoresApi)());
-            console.log("dispatching for scores");
-            this.props.dispatch((0, _score.isTopScore)(this.props.score.totalScore));
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
+        }
+    }, {
+        key: 'addScore',
+        value: function addScore(e) {
+            // console.log(this.state)
+            e.preventDefault();
+            this.props.dispatch((0, _score.addScoreApi)(this.state, this.props.refreshScores));
+        }
+    }, {
+        key: 'playAgain',
+        value: function playAgain() {
+            this.props.dispatch((0, _score.reset)());
+            this.props.dispatch((0, _navigate.navigate)('welcome'));
         }
     }, {
         key: 'render',
@@ -24029,6 +24035,40 @@ var AddScore = function (_React$Component) {
                         null,
                         'Your totalscore is: ',
                         this.props.score.totalScore
+                    ),
+                    this.props.score.isTopScore && _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'form',
+                            { onSubmit: this.addScore },
+                            _react2.default.createElement(
+                                'p',
+                                null,
+                                'Add your name to the scoreboard'
+                            ),
+                            _react2.default.createElement('input', { placeholder: 'Player', name: 'name', onChange: this.handleChange, value: this.state.name }),
+                            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+                        )
+                    ),
+                    !this.props.score.isTopScore && _react2.default.createElement('div', { className: 'row' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    this.props.score.topScores.length > 0 && _react2.default.createElement(
+                        'h1',
+                        null,
+                        'Hello world'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(
+                            'button',
+                            { onClick: this.playAgain.bind(this), className: 'button' },
+                            'Play again'
+                        )
                     )
                 )
             );

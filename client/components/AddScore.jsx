@@ -1,38 +1,41 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getScoresApi, isTopScore} from '../actions/score'
+import { addScoreApi, reset } from '../actions/score'
+import {navigate} from '../actions/navigate'
 // import Scoreboard from './Scoreboard'
 
+//tomorrow: add Scoreboard and fix api call (still needs a save scoreboard action - see actions!)
+
 class AddScore extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         name: '',
-    //         score: this.props.totalscore,
-    //         isTopScore: this.props.isTopScore,
-    //     }
-    //     this.handleChange = this.handleChange.bind(this)
-    //     this.addScore = this.addScore.bind(this)
-    // }
-
-    // handleChange (e) {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-
-    // addScore (e) {
-    //     // console.log(this.state)
-    //     e.preventDefault()
-    //     addScoreApi(this.state, this.props.refreshScores)
-    // }
-
-    componentDidMount(){
-        this.props.dispatch(getScoresApi())
-        console.log("dispatching for scores")
-        this.props.dispatch(isTopScore(this.props.score.totalScore))
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: '',
+            score: this.props.score.totalscore
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.addScore = this.addScore.bind(this)
     }
+
+    handleChange (e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+
+    addScore (e) {
+        // console.log(this.state)
+        e.preventDefault()
+        this.props.dispatch(addScoreApi(this.state, this.props.refreshScores))
+    }
+
+    playAgain() {
+        this.props.dispatch(reset())
+        this.props.dispatch(navigate('welcome'))
+    }
+
+
     render () {
         return (
         <div>
@@ -40,21 +43,21 @@ class AddScore extends React.Component {
             <h3>Well done!</h3>
             <h3>Deploy yourself into phase 3</h3> 
             <p>Your totalscore is: {this.props.score.totalScore}</p>
-            {/* {this.props.isTopScore && <div><form onSubmit={this.addScore}>
+            {this.props.score.isTopScore && <div><form onSubmit={this.addScore}>
             <p>Add your name to the scoreboard</p>
             <input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} />
             <input type='submit' value='Submit'/>
             </form>
             </div>
             }
-            {!this.props.isTopScore && <div className='row'>  
-            </div>}
+            {!this.props.score.isTopScore && <div className='row'></div>}
             </div>
             <div className="row">
-            {this.props.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>}
+            {this.props.score.topScores.length > 0 && <h1>Hello world</h1>}
+            {/* {this.props.score.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>} */}
             <div className="row">
-                <button onClick={this.props.resetGame} className="button">Play again</button>
-            </div>  */}
+                <button onClick={this.playAgain.bind(this)} className="button">Play again</button>
+            </div> 
             </div>
            
     </div> )
