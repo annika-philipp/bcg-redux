@@ -1,10 +1,5 @@
 import request from 'superagent'
 
-// export const requestScores = () => {
-//     return {
-//         type: 'REQUEST_SCORES'
-//     }
-// }
 
 export const receiveScoresFromAPI = (topScoresApi) => {
     return {
@@ -15,10 +10,11 @@ export const receiveScoresFromAPI = (topScoresApi) => {
 //done reducer but not tested
 
 
-export const addNewTotalscore = (totalscore) => {
+export const addNewTopScore = (score) => {
+    console.log("Hi ", score.name, score.score)
     return {
-        type: 'ADD_NEW_TOTALSCORE',
-        totalscore
+        type: 'ADD_NEW_TOPSCORE',
+        score
     }
 }
 //to do and test
@@ -62,6 +58,13 @@ export const scoreIncreased = (scoreValue) => {
     }
 }
 
+export const showError = (message) => {
+    return {
+        type: 'SHOW_ERROR',
+        message
+    }
+}
+
 
 export function getScoresApi (callback) {
     return(dispatch) => {
@@ -89,13 +92,13 @@ export function getScoresApi (callback) {
   }
   
   export function addScoreApi (score, callback) {
-    // console.log("score in api, ", score)
+    console.log("score in api, ", score)
     return (dispatch) =>
         request
             .post('/api/v2')
             .send(score)
             .then (res => {
-                dispatch(savedScore(score))
+                dispatch(addNewTopScore(score))
             })
             .catch(err => {
                 dispatch(showError(err.message))

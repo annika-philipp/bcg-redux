@@ -11,7 +11,7 @@ class AddScore extends React.Component {
         super(props)
         this.state = {
             name: '',
-            score: this.props.score.totalscore
+            score: this.props.score.totalScore
         }
         this.handleChange = this.handleChange.bind(this)
         this.addScore = this.addScore.bind(this)
@@ -24,8 +24,9 @@ class AddScore extends React.Component {
     }
 
 
+    // I don't have a refresh scores yet!
+
     addScore (e) {
-        // console.log(this.state)
         e.preventDefault()
         this.props.dispatch(addScoreApi(this.state, this.props.refreshScores))
     }

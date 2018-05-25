@@ -317,7 +317,7 @@ module.exports = emptyFunction;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(48);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
@@ -584,6 +584,23 @@ module.exports = warning;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var navigate = exports.navigate = function navigate(destination) {
+  return {
+    type: 'NAVIGATE',
+    destination: destination
+  };
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -596,7 +613,7 @@ module.exports = warning;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(5);
   var warning = __webpack_require__(7);
-  var ReactPropTypesSecret = __webpack_require__(9);
+  var ReactPropTypesSecret = __webpack_require__(10);
   var loggedTypeFailures = {};
 }
 
@@ -647,7 +664,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -666,7 +683,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -694,7 +711,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1298,24 +1315,125 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-var navigate = exports.navigate = function navigate(destination) {
-  return {
-    type: 'NAVIGATE',
-    destination: destination
-  };
+exports.showError = exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTopScore = exports.receiveScoresFromAPI = undefined;
+exports.getScoresApi = getScoresApi;
+exports.addScoreApi = addScoreApi;
+
+var _superagent = __webpack_require__(27);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
+    return {
+        type: 'RECEIVE_TOPSCORES_API',
+        topScoresApi: topScoresApi
+    };
+};
+//done reducer but not tested
+
+
+var addNewTopScore = exports.addNewTopScore = function addNewTopScore(score) {
+    console.log("Hi ", score.name, score.score);
+    return {
+        type: 'ADD_NEW_TOPSCORE',
+        score: score
+    };
+};
+//to do and test
+
+
+var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
+    return {
+        type: 'ADD_TO_TOTALSCORE',
+        scoreValue: scoreValue
+    };
+};
+//reducer done and tested
+
+var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
+    return {
+        type: 'IS_POSITIVE_TOTALSCORE'
+    };
+};
+//reducer done and tested, but not sure if test is right?
+
+var reset = exports.reset = function reset() {
+    return {
+        type: 'RESET'
+    };
 };
 
+var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
+    return {
+        type: 'IS_TOPSCORE',
+        totalScore: totalScore
+    };
+};
+
+//not yet tested
+
+var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
+    return {
+        type: 'SCORE_INCREASED',
+        scoreValue: scoreValue
+    };
+};
+
+var showError = exports.showError = function showError(message) {
+    return {
+        type: 'SHOW_ERROR',
+        message: message
+    };
+};
+
+function getScoresApi(callback) {
+    return function (dispatch) {
+        return _superagent2.default.get('/api/v2').then(function (items) {
+            console.log("hitting the scores api");
+            console.log("items.body ", items.body);
+            var data = items.body;
+            var scoreList = data.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            var topScoresApi = [];
+            for (var i = 0; i < 10; i++) {
+                topScoresApi.push(scoreList[i]);
+            }
+            // console.log({scoreList})
+            console.log("Api Topscores, ", topScoresApi);
+            dispatch(receiveScoresFromAPI(topScoresApi));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+function addScoreApi(score, callback) {
+    console.log("score in api, ", score);
+    return function (dispatch) {
+        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
+            dispatch(addNewTopScore(score));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+//check esp last function, don't have savedScore in here yet!!!
+
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1354,7 +1472,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1435,7 +1553,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1477,7 +1595,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1548,7 +1666,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1591,7 +1709,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1621,7 +1739,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1656,13 +1774,13 @@ if (process.env.NODE_ENV !== 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subscriptionShape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return storeShape; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
 
 
@@ -1680,7 +1798,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 });
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1692,7 +1810,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(21);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1985,7 +2103,7 @@ selectorFactory) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2012,14 +2130,14 @@ module.exports = g;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = wrapMapToPropsConstant;
 /* unused harmony export getDependsOnOwnProps */
 /* harmony export (immutable) */ __webpack_exports__["b"] = wrapMapToPropsFunc;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(25);
 
 
 function wrapMapToPropsConstant(getConstant) {
@@ -2090,13 +2208,13 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifyPlainObject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(11);
 
 
 
@@ -2107,7 +2225,7 @@ function verifyPlainObject(value, displayName, methodName) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2119,122 +2237,6 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 
 /* harmony default export */ __webpack_exports__["a"] = (Symbol);
 
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTotalscore = exports.receiveScoresFromAPI = undefined;
-exports.getScoresApi = getScoresApi;
-exports.addScoreApi = addScoreApi;
-
-var _superagent = __webpack_require__(27);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// export const requestScores = () => {
-//     return {
-//         type: 'REQUEST_SCORES'
-//     }
-// }
-
-var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
-    return {
-        type: 'RECEIVE_TOPSCORES_API',
-        topScoresApi: topScoresApi
-    };
-};
-//done reducer but not tested
-
-
-var addNewTotalscore = exports.addNewTotalscore = function addNewTotalscore(totalscore) {
-    return {
-        type: 'ADD_NEW_TOTALSCORE',
-        totalscore: totalscore
-    };
-};
-//to do and test
-
-
-var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
-    return {
-        type: 'ADD_TO_TOTALSCORE',
-        scoreValue: scoreValue
-    };
-};
-//reducer done and tested
-
-var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
-    return {
-        type: 'IS_POSITIVE_TOTALSCORE'
-    };
-};
-//reducer done and tested, but not sure if test is right?
-
-var reset = exports.reset = function reset() {
-    return {
-        type: 'RESET'
-    };
-};
-
-var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
-    return {
-        type: 'IS_TOPSCORE',
-        totalScore: totalScore
-    };
-};
-
-//not yet tested
-
-var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
-    return {
-        type: 'SCORE_INCREASED',
-        scoreValue: scoreValue
-    };
-};
-
-function getScoresApi(callback) {
-    return function (dispatch) {
-        return _superagent2.default.get('/api/v2').then(function (items) {
-            console.log("hitting the scores api");
-            console.log("items.body ", items.body);
-            var data = items.body;
-            var scoreList = data.sort(function (a, b) {
-                return b.score - a.score;
-            });
-            var topScoresApi = [];
-            for (var i = 0; i < 10; i++) {
-                topScoresApi.push(scoreList[i]);
-            }
-            // console.log({scoreList})
-            console.log("Api Topscores, ", topScoresApi);
-            dispatch(receiveScoresFromAPI(topScoresApi));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-function addScoreApi(score, callback) {
-    // console.log("score in api, ", score)
-    return function (dispatch) {
-        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
-            dispatch(savedScore(score));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-//check esp last function, don't have savedScore in here yet!!!
 
 /***/ }),
 /* 27 */
@@ -3201,9 +3203,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(26);
+var _score = __webpack_require__(13);
 
-var _navigate = __webpack_require__(12);
+var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3262,7 +3264,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = __webpack_require__(3);
 
-var _redux = __webpack_require__(11);
+var _redux = __webpack_require__(12);
 
 var _reduxThunk = __webpack_require__(67);
 
@@ -3344,7 +3346,7 @@ var emptyObject = __webpack_require__(6);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(8);
+var checkPropTypes = __webpack_require__(9);
 
 // TODO: this is special because it gets imported during build.
 
@@ -4745,7 +4747,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),l=__webpack_require__(13),B=__webpack_require__(4),C=__webpack_require__(2),ba=__webpack_require__(14),da=__webpack_require__(15),ea=__webpack_require__(16),fa=__webpack_require__(17),ia=__webpack_require__(18),D=__webpack_require__(6);
+var aa=__webpack_require__(1),l=__webpack_require__(14),B=__webpack_require__(4),C=__webpack_require__(2),ba=__webpack_require__(15),da=__webpack_require__(16),ea=__webpack_require__(17),fa=__webpack_require__(18),ia=__webpack_require__(19),D=__webpack_require__(6);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -5045,16 +5047,16 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
-var ExecutionEnvironment = __webpack_require__(13);
+var ExecutionEnvironment = __webpack_require__(14);
 var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(2);
-var EventListener = __webpack_require__(14);
-var getActiveElement = __webpack_require__(15);
-var shallowEqual = __webpack_require__(16);
-var containsNode = __webpack_require__(17);
-var focusNode = __webpack_require__(18);
+var EventListener = __webpack_require__(15);
+var getActiveElement = __webpack_require__(16);
+var shallowEqual = __webpack_require__(17);
+var containsNode = __webpack_require__(18);
+var focusNode = __webpack_require__(19);
 var emptyObject = __webpack_require__(6);
-var checkPropTypes = __webpack_require__(8);
+var checkPropTypes = __webpack_require__(9);
 var hyphenateStyleName = __webpack_require__(38);
 var camelizeStyleName = __webpack_require__(40);
 
@@ -20586,10 +20588,10 @@ module.exports = camelize;
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = createProvider;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(11);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20683,8 +20685,8 @@ var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var assign = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(9);
-var checkPropTypes = __webpack_require__(8);
+var ReactPropTypesSecret = __webpack_require__(10);
+var checkPropTypes = __webpack_require__(9);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21230,7 +21232,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 var emptyFunction = __webpack_require__(2);
 var invariant = __webpack_require__(5);
-var ReactPropTypesSecret = __webpack_require__(9);
+var ReactPropTypesSecret = __webpack_require__(10);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21519,7 +21521,7 @@ var Subscription = function () {
 
 "use strict";
 /* unused harmony export createConnect */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(63);
@@ -21674,8 +21676,8 @@ function shallowEqual(objA, objB) {
 /* unused harmony export whenMapDispatchToPropsIsFunction */
 /* unused harmony export whenMapDispatchToPropsIsMissing */
 /* unused harmony export whenMapDispatchToPropsIsObject */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(24);
 
 
 
@@ -21723,7 +21725,7 @@ if (typeof self !== 'undefined') {
 var result = Object(__WEBPACK_IMPORTED_MODULE_0__ponyfill_js__["a" /* default */])(root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(22), __webpack_require__(52)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23), __webpack_require__(52)(module)))
 
 /***/ }),
 /* 52 */
@@ -21857,7 +21859,7 @@ function isPlainObject(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(59);
 
@@ -21917,14 +21919,14 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23)))
 
 /***/ }),
 /* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(26);
 
 
 /** Used for built-in method references. */
@@ -22081,7 +22083,7 @@ function isObjectLike(value) {
 "use strict";
 /* unused harmony export whenMapStateToPropsIsFunction */
 /* unused harmony export whenMapStateToPropsIsMissing */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wrapMapToProps__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wrapMapToProps__ = __webpack_require__(24);
 
 
 function whenMapStateToPropsIsFunction(mapStateToProps) {
@@ -22105,7 +22107,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 /* unused harmony export wrapMergePropsFunc */
 /* unused harmony export whenMergePropsIsFunction */
 /* unused harmony export whenMergePropsIsOmitted */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_verifyPlainObject__ = __webpack_require__(25);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -22272,7 +22274,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifySubselectors;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(11);
 
 
 function verify(selector, methodName, displayName) {
@@ -22331,7 +22333,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(11);
+var _redux = __webpack_require__(12);
 
 var _questions = __webpack_require__(69);
 
@@ -22441,6 +22443,9 @@ exports.default = location;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var initialState = {
     totalScore: 0,
     topScores: [],
@@ -22458,8 +22463,9 @@ var score = function score() {
         case 'RECEIVE_TOPSCORES_API':
             //from api/db
             return Object.assign({}, state, { topScores: action.topScoresApi });
-        // case 'ADD_NEW_TOTALSCORE':  //to api/db and back
-        //     return
+        case 'ADD_NEW_TOPSCORE':
+            //to api/db and back
+            return Object.assign({}, state, { topScores: [].concat(_toConsumableArray(topScores), [action.score]) });
         case 'ADD_TO_TOTALSCORE':
             //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });
@@ -22475,6 +22481,8 @@ var score = function score() {
             return Object.assign({}, state, { isTopScore: action.totalScore > state.topScores[9].score }); //to return true if larger than current 10th score 
         case 'RESET':
             return initialState;
+        case 'SHOW_ERROR':
+            return "Oh no an error";
         default:
             return state;
     }
@@ -22561,7 +22569,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _navigate = __webpack_require__(12);
+var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22642,11 +22650,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(26);
+var _score = __webpack_require__(13);
 
 var _questions = __webpack_require__(81);
 
-var _navigate = __webpack_require__(12);
+var _navigate = __webpack_require__(8);
 
 var _GameOver = __webpack_require__(29);
 
@@ -23958,9 +23966,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(26);
+var _score = __webpack_require__(13);
 
-var _navigate = __webpack_require__(12);
+var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23986,7 +23994,7 @@ var AddScore = function (_React$Component) {
 
         _this.state = {
             name: '',
-            score: _this.props.score.totalscore
+            score: _this.props.score.totalScore
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.addScore = _this.addScore.bind(_this);
@@ -23998,10 +24006,12 @@ var AddScore = function (_React$Component) {
         value: function handleChange(e) {
             this.setState(_defineProperty({}, e.target.name, e.target.value));
         }
+
+        // I don't have a refresh scores yet!
+
     }, {
         key: 'addScore',
         value: function addScore(e) {
-            // console.log(this.state)
             e.preventDefault();
             this.props.dispatch((0, _score.addScoreApi)(this.state, this.props.refreshScores));
         }

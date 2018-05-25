@@ -11,8 +11,8 @@ const score = (state = initialState, action) => {
     switch(action.type) {
         case 'RECEIVE_TOPSCORES_API': //from api/db
             return Object.assign({}, state, {topScores: action.topScoresApi})
-        // case 'ADD_NEW_TOTALSCORE':  //to api/db and back
-        //     return
+        case 'ADD_NEW_TOPSCORE':  //to api/db and back
+            return Object.assign({}, state, {topScores: [...topScores, action.score]})
         case 'ADD_TO_TOTALSCORE': //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, {totalScore: (state.totalScore + action.scoreValue)})
             // return { ...state, totalScore: (state.totalScore + action.scoreValue)}
@@ -24,6 +24,8 @@ const score = (state = initialState, action) => {
             return Object.assign({}, state, {isTopScore: (action.totalScore > state.topScores[9].score)}) //to return true if larger than current 10th score 
         case 'RESET':
             return initialState
+        case 'SHOW_ERROR':
+            return "Oh no an error"
         default:
             return state
     }
