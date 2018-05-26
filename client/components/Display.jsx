@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getScoresApi, addToTotalscore, scoreIncreased, isPositiveTotalscore, isTopScore } from '../actions/score'
 import { fetchQuestions, increaseIndex } from '../actions/questions'
-
 import {navigate} from '../actions/navigate'
 import GameOver from './GameOver'
 
@@ -48,13 +47,13 @@ class Display extends React.Component{
       <div>
         {this.state.gamePlaying 
         ?
-        <div>
+        <div className="game">
         <div className="score">
-        <h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
+          <h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}>score: {this.props.questions.length > 0 && this.props.score.totalScore}</h2>
         </div>
         <div className="screen">
           <div className="question">
-          <h3>{this.props.questions.length > 0 && question.question}</h3>
+            <h3>{this.props.questions.length > 0 && question.question}</h3>
           </div> 
         </div>
         <div>   

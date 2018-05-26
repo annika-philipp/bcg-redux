@@ -3223,7 +3223,7 @@ function GameOver(props) {
         null,
         _react2.default.createElement(
             'div',
-            { className: 'welcome' },
+            { className: 'gameOver' },
             _react2.default.createElement(
                 'h3',
                 null,
@@ -22611,12 +22611,7 @@ var Welcome = function (_React$Component) {
                     _react2.default.createElement(
                         'h3',
                         null,
-                        'Welcome to 6 weeks'
-                    ),
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        'of fun...'
+                        '6 weeks of EDA Bootcamp fun starts here ...'
                     )
                 ),
                 _react2.default.createElement(
@@ -22727,7 +22722,7 @@ var Display = function (_React$Component) {
         null,
         this.state.gamePlaying ? _react2.default.createElement(
           'div',
-          null,
+          { className: 'game' },
           _react2.default.createElement(
             'div',
             { className: 'score' },
@@ -23990,8 +23985,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//tomorrow: add Scoreboard and fix api call (still needs a save scoreboard action - see actions!)
-
 var AddScore = function (_React$Component) {
     _inherits(AddScore, _React$Component);
 
@@ -24037,7 +24030,7 @@ var AddScore = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'welcome' },
+                    { className: 'addScore' },
                     _react2.default.createElement(
                         'h3',
                         null,

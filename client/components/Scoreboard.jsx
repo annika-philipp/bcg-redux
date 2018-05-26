@@ -8,7 +8,7 @@ class Scoreboard extends React.Component {
     componentDidMount(){
         this.props.dispatch(getScoresApi())
     }
-    
+
     render(){
 
         return (
@@ -22,11 +22,9 @@ class Scoreboard extends React.Component {
                     <p> {score.score} - {score.name} </p>
                     </div>
                     ]
-                
                     })}
                     </div>
                 </div>
-
             </div>    
         )
     }

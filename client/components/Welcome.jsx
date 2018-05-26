@@ -11,17 +11,15 @@ class Welcome extends React.Component {
     }
 
     render() {
-    return (<div>
-                <div className="welcome">
-                    <h3>Welcome to 6 weeks</h3>
-                    <h3>of fun...</h3> 
-                </div>  
-                <div className='row'>  
-                <button onClick={this.changeLocation.bind(this)} className="button">Start Game</button>
-                </div>
-            </div>    
-
-    )
+        return (<div>
+                    <div className="welcome">
+                        <h3>6 weeks of EDA Bootcamp fun starts here ...</h3> 
+                    </div>  
+                    <div className='row'>  
+                    <button onClick={this.changeLocation.bind(this)} className="button">Start Game</button>
+                    </div>
+                </div>    
+        )
     }
 }
 

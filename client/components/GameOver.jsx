@@ -12,7 +12,7 @@ function GameOver (props) {
     }
 
     return (<div>
-                <div className="welcome">
+                <div className="gameOver">
                     <h3>GAME OVER</h3>
                     <h3>Consult your nearest handbook...</h3> 
                 </div>
