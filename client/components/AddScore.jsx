@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { addScoreApi, reset } from '../actions/score'
 import {navigate} from '../actions/navigate'
-// import Scoreboard from './Scoreboard'
+import Scoreboard from './Scoreboard'
 
 //tomorrow: add Scoreboard and fix api call (still needs a save scoreboard action - see actions!)
 
@@ -54,8 +54,8 @@ class AddScore extends React.Component {
             {!this.props.score.isTopScore && <div className='row'></div>}
             </div>
             <div className="row">
-            {this.props.score.topScores.length > 0 && <h1>Hello world</h1>}
-            {/* {this.props.score.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>} */}
+            {/* {this.props.score.topScores.length > 0 && <h1>Hello world</h1>} */}
+            {this.props.score.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>}
             <div className="row">
                 <button onClick={this.playAgain.bind(this)} className="button">Play again</button>
             </div> 
