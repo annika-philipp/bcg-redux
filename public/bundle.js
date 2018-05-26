@@ -1343,11 +1343,11 @@ var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScores
 //done reducer but not tested
 
 
-var addNewTopScore = exports.addNewTopScore = function addNewTopScore(score) {
-    console.log("Hi ", score.name, score.score);
+var addNewTopScore = exports.addNewTopScore = function addNewTopScore(topScore) {
+    console.log("Hi ", topScore);
     return {
         type: 'ADD_NEW_TOPSCORE',
-        score: score
+        topScore: topScore
     };
 };
 //to do and test
@@ -1419,12 +1419,16 @@ function getScoresApi(callback) {
     };
 }
 
-function addScoreApi(score, callback) {
-    console.log("score in api, ", score);
+function addScoreApi(topScore, callback) {
+    console.log("score in api, ", topScore);
     return function (dispatch) {
-        return _superagent2.default.post('/api/v2').send(score).then(function (res) {
-            dispatch(addNewTopScore(score));
-        }).catch(function (err) {
+        return _superagent2.default.post('/api/v2').send(topScore)
+        // .then (res => {
+        //     console.log("res, ", res)
+        //     dispatch(addNewTopScore(res, topScore))
+        //     cb(!err) 
+        // })
+        .then(dispatch(addNewTopScore(topScore))).catch(function (err) {
             dispatch(showError(err.message));
         });
     };
@@ -22465,7 +22469,8 @@ var score = function score() {
             return Object.assign({}, state, { topScores: action.topScoresApi });
         case 'ADD_NEW_TOPSCORE':
             //to api/db and back
-            return Object.assign({}, state, { topScores: [].concat(_toConsumableArray(topScores), [action.score]) });
+            console.log("name and score", action.topScore);
+            return Object.assign({}, state, { topScores: [].concat(_toConsumableArray(state.topScores), [action.topScore]) });
         case 'ADD_TO_TOTALSCORE':
             //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });

@@ -10,11 +10,11 @@ export const receiveScoresFromAPI = (topScoresApi) => {
 //done reducer but not tested
 
 
-export const addNewTopScore = (score) => {
-    console.log("Hi ", score.name, score.score)
+export const addNewTopScore = (topScore) => {
+    console.log("Hi ", topScore)
     return {
         type: 'ADD_NEW_TOPSCORE',
-        score
+        topScore
     }
 }
 //to do and test
@@ -91,15 +91,18 @@ export function getScoresApi (callback) {
     }
   }
   
-  export function addScoreApi (score, callback) {
-    console.log("score in api, ", score)
+  export function addScoreApi (topScore, callback) {
+    console.log("score in api, ", topScore)
     return (dispatch) =>
         request
             .post('/api/v2')
-            .send(score)
-            .then (res => {
-                dispatch(addNewTopScore(score))
-            })
+            .send(topScore)
+            // .then (res => {
+            //     console.log("res, ", res)
+            //     dispatch(addNewTopScore(res, topScore))
+            //     cb(!err) 
+            // })
+            .then(dispatch(addNewTopScore(topScore)))
             .catch(err => {
                 dispatch(showError(err.message))
               })

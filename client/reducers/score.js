@@ -12,7 +12,8 @@ const score = (state = initialState, action) => {
         case 'RECEIVE_TOPSCORES_API': //from api/db
             return Object.assign({}, state, {topScores: action.topScoresApi})
         case 'ADD_NEW_TOPSCORE':  //to api/db and back
-            return Object.assign({}, state, {topScores: [...topScores, action.score]})
+        console.log("name and score", action.topScore)
+            return Object.assign({}, state, {topScores: [...state.topScores, action.topScore]})
         case 'ADD_TO_TOTALSCORE': //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, {totalScore: (state.totalScore + action.scoreValue)})
             // return { ...state, totalScore: (state.totalScore + action.scoreValue)}
