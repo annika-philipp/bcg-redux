@@ -107,5 +107,3 @@ export function getScoresApi (callback) {
                 dispatch(showError(err.message))
               })
   }
-
-  //check esp last function, don't have savedScore in here yet!!!

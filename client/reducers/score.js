@@ -11,9 +11,13 @@ const score = (state = initialState, action) => {
     switch(action.type) {
         case 'RECEIVE_TOPSCORES_API': //from api/db
             return Object.assign({}, state, {topScores: action.topScoresApi})
-        case 'ADD_NEW_TOPSCORE':  //to api/db and back
-        console.log("name and score", action.topScore)
-            return Object.assign({}, state, {topScores: [...state.topScores, action.topScore]})
+        case 'ADD_NEW_TOPSCORE': 
+            let allTopScores = [...state.topScores, action.topScore]
+            let newTopScores = allTopScores.sort(function(a, b){
+                return b.score - a.score
+            })
+            let eleventhScore = newTopScores.pop()
+            return Object.assign({}, state, {topScores: newTopScores})
         case 'ADD_TO_TOTALSCORE': //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, {totalScore: (state.totalScore + action.scoreValue)})
             // return { ...state, totalScore: (state.totalScore + action.scoreValue)}

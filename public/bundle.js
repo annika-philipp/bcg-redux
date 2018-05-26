@@ -601,6 +601,126 @@ var navigate = exports.navigate = function navigate(destination) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showError = exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTopScore = exports.receiveScoresFromAPI = undefined;
+exports.getScoresApi = getScoresApi;
+exports.addScoreApi = addScoreApi;
+
+var _superagent = __webpack_require__(27);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
+    return {
+        type: 'RECEIVE_TOPSCORES_API',
+        topScoresApi: topScoresApi
+    };
+};
+//done reducer but not tested
+
+
+var addNewTopScore = exports.addNewTopScore = function addNewTopScore(topScore) {
+    console.log("Hi ", topScore);
+    return {
+        type: 'ADD_NEW_TOPSCORE',
+        topScore: topScore
+    };
+};
+//to do and test
+
+
+var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
+    return {
+        type: 'ADD_TO_TOTALSCORE',
+        scoreValue: scoreValue
+    };
+};
+//reducer done and tested
+
+var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
+    return {
+        type: 'IS_POSITIVE_TOTALSCORE'
+    };
+};
+//reducer done and tested, but not sure if test is right?
+
+var reset = exports.reset = function reset() {
+    return {
+        type: 'RESET'
+    };
+};
+
+var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
+    return {
+        type: 'IS_TOPSCORE',
+        totalScore: totalScore
+    };
+};
+
+//not yet tested
+
+var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
+    return {
+        type: 'SCORE_INCREASED',
+        scoreValue: scoreValue
+    };
+};
+
+var showError = exports.showError = function showError(message) {
+    return {
+        type: 'SHOW_ERROR',
+        message: message
+    };
+};
+
+function getScoresApi(callback) {
+    return function (dispatch) {
+        return _superagent2.default.get('/api/v2').then(function (items) {
+            console.log("hitting the scores api");
+            console.log("items.body ", items.body);
+            var data = items.body;
+            var scoreList = data.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            var topScoresApi = [];
+            for (var i = 0; i < 10; i++) {
+                topScoresApi.push(scoreList[i]);
+            }
+            // console.log({scoreList})
+            console.log("Api Topscores, ", topScoresApi);
+            dispatch(receiveScoresFromAPI(topScoresApi));
+        }).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+function addScoreApi(topScore, callback) {
+    console.log("score in api, ", topScore);
+    return function (dispatch) {
+        return _superagent2.default.post('/api/v2').send(topScore)
+        // .then (res => {
+        //     console.log("res, ", res)
+        //     dispatch(addNewTopScore(res, topScore))
+        //     cb(!err) 
+        // })
+        .then(dispatch(addNewTopScore(topScore))).catch(function (err) {
+            dispatch(showError(err.message));
+        });
+    };
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -613,7 +733,7 @@ var navigate = exports.navigate = function navigate(destination) {
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(5);
   var warning = __webpack_require__(7);
-  var ReactPropTypesSecret = __webpack_require__(10);
+  var ReactPropTypesSecret = __webpack_require__(11);
   var loggedTypeFailures = {};
 }
 
@@ -664,7 +784,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -683,7 +803,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -711,7 +831,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1313,128 +1433,6 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.showError = exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTopScore = exports.receiveScoresFromAPI = undefined;
-exports.getScoresApi = getScoresApi;
-exports.addScoreApi = addScoreApi;
-
-var _superagent = __webpack_require__(27);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
-    return {
-        type: 'RECEIVE_TOPSCORES_API',
-        topScoresApi: topScoresApi
-    };
-};
-//done reducer but not tested
-
-
-var addNewTopScore = exports.addNewTopScore = function addNewTopScore(topScore) {
-    console.log("Hi ", topScore);
-    return {
-        type: 'ADD_NEW_TOPSCORE',
-        topScore: topScore
-    };
-};
-//to do and test
-
-
-var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
-    return {
-        type: 'ADD_TO_TOTALSCORE',
-        scoreValue: scoreValue
-    };
-};
-//reducer done and tested
-
-var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
-    return {
-        type: 'IS_POSITIVE_TOTALSCORE'
-    };
-};
-//reducer done and tested, but not sure if test is right?
-
-var reset = exports.reset = function reset() {
-    return {
-        type: 'RESET'
-    };
-};
-
-var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
-    return {
-        type: 'IS_TOPSCORE',
-        totalScore: totalScore
-    };
-};
-
-//not yet tested
-
-var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
-    return {
-        type: 'SCORE_INCREASED',
-        scoreValue: scoreValue
-    };
-};
-
-var showError = exports.showError = function showError(message) {
-    return {
-        type: 'SHOW_ERROR',
-        message: message
-    };
-};
-
-function getScoresApi(callback) {
-    return function (dispatch) {
-        return _superagent2.default.get('/api/v2').then(function (items) {
-            console.log("hitting the scores api");
-            console.log("items.body ", items.body);
-            var data = items.body;
-            var scoreList = data.sort(function (a, b) {
-                return b.score - a.score;
-            });
-            var topScoresApi = [];
-            for (var i = 0; i < 10; i++) {
-                topScoresApi.push(scoreList[i]);
-            }
-            // console.log({scoreList})
-            console.log("Api Topscores, ", topScoresApi);
-            dispatch(receiveScoresFromAPI(topScoresApi));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-function addScoreApi(topScore, callback) {
-    console.log("score in api, ", topScore);
-    return function (dispatch) {
-        return _superagent2.default.post('/api/v2').send(topScore)
-        // .then (res => {
-        //     console.log("res, ", res)
-        //     dispatch(addNewTopScore(res, topScore))
-        //     cb(!err) 
-        // })
-        .then(dispatch(addNewTopScore(topScore))).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
-}
-
-//check esp last function, don't have savedScore in here yet!!!
 
 /***/ }),
 /* 14 */
@@ -2218,7 +2216,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifyPlainObject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(12);
 
 
 
@@ -3207,7 +3205,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(9);
 
 var _navigate = __webpack_require__(8);
 
@@ -3268,7 +3266,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = __webpack_require__(3);
 
-var _redux = __webpack_require__(12);
+var _redux = __webpack_require__(13);
 
 var _reduxThunk = __webpack_require__(67);
 
@@ -3350,7 +3348,7 @@ var emptyObject = __webpack_require__(6);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(10);
 
 // TODO: this is special because it gets imported during build.
 
@@ -5060,7 +5058,7 @@ var shallowEqual = __webpack_require__(17);
 var containsNode = __webpack_require__(18);
 var focusNode = __webpack_require__(19);
 var emptyObject = __webpack_require__(6);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(10);
 var hyphenateStyleName = __webpack_require__(38);
 var camelizeStyleName = __webpack_require__(40);
 
@@ -20595,7 +20593,7 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(12);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20689,8 +20687,8 @@ var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var assign = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(10);
-var checkPropTypes = __webpack_require__(9);
+var ReactPropTypesSecret = __webpack_require__(11);
+var checkPropTypes = __webpack_require__(10);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21236,7 +21234,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 var emptyFunction = __webpack_require__(2);
 var invariant = __webpack_require__(5);
-var ReactPropTypesSecret = __webpack_require__(10);
+var ReactPropTypesSecret = __webpack_require__(11);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21680,7 +21678,7 @@ function shallowEqual(objA, objB) {
 /* unused harmony export whenMapDispatchToPropsIsFunction */
 /* unused harmony export whenMapDispatchToPropsIsMissing */
 /* unused harmony export whenMapDispatchToPropsIsObject */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wrapMapToProps__ = __webpack_require__(24);
 
 
@@ -22278,7 +22276,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifySubselectors;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(12);
 
 
 function verify(selector, methodName, displayName) {
@@ -22337,7 +22335,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(12);
+var _redux = __webpack_require__(13);
 
 var _questions = __webpack_require__(69);
 
@@ -22468,9 +22466,12 @@ var score = function score() {
             //from api/db
             return Object.assign({}, state, { topScores: action.topScoresApi });
         case 'ADD_NEW_TOPSCORE':
-            //to api/db and back
-            console.log("name and score", action.topScore);
-            return Object.assign({}, state, { topScores: [].concat(_toConsumableArray(state.topScores), [action.topScore]) });
+            var allTopScores = [].concat(_toConsumableArray(state.topScores), [action.topScore]);
+            var newTopScores = allTopScores.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            var eleventhScore = newTopScores.pop();
+            return Object.assign({}, state, { topScores: newTopScores });
         case 'ADD_TO_TOTALSCORE':
             //adds new value to currentscore (goes up or down)
             return Object.assign({}, state, { totalScore: state.totalScore + action.scoreValue });
@@ -22655,7 +22656,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(9);
 
 var _questions = __webpack_require__(81);
 
@@ -23971,7 +23972,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(9);
 
 var _navigate = __webpack_require__(8);
 
@@ -24118,7 +24119,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _score = __webpack_require__(13);
+var _score = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
