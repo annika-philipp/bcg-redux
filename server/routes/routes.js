@@ -47,7 +47,7 @@ router.get('/v2', (req, res) => {
 
 router.post('/v2', (req, res) => {
     const newScore = req.body
-    console.log("new Score, ", newScore)
+    // console.log("new Score, ", newScore)
     db.addScore(newScore)
     // .then(scoreIds => {
     //     res.json({scoreIds: {id:scoreIds[0]}}) //what the what is going on here?

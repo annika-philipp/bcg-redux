@@ -4,14 +4,13 @@ const initialState = {
     isPositiveTotalScore: true,
     isTopScore: false,
     scoreIncreased: false
-
 }
 
 const score = (state = initialState, action) => {
     switch(action.type) {
-        case 'RECEIVE_TOPSCORES_API': //from api/db
+        case 'RECEIVE_TOPSCORES_API': //from api/db - to test
             return Object.assign({}, state, {topScores: action.topScoresApi})
-        case 'ADD_NEW_TOPSCORE': 
+        case 'ADD_NEW_TOPSCORE': //- to test
             let allTopScores = [...state.topScores, action.topScore]
             let newTopScores = allTopScores.sort(function(a, b){
                 return b.score - a.score

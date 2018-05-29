@@ -2,7 +2,7 @@ import request from 'supertest'
 
 const server = require('../../server/server')
 
-
+//lines to test 34 (res.status 500),44 (res.status 500), 49,51,55 (all three part of post),57( res.status 500)
 jest.mock('../../server/db/db', () => ({
     getQuestionsAndAnswers: () => Promise.resolve([
         {"question":"First day of bootcamp, you feel...","question_id":1,"answers":["excited!","Bootcamp? I did not sign up for this!"],"scores":[40,-40]},
@@ -38,3 +38,15 @@ test('/v2 returns all scores', () => {
         expect(err).toBeFalsy()
       })
   })
+
+  test('POST /v2 works', () => {
+    return request(server)
+        .post('/api/v2')
+        .expect(201)
+        .then(res => {
+            expect(res.body.length).toBeGreaterThan(0)
+        })
+        .catch((err, res) => {
+            expect(err).toBeFalsy()
+        })
+})

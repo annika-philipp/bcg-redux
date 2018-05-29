@@ -622,18 +622,13 @@ var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScores
         topScoresApi: topScoresApi
     };
 };
-//done reducer but not tested
-
 
 var addNewTopScore = exports.addNewTopScore = function addNewTopScore(topScore) {
-    console.log("Hi ", topScore);
     return {
         type: 'ADD_NEW_TOPSCORE',
         topScore: topScore
     };
 };
-//to do and test
-
 
 var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
     return {
@@ -641,14 +636,12 @@ var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreVa
         scoreValue: scoreValue
     };
 };
-//reducer done and tested
 
 var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
     return {
         type: 'IS_POSITIVE_TOTALSCORE'
     };
 };
-//reducer done and tested, but not sure if test is right?
 
 var reset = exports.reset = function reset() {
     return {
@@ -662,8 +655,6 @@ var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
         totalScore: totalScore
     };
 };
-
-//not yet tested
 
 var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
     return {
@@ -682,8 +673,8 @@ var showError = exports.showError = function showError(message) {
 function getScoresApi(callback) {
     return function (dispatch) {
         return _superagent2.default.get('/api/v2').then(function (items) {
-            console.log("hitting the scores api");
-            console.log("items.body ", items.body);
+            // console.log("hitting the scores api")
+            // console.log("items.body ", items.body)
             var data = items.body;
             var scoreList = data.sort(function (a, b) {
                 return b.score - a.score;
@@ -693,7 +684,7 @@ function getScoresApi(callback) {
                 topScoresApi.push(scoreList[i]);
             }
             // console.log({scoreList})
-            console.log("Api Topscores, ", topScoresApi);
+            // console.log("Api Topscores, ", topScoresApi)
             dispatch(receiveScoresFromAPI(topScoresApi));
         }).catch(function (err) {
             dispatch(showError(err.message));
@@ -704,13 +695,7 @@ function getScoresApi(callback) {
 function addScoreApi(topScore) {
     console.log("score in api, ", topScore);
     return function (dispatch) {
-        return _superagent2.default.post('/api/v2').send(topScore)
-        // .then (res => {
-        //     console.log("res, ", res)
-        //     dispatch(addNewTopScore(res, topScore))
-        //     cb(!err) 
-        // })
-        .then(dispatch(addNewTopScore(topScore))).catch(function (err) {
+        return _superagent2.default.post('/api/v2').send(topScore).then(dispatch(addNewTopScore(topScore))).catch(function (err) {
             dispatch(showError(err.message));
         });
     };
@@ -22379,6 +22364,8 @@ var questions = function questions() {
     switch (action.type) {
         case 'RECEIVE_QUESTIONS':
             return action.questionsarray;
+        case 'SHOW_ERROR':
+            return "Oh no an error";
         default:
             return state;
     }
@@ -22454,7 +22441,6 @@ var initialState = {
     isPositiveTotalScore: true,
     isTopScore: false,
     scoreIncreased: false
-
 };
 
 var score = function score() {
@@ -22463,9 +22449,10 @@ var score = function score() {
 
     switch (action.type) {
         case 'RECEIVE_TOPSCORES_API':
-            //from api/db
+            //from api/db - to test
             return Object.assign({}, state, { topScores: action.topScoresApi });
         case 'ADD_NEW_TOPSCORE':
+            //- to test
             var allTopScores = [].concat(_toConsumableArray(state.topScores), [action.topScore]);
             var newTopScores = allTopScores.sort(function (a, b) {
                 return b.score - a.score;
@@ -23910,6 +23897,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.receiveQuestions = receiveQuestions;
 exports.fetchQuestions = fetchQuestions;
 exports.increaseIndex = increaseIndex;
+exports.showError = showError;
 
 var _superagent = __webpack_require__(27);
 
@@ -23927,7 +23915,7 @@ function receiveQuestions(questionsarray) {
 function fetchQuestions() {
     return function (dispatch) {
         return _superagent2.default.get('/api/v1').then(function (res) {
-            console.log("RES BODY, ", res.body);
+            // console.log("RES BODY, ", res.body)
             dispatch(receiveQuestions(res.body));
         }).catch(function (err) {
             dispatch(showError(err.message));
@@ -23942,11 +23930,12 @@ function increaseIndex(num) {
     };
 }
 
-// export function reset() {
-//     return {
-//         type: 'RESET'
-//     }
-// }
+function showError(message) {
+    return {
+        type: 'SHOW_ERROR',
+        message: message
+    };
+}
 
 /***/ }),
 /* 82 */
