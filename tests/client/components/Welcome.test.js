@@ -13,3 +13,5 @@ test('Text renders on Welcome', () => {
   const wrapper = shallow(<Welcome />)
   expect(wrapper.find('h3').text()).toBe ('6 weeks of EDA Bootcamp fun starts here ...')
 })
+
+//add more tests tomorrow
