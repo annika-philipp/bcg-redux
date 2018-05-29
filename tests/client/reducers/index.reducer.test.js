@@ -19,7 +19,19 @@ test('Increase index case', () => {
     }
   
     const actual = index(0, action)
-    console.log(actual)
   
     expect(actual).toEqual(expected)
   })
+
+  test('Reset returns state to 0', () => {
+    const expected = 0
+
+    const action = {
+      type: 'RESET'
+    }
+  
+    const actual = index(2, action)
+      
+    expect(actual).toEqual(expected)
+  })
+
