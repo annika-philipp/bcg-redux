@@ -7,18 +7,13 @@ export const receiveScoresFromAPI = (topScoresApi) => {
         topScoresApi
     }
 }
-//done reducer but not tested
-
 
 export const addNewTopScore = (topScore) => {
-    console.log("Hi ", topScore)
     return {
         type: 'ADD_NEW_TOPSCORE',
         topScore
     }
 }
-//to do and test
-
 
 export const addToTotalscore = (scoreValue) => {
     return {
@@ -26,14 +21,12 @@ export const addToTotalscore = (scoreValue) => {
         scoreValue
     }
 }
-//reducer done and tested
 
 export const isPositiveTotalscore = () => {
     return {
         type: 'IS_POSITIVE_TOTALSCORE',
     }
 }
-//reducer done and tested, but not sure if test is right?
 
 export const reset = () => {
     return {
@@ -49,7 +42,6 @@ export const isTopScore = (totalScore) => {
     }
 }
 
-//not yet tested
 
 export const scoreIncreased = (scoreValue) => {
     return {
@@ -71,8 +63,8 @@ export function getScoresApi (callback) {
         return request
         .get('/api/v2')
         .then(items => {
-            console.log("hitting the scores api")
-            console.log("items.body ", items.body)
+            // console.log("hitting the scores api")
+            // console.log("items.body ", items.body)
             let data  = items.body
             let scoreList = data.sort(function(a,b) {
                 return b.score - a.score
@@ -82,7 +74,7 @@ export function getScoresApi (callback) {
                 topScoresApi.push(scoreList[i])
             }
             // console.log({scoreList})
-            console.log("Api Topscores, ", topScoresApi)
+            // console.log("Api Topscores, ", topScoresApi)
             dispatch(receiveScoresFromAPI(topScoresApi))
         }) 
         .catch(err => {
@@ -97,11 +89,6 @@ export function getScoresApi (callback) {
         request
             .post('/api/v2')
             .send(topScore)
-            // .then (res => {
-            //     console.log("res, ", res)
-            //     dispatch(addNewTopScore(res, topScore))
-            //     cb(!err) 
-            // })
             .then(dispatch(addNewTopScore(topScore)))
             .catch(err => {
                 dispatch(showError(err.message))
