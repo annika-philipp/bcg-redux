@@ -2243,11 +2243,11 @@ if (typeof window !== 'undefined') { // Browser window
   root = this;
 }
 
-var Emitter = __webpack_require__(76);
-var RequestBase = __webpack_require__(77);
+var Emitter = __webpack_require__(77);
+var RequestBase = __webpack_require__(78);
 var isObject = __webpack_require__(28);
-var ResponseBase = __webpack_require__(78);
-var Agent = __webpack_require__(80);
+var ResponseBase = __webpack_require__(79);
+var Agent = __webpack_require__(81);
 
 /**
  * Noop.
@@ -22500,11 +22500,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _WelcomeContainer = __webpack_require__(86);
+var _WelcomeContainer = __webpack_require__(74);
 
 var _WelcomeContainer2 = _interopRequireDefault(_WelcomeContainer);
 
-var _Display = __webpack_require__(75);
+var _Display = __webpack_require__(76);
 
 var _Display2 = _interopRequireDefault(_Display);
 
@@ -22512,7 +22512,7 @@ var _GameOver = __webpack_require__(29);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
 
-var _AddScore = __webpack_require__(82);
+var _AddScore = __webpack_require__(83);
 
 var _AddScore2 = _interopRequireDefault(_AddScore);
 
@@ -22545,6 +22545,27 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ }),
 /* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(3);
+
+var _Welcome = __webpack_require__(75);
+
+var _Welcome2 = _interopRequireDefault(_Welcome);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _reactRedux.connect)()(_Welcome2.default);
+
+/***/ }),
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22622,7 +22643,7 @@ exports.default = Welcome;
 // export default connect()(Welcome)
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22642,7 +22663,7 @@ var _reactRedux = __webpack_require__(3);
 
 var _score = __webpack_require__(9);
 
-var _questions = __webpack_require__(81);
+var _questions = __webpack_require__(82);
 
 var _navigate = __webpack_require__(8);
 
@@ -22772,7 +22793,7 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -22941,7 +22962,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23642,7 +23663,7 @@ RequestBase.prototype._setTimeouts = function() {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23652,7 +23673,7 @@ RequestBase.prototype._setTimeouts = function() {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(79);
+var utils = __webpack_require__(80);
 
 /**
  * Expose `ResponseBase`.
@@ -23783,7 +23804,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23861,7 +23882,7 @@ exports.cleanHeader = function(header, changesOrigin){
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports) {
 
 function Agent() {
@@ -23887,7 +23908,7 @@ module.exports = Agent;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23940,7 +23961,7 @@ function showError(message) {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23962,7 +23983,7 @@ var _score = __webpack_require__(9);
 
 var _navigate = __webpack_require__(8);
 
-var _Scoreboard = __webpack_require__(85);
+var _Scoreboard = __webpack_require__(84);
 
 var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
 
@@ -24082,9 +24103,7 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 
 /***/ }),
-/* 83 */,
-/* 84 */,
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24175,27 +24194,6 @@ function mapStateToProps(state) {
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Scoreboard);
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactRedux = __webpack_require__(3);
-
-var _Welcome = __webpack_require__(74);
-
-var _Welcome2 = _interopRequireDefault(_Welcome);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _reactRedux.connect)()(_Welcome2.default);
 
 /***/ })
 /******/ ]);
