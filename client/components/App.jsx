@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Welcome from './Welcome'
+import WelcomeContainer from '../containers/WelcomeContainer'
 import Display from './Display' 
 import GameOver from './GameOver'
 import AddScore from './AddScore'
@@ -12,8 +12,7 @@ const App = props => {
       <div className="row">
         <h1>BCG 3000</h1>
       </div>  
-      {/* {props.location === 'welcome' ? <Welcome /> : <Display />}       */}
-      {props.location === 'welcome' ? <Welcome /> : props.location === 'scoreboard' ? <AddScore /> : <Display />}      
+      {props.location === 'welcome' ? <WelcomeContainer /> : props.location === 'scoreboard' ? <AddScore /> : <Display />}      
     </div>
   )
 }
