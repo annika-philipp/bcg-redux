@@ -46,7 +46,6 @@ test('getQuestionsAndAnswers gets all question/answer pairs', () => {
   //Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
-      console.log(question)
       const actual = question.length
       //Assert
       expect(actual).toBe(expected)
@@ -61,12 +60,20 @@ test('getQuestionsAndAnswers gets the first answer to question 1', () => {
   //Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
-      console.log(question)
       const actual = question[0].answer
       //Assert
       expect(actual).toBe(expected)
     })
     .catch(err => expect(err).toBeNull())
+})
+
+test('addScore adds new score to db ', () => {
+  //Arrange
+  const expected = 11
+  //Act - need to use return when testing with Promises
+  return db.addScore({name: "me", score: '100'}, testDb)
+    .then(actual => expect(actual).toBeFalsy())
+    .catch(err => expect(err).toBeTruthy())
 })
 
 
