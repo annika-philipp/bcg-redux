@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import {navigate} from '../actions/navigate'
 
 
@@ -23,5 +23,6 @@ class Welcome extends React.Component {
     }
 }
 
+export default Welcome
 
-export default connect()(Welcome)
+// export default connect()(Welcome)
