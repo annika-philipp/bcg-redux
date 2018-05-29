@@ -22500,9 +22500,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _Welcome = __webpack_require__(74);
+var _WelcomeContainer = __webpack_require__(86);
 
-var _Welcome2 = _interopRequireDefault(_Welcome);
+var _WelcomeContainer2 = _interopRequireDefault(_WelcomeContainer);
 
 var _Display = __webpack_require__(75);
 
@@ -22531,7 +22531,7 @@ var App = function App(props) {
         'BCG 3000'
       )
     ),
-    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
+    props.location === 'welcome' ? _react2.default.createElement(_WelcomeContainer2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
 
@@ -22560,8 +22560,6 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
-
 var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -22571,6 +22569,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import { connect } from 'react-redux'
+
 
 var Welcome = function (_React$Component) {
     _inherits(Welcome, _React$Component);
@@ -22617,7 +22617,9 @@ var Welcome = function (_React$Component) {
     return Welcome;
 }(_react2.default.Component);
 
-exports.default = (0, _reactRedux.connect)()(Welcome);
+exports.default = Welcome;
+
+// export default connect()(Welcome)
 
 /***/ }),
 /* 75 */
@@ -23960,7 +23962,7 @@ var _score = __webpack_require__(9);
 
 var _navigate = __webpack_require__(8);
 
-var _Scoreboard = __webpack_require__(83);
+var _Scoreboard = __webpack_require__(85);
 
 var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
 
@@ -24080,7 +24082,9 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 
 /***/ }),
-/* 83 */
+/* 83 */,
+/* 84 */,
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24171,6 +24175,27 @@ function mapStateToProps(state) {
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Scoreboard);
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(3);
+
+var _Welcome = __webpack_require__(74);
+
+var _Welcome2 = _interopRequireDefault(_Welcome);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _reactRedux.connect)()(_Welcome2.default);
 
 /***/ })
 /******/ ]);
