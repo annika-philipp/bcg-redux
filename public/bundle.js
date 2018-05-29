@@ -701,7 +701,7 @@ function getScoresApi(callback) {
     };
 }
 
-function addScoreApi(topScore, callback) {
+function addScoreApi(topScore) {
     console.log("score in api, ", topScore);
     return function (dispatch) {
         return _superagent2.default.post('/api/v2').send(topScore)
@@ -24007,14 +24007,11 @@ var AddScore = function (_React$Component) {
         value: function handleChange(e) {
             this.setState(_defineProperty({}, e.target.name, e.target.value));
         }
-
-        // I don't have a refresh scores yet!
-
     }, {
         key: 'addScore',
         value: function addScore(e) {
             e.preventDefault();
-            this.props.dispatch((0, _score.addScoreApi)(this.state, this.props.refreshScores));
+            this.props.dispatch((0, _score.addScoreApi)(this.state));
         }
     }, {
         key: 'playAgain',

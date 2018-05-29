@@ -22,12 +22,9 @@ class AddScore extends React.Component {
         })
     }
 
-
-    // I don't have a refresh scores yet!
-
     addScore (e) {
         e.preventDefault()
-        this.props.dispatch(addScoreApi(this.state, this.props.refreshScores))
+        this.props.dispatch(addScoreApi(this.state))
     }
 
     playAgain() {
