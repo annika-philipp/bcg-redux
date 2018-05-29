@@ -12,7 +12,7 @@ import {
   getScoresApi
   } from '../../../client/actions/score'
 
-  import nock from 'nock'
+import nock from 'nock'
 
 test('addToTotalScore works', () => {
   const score = 10
