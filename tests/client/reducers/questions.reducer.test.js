@@ -1,4 +1,4 @@
-import questions from '../client/reducers/questions'
+import questions from '../../../client/reducers/questions'
 
 test('Questions Reducer initial state', () => {
   const expected = []
