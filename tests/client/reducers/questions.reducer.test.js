@@ -30,3 +30,16 @@ test('Questions Reducer initial state', () => {
 
   })
 
+  test('SHOW_ERROR brings up error message', () => {
+
+    const expected = "Oh no an error"
+  
+    const action = {
+        type: 'SHOW_ERROR'
+    }
+  
+    const actual = questions(undefined, action)
+  
+    expect(actual).toEqual(expected)
+  })
+
