@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+//shallow - unit testing this particular file and what it does
 
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
@@ -10,8 +11,6 @@ import {Welcome} from '../../../client/components/Welcome.jsx'
 //need to write {} to get the unconnected (specific) version of Welcome
 //import Welcome would be the connected default export of Welcome.jsx
 import './setup-dom'
-
-// import {Provider} from 'react-redux'
 
 import configureStore from  'redux-mock-store'
 
@@ -28,7 +27,7 @@ jest.mock('../../../client/actions/navigate.js', () => ({
 
 test('Welcome.jsx React', () => {
   const store = mockStore() //instantiates store for test
-  
+
   const wrapper = shallow(<Welcome
     dispatch={store.dispatch}
   />)
@@ -37,9 +36,11 @@ test('Welcome.jsx React', () => {
 
   wrapper.find('button').simulate('click')
   expect(store.getActions()).toHaveLength(1)
+  //store.getActions() function is part of mockStore()
   expect(store.getActions()[0]).toEqual({
     type: 'FAKE_NAVIGATE'
   })
+  //tests dispatch click event
 })
 
 test('Text renders on Welcome', () => {
