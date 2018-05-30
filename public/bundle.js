@@ -22567,10 +22567,9 @@ var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// class Welcome extends React.Component {
 var Welcome = exports.Welcome = function Welcome(props) {
+    //changed this from class to export const so I can test this both React specifically as well as connected with Redux
 
-    // render() {
     return _react2.default.createElement(
         'div',
         null,
@@ -22595,12 +22594,10 @@ var Welcome = exports.Welcome = function Welcome(props) {
             )
         )
     );
-    // }
 };
 
-// export default Welcome
-
 exports.default = (0, _reactRedux.connect)()(Welcome);
+//this second export allows me to test this component as react/redux connect
 
 /***/ }),
 /* 75 */
@@ -24071,8 +24068,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.Scoreboard = undefined;
 
 var _react = __webpack_require__(1);
 
@@ -24084,67 +24080,45 @@ var _score = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var Scoreboard = exports.Scoreboard = function Scoreboard(props) {
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Scoreboard = function (_React$Component) {
-    _inherits(Scoreboard, _React$Component);
-
-    function Scoreboard() {
-        _classCallCheck(this, Scoreboard);
-
-        return _possibleConstructorReturn(this, (Scoreboard.__proto__ || Object.getPrototypeOf(Scoreboard)).apply(this, arguments));
+    function componentDidMount() {
+        props.dispatch((0, _score.getScoresApi)());
     }
 
-    _createClass(Scoreboard, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.props.dispatch((0, _score.getScoresApi)());
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            return _react2.default.createElement(
-                'div',
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'div',
+            { className: 'scoreboard' },
+            _react2.default.createElement(
+                'h4',
                 null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'scoreboard' },
-                    _react2.default.createElement(
-                        'h4',
-                        null,
-                        'Top Scores'
-                    ),
-                    _react2.default.createElement(
+                'Top Scores'
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'topscores' },
+                props.score.topScores.map(function (score) {
+                    return [_react2.default.createElement(
                         'div',
-                        { className: 'topscores' },
-                        this.props.score.topScores.map(function (score) {
-                            return [_react2.default.createElement(
-                                'div',
-                                { className: 'topscoresnames' },
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    ' ',
-                                    score.score,
-                                    ' - ',
-                                    score.name,
-                                    ' '
-                                )
-                            )];
-                        })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Scoreboard;
-}(_react2.default.Component);
+                        { className: 'topscoresnames' },
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            ' ',
+                            score.score,
+                            ' - ',
+                            score.name,
+                            ' '
+                        )
+                    )];
+                })
+            )
+        )
+    );
+};
 
 function mapStateToProps(state) {
     return {
@@ -24153,6 +24127,9 @@ function mapStateToProps(state) {
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Scoreboard);
+
+//exporting Scoreboard as const to allow for React unit testing
+//exporting the whole component as default connect to test for React/Redux
 
 /***/ })
 /******/ ]);

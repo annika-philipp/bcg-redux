@@ -2,13 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {navigate} from '../actions/navigate'
 
-
-
-// class Welcome extends React.Component {
 export const Welcome = (props) => {
+//changed this from class to export const so I can test this both React specifically as well as connected with Redux
 
-
-    // render() {
         return (<div>
                     <div className="welcome">
                         <h3>6 weeks of EDA Bootcamp fun starts here ...</h3> 
@@ -19,9 +15,7 @@ export const Welcome = (props) => {
                     </div>
                 </div>    
         )
-    // }
 }
 
-// export default Welcome
-
 export default connect()(Welcome)
+//this second export allows me to test this component as react/redux connect
