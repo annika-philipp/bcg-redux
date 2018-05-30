@@ -40,31 +40,105 @@ test('addNewTopScore works', () => {
   expect(actual).toEqual(expected)
 })
 
-// fails! also check how to actually test err message and lines 73/74
-test('addScoreApi will dispatch an action on success', () => {
+
+test('getScoresApi will dispatch RECEIVE_TOPSCORES_API action on success', () => {
+  const fakeScores = [
+    {name: 'Kelly', score: 100},
+    {name: 'Ross', score: 90},
+  ]
+
+  const scope = nock('http://localhost:80')
+    .get('/api/v2')
+    .reply(200, fakeScores)
+
+  const dispatch = jest.fn()
+
+  return getScoresApi()(dispatch)
+    .then(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('RECEIVE_TOPSCORES_API')
+      scope.done()
+    })
+})
+
+test('getScoresApi will dispatch SHOW_ERROR action if error', () => {
+  const fakeScores = [
+      {name: 'Kelly', score: 100},
+      {name: 'Ross', score: 90},
+    ]
+
+  const scope = nock('http://localhost:80')
+    .get('/api/v2')
+    .reply(500, fakeScores)
+
+  const dispatch = jest.fn()
+
+  return getScoresApi()(dispatch)
+    .catch(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('SHOW_ERROR')  
+      scope.done()
+    })
+})
+
+////
+
+test('addScoreApi will dispatch RECEIVE_TOPSCORES_API action on success', () => {
+  const fakeScores = [
+    {name: 'Kelly', score: 100},
+    {name: 'Ross', score: 90},
+  ]
+
+  const scope = nock('http://localhost:80')
+    .get('/api/v2')
+    .reply(200, fakeScores)
+
+  const dispatch = jest.fn()
+
+  return getScoresApi()(dispatch)
+    .then(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('RECEIVE_TOPSCORES_API')
+      scope.done()
+    })
+})
+
+test('addScoreApi will dispatch ADD_NEW_TOPSCORE action on success', () => {
   const topScore = 
     {name: 'Player 1', score: 170}
-  
+    
   const scope = nock('http://localhost:80')
     .post('/api/v2')
     .reply(200, topScore);
 
-  const expectedAction = {
-        type: 'ADD_NEW_TOPSCORE',
-        topScore
-  }
-
   const dispatch = jest.fn()
-    .mockImplementationOnce(action => {
-      expect(action).toEqual(expectedAction)
+
+  return addScoreApi()(dispatch)
+    .then(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('ADD_NEW_TOPSCORE')
       scope.done()
     })
-
-    addScoreApi()(dispatch)
-
 })
 
-//
+test('addScoreApi will dispatch SHOW_ERROR action on error', () => {
+  const topScore = 
+    {name: 'Player 1', score: 170}
+    
+  const scope = nock('http://localhost:80')
+    .post('/api/v2')
+    .reply(500, topScore);
+
+  const dispatch = jest.fn()
+
+  return addScoreApi()(dispatch)
+    .then(() => {
+      expect(dispatch.mock.calls.length).toBe(2)
+      expect(dispatch.mock.calls[1][0].type).toBe('SHOW_ERROR')
+      scope.done()
+    })
+})
+
 
 test('receiveScoresFromAPI works', () => {
 
@@ -78,31 +152,6 @@ test('receiveScoresFromAPI works', () => {
   const actual = receiveScoresFromAPI(topScores)
 
   expect(actual).toEqual(expected)
-})
-
-
-test('getScoresApi will dispatch an action on success', () => {
-  const fakeScores = [
-    {score: 170, name: 'Player 1'},
-    {score: 160, name: 'Player 2'}
-  ]
-
-  const scope = nock('http://localhost:80')
-    .get('/api/v2')
-    .reply(200, fakeScores);
-
-  const expectedAction = {
-    type: 'RECEIVE_TOPSCORES_API',
-    topScoresApi: fakeScores
-  }
-
-  const dispatch = jest.fn()
-    .mockImplementationOnce(action => {
-      expect(action).toEqual(expectedAction)
-      scope.done()
-    })
-
-    getScoresApi()(dispatch)
 })
 
 
