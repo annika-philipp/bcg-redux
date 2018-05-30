@@ -9,8 +9,6 @@ import {
 import nock from 'nock'
 
 
-//is the second test in receive Questions doing anything?
-
 test('receiveQuestions works', () => {
   //Arrange
   const questionsarray = [
