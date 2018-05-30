@@ -84,7 +84,7 @@ export function getScoresApi (callback) {
   }
   
   export function addScoreApi (topScore) {
-    console.log("score in api, ", topScore)
+    // console.log("score in api, ", topScore)
     return (dispatch) =>
         request
             .post('/api/v2')
