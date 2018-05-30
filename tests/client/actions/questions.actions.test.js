@@ -26,35 +26,52 @@ test('receiveQuestions works', () => {
   //Act
   const actual = receiveQuestions(questionsarray)
   //Assert
-  expect(actual).toEqual(expected)
+  expect(actual).toEqual(expected)  
   expect(actual.questionsarray.length).toBe(2)
  
 })
 
-test('fetchQuestions will dispatch an action on success', () => {
-    const fakeQuestions = [
-        {id: 1, question: "First day of bootcamp, you feel...", week: 1},
-        {id: 2, question: "function getGreeting (name) {", week: 1}
-      ]
-  
-    const scope = nock('http://localhost:80')
-      .get('/api/v1')
-      .reply(200, fakeQuestions);
-  
-    const expectedAction = {
-      type: 'RECEIVE_QUESTIONS',
-      topScoresApi: fakeQuestions
-    }
-  
-    const dispatch = jest.fn()
-      .mockImplementationOnce(action => {
-        expect(action).toEqual(expectedAction)
-        scope.done()
-      })
-  
-      fetchQuestions()(dispatch)
-  })
 
+test('fetchQuestions will dispatch RECEIVE_QUESTIONS action on success', () => {
+  const fakeQuestions = [
+      {id: 1, question: "First day of bootcamp, you feel...", week: 1},
+      {id: 2, question: "function getGreeting (name) {", week: 1}
+    ]
+
+  const scope = nock('http://localhost:80')
+    .get('/api/v1')
+    .reply(200, fakeQuestions)
+
+  const dispatch = jest.fn()
+
+  return fetchQuestions()(dispatch)
+    .then(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('RECEIVE_QUESTIONS')
+      scope.done()
+    })
+})
+
+
+test('fetchQuestions will dispatch SHOW_ERROR action if error', () => {
+  const fakeQuestions = [
+      {id: 1, question: "First day of bootcamp, you feel...", week: 1},
+      {id: 2, question: "function getGreeting (name) {", week: 1}
+    ]
+
+  const scope = nock('http://localhost:80')
+    .get('/api/v1')
+    .reply(500, fakeQuestions)
+
+  const dispatch = jest.fn()
+
+  return fetchQuestions()(dispatch)
+    .catch(() => {
+      expect(dispatch.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls[0][0].type).toBe('SHOW_ERROR')  
+      scope.done()
+    })
+})
 
 test('increaseIndex is totally correct', () => {
   const num = 1

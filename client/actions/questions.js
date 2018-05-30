@@ -12,7 +12,6 @@ export function fetchQuestions() {
         return request
         .get('/api/v1')
         .then(res => {
-            // console.log("RES BODY, ", res.body)
             dispatch(receiveQuestions(res.body))
         })
         .catch(err => {

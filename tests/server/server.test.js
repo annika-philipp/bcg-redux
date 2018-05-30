@@ -25,6 +25,25 @@ test('GET v1 works', (done) => {
     })
 })
 
+// test('GET v1 with 500 works', (done) => {
+//     request(server)
+//     .get('/api/v1')
+//     .expect(500)
+//     .end((err, res) => {
+//         expect(err).toBeFalsy()
+//         done()
+//     })
+// })
+
+test('getTexts error', () => {
+const scope = nock('http://localhost:80')
+    .get('/api/v1')
+    .reply(500);
+
+const actual = getTexts()()
+expect(actual).toBe(undefined)
+})
+
 test('/v2 returns all scores', () => {
     const expected = 2
     return request(server)
