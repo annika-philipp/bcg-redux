@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527644234345" clover="3.2.0">
-  <project timestamp="1527644234345" name="All files">
-    <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7" elements="14" coveredelements="14" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1">
-      <file name="questions.js" path="/Users/annika/workspace/bootcamp/bcg-redux/client/actions/questions.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-      </file>
+<coverage generated="1527659166325" clover="3.2.0">
+  <project timestamp="1527659166325" name="All files">
+    <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="11" coveredelements="11" complexity="0" loc="9" ncloc="9" packages="2" files="2" classes="2">
+      <package name="client.components">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="Welcome.jsx" path="/Users/annika/workspace/bootcamp/bcg-redux/client/components/Welcome.jsx">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="tests.client.components">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="setup-dom.js" path="/Users/annika/workspace/bootcamp/bcg-redux/tests/client/components/setup-dom.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+        </file>
+      </package>
     </metrics>
   </project>
 </coverage>

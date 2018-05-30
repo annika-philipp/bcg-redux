@@ -693,7 +693,7 @@ function getScoresApi(callback) {
 }
 
 function addScoreApi(topScore) {
-    console.log("score in api, ", topScore);
+    // console.log("score in api, ", topScore)
     return function (dispatch) {
         return _superagent2.default.post('/api/v2').send(topScore).then(dispatch(addNewTopScore(topScore))).catch(function (err) {
             dispatch(showError(err.message));
@@ -2243,11 +2243,11 @@ if (typeof window !== 'undefined') { // Browser window
   root = this;
 }
 
-var Emitter = __webpack_require__(77);
-var RequestBase = __webpack_require__(78);
+var Emitter = __webpack_require__(76);
+var RequestBase = __webpack_require__(77);
 var isObject = __webpack_require__(28);
-var ResponseBase = __webpack_require__(79);
-var Agent = __webpack_require__(81);
+var ResponseBase = __webpack_require__(78);
+var Agent = __webpack_require__(80);
 
 /**
  * Noop.
@@ -22500,11 +22500,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _WelcomeContainer = __webpack_require__(74);
+var _Welcome = __webpack_require__(74);
 
-var _WelcomeContainer2 = _interopRequireDefault(_WelcomeContainer);
+var _Welcome2 = _interopRequireDefault(_Welcome);
 
-var _Display = __webpack_require__(76);
+var _Display = __webpack_require__(75);
 
 var _Display2 = _interopRequireDefault(_Display);
 
@@ -22512,7 +22512,7 @@ var _GameOver = __webpack_require__(29);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
 
-var _AddScore = __webpack_require__(83);
+var _AddScore = __webpack_require__(82);
 
 var _AddScore2 = _interopRequireDefault(_AddScore);
 
@@ -22531,9 +22531,11 @@ var App = function App(props) {
         'BCG 3000'
       )
     ),
-    props.location === 'welcome' ? _react2.default.createElement(_WelcomeContainer2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
+    props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
+// import WelcomeContainer from '../containers/WelcomeContainer'
+
 
 function mapStateToProps(state) {
   return {
@@ -22551,99 +22553,57 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactRedux = __webpack_require__(3);
-
-var _Welcome = __webpack_require__(75);
-
-var _Welcome2 = _interopRequireDefault(_Welcome);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _reactRedux.connect)()(_Welcome2.default);
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.Welcome = undefined;
 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(3);
+
 var _navigate = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+// class Welcome extends React.Component {
+var Welcome = exports.Welcome = function Welcome(props) {
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import { connect } from 'react-redux'
-
-
-var Welcome = function (_React$Component) {
-    _inherits(Welcome, _React$Component);
-
-    function Welcome() {
-        _classCallCheck(this, Welcome);
-
-        return _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).apply(this, arguments));
-    }
-
-    _createClass(Welcome, [{
-        key: 'changeLocation',
-        value: function changeLocation() {
-            this.props.dispatch((0, _navigate.navigate)('display'));
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
+    // render() {
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            'div',
+            { className: 'welcome' },
+            _react2.default.createElement(
+                'h3',
                 null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'welcome' },
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        '6 weeks of EDA Bootcamp fun starts here ...'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.changeLocation.bind(this), className: 'button' },
-                        'Start Game'
-                    )
-                )
-            );
-        }
-    }]);
+                '6 weeks of EDA Bootcamp fun starts here ...'
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+                'button',
+                { onClick: function onClick() {
+                        return props.dispatch((0, _navigate.navigate)('display'));
+                    }, className: 'button' },
+                'Start Game'
+            )
+        )
+    );
+    // }
+};
 
-    return Welcome;
-}(_react2.default.Component);
+// export default Welcome
 
-exports.default = Welcome;
-
-// export default connect()(Welcome)
+exports.default = (0, _reactRedux.connect)()(Welcome);
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22663,7 +22623,7 @@ var _reactRedux = __webpack_require__(3);
 
 var _score = __webpack_require__(9);
 
-var _questions = __webpack_require__(82);
+var _questions = __webpack_require__(81);
 
 var _navigate = __webpack_require__(8);
 
@@ -22793,7 +22753,7 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Display);
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -22962,7 +22922,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23663,7 +23623,7 @@ RequestBase.prototype._setTimeouts = function() {
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23673,7 +23633,7 @@ RequestBase.prototype._setTimeouts = function() {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(80);
+var utils = __webpack_require__(79);
 
 /**
  * Expose `ResponseBase`.
@@ -23804,7 +23764,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23882,7 +23842,7 @@ exports.cleanHeader = function(header, changesOrigin){
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports) {
 
 function Agent() {
@@ -23908,7 +23868,7 @@ module.exports = Agent;
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23938,7 +23898,6 @@ function receiveQuestions(questionsarray) {
 function fetchQuestions() {
     return function (dispatch) {
         return _superagent2.default.get('/api/v1').then(function (res) {
-            // console.log("RES BODY, ", res.body)
             dispatch(receiveQuestions(res.body));
         }).catch(function (err) {
             dispatch(showError(err.message));
@@ -23961,7 +23920,7 @@ function showError(message) {
 }
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23983,7 +23942,7 @@ var _score = __webpack_require__(9);
 
 var _navigate = __webpack_require__(8);
 
-var _Scoreboard = __webpack_require__(84);
+var _Scoreboard = __webpack_require__(83);
 
 var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
 
@@ -24103,7 +24062,7 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
