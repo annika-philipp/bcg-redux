@@ -22493,6 +22493,7 @@ exports.default = score;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.App = undefined;
 
 var _react = __webpack_require__(1);
 
@@ -22518,7 +22519,7 @@ var _AddScore2 = _interopRequireDefault(_AddScore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App(props) {
+var App = exports.App = function App(props) {
   return _react2.default.createElement(
     'div',
     { className: 'container' },
@@ -22542,6 +22543,9 @@ function mapStateToProps(state) {
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
+
+//exporting App as const to allow for React unit testing
+//exporting the whole component as default connect to test for React/Redux
 
 /***/ }),
 /* 74 */

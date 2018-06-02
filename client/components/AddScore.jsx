@@ -5,7 +5,7 @@ import {navigate} from '../actions/navigate'
 import Scoreboard from './Scoreboard'
 
 
-class AddScore extends React.Component {
+export class AddScore extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

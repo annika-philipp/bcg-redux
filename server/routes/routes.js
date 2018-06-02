@@ -50,7 +50,7 @@ router.post('/v2', (req, res) => {
     console.log("new Score, ", newScore)
     db.addScore(newScore)
     // .then(scoreIds => {
-    //     res.json({scoreIds: {id:scoreIds[0]}})
+    //     res.json({scoreIds: {id:scoreIds[0]}})   
     // })
     .then(score => { res.sendStatus(201) }) //sendStatus sets status as 201 and no body in response.
     .catch(err => {

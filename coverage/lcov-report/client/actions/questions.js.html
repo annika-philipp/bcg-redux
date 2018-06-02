@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/7</span>
+        <span class='fraction'>0/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/7</span>
+        <span class='fraction'>0/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/7</span>
+        <span class='fraction'>0/7</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,68 +83,68 @@
 <a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import request from 'superagent'
 &nbsp;
-export function receiveQuestions(questionsarray) {
-    return {
+export function <span class="fstat-no" title="function not covered" >receiveQuestions(</span>questionsarray) {
+<span class="cstat-no" title="statement not covered" >    return {</span>
         type: 'RECEIVE_QUESTIONS',
         questionsarray
     }
 }
 &nbsp;
-export function fetchQuestions() {
-    return(dispatch) =&gt; {
-        return request
+export function <span class="fstat-no" title="function not covered" >fetchQuestions(</span>) {
+<span class="cstat-no" title="statement not covered" >    return<span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return request</span>
         .get('/api/v1')
-        .then(res =&gt; {
-            dispatch(receiveQuestions(res.body))
+        .then(<span class="fstat-no" title="function not covered" >re</span>s =&gt; {
+<span class="cstat-no" title="statement not covered" >            dispatch(receiveQuestions(res.body))</span>
         })
-        .catch(err =&gt; {
-            dispatch(showError(err.message))
+        .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
+<span class="cstat-no" title="statement not covered" >            dispatch(showError(err.message))</span>
         })
     }
 }
 &nbsp;
-export function increaseIndex (num) {
-    return {
+export function <span class="fstat-no" title="function not covered" >increaseIndex </span>(num) {
+<span class="cstat-no" title="statement not covered" >    return {</span>
         type: 'INCREASE_INDEX',
         num
     }
 }
 &nbsp;
-export function showError (message) {
-    return {
+export function <span class="fstat-no" title="function not covered" >showError </span>(message) {
+<span class="cstat-no" title="statement not covered" >    return {</span>
         type: 'SHOW_ERROR',
         message
     }
@@ -154,7 +154,7 @@ export function showError (message) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 30 2018 14:05:27 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 03 2018 11:53:37 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../prettify.js"></script>
