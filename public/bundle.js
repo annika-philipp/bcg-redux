@@ -22534,8 +22534,6 @@ var App = function App(props) {
     props.location === 'welcome' ? _react2.default.createElement(_Welcome2.default, null) : props.location === 'scoreboard' ? _react2.default.createElement(_AddScore2.default, null) : _react2.default.createElement(_Display2.default, null)
   );
 };
-// import WelcomeContainer from '../containers/WelcomeContainer'
-
 
 function mapStateToProps(state) {
   return {

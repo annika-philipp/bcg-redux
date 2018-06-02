@@ -47,12 +47,12 @@ router.get('/v2', (req, res) => {
 
 router.post('/v2', (req, res) => {
     const newScore = req.body
-    // console.log("new Score, ", newScore)
+    console.log("new Score, ", newScore)
     db.addScore(newScore)
     // .then(scoreIds => {
     //     res.json({scoreIds: {id:scoreIds[0]}}) //what the what is going on here?
     // })
-    .then(score => { return res.status(201).json(score)})
+    .then(score => { res.sendStatus(201) }) //sendStatus sets status as 201 and no body in response.
     .catch(err => {
         res.status(500).send('DATABASE ERROR: ' + err.message)
     })

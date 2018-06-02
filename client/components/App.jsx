@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Welcome from './Welcome'
-// import WelcomeContainer from '../containers/WelcomeContainer'
 import Display from './Display' 
 import GameOver from './GameOver'
 import AddScore from './AddScore'
