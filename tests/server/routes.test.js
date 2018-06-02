@@ -1,79 +1,10 @@
 import request from 'supertest'
-// import nock from 'nock'
-
 
 const server = require('../../server/server')
 
-// jest.mock('../../server/db/db', () => ({
-//     getQuestionsAndAnswers: jest.fn(),
-//     getScores: jest.fn(),
-//     addScore: jest.fn()
-// }))
-
-// import {getQuestionsAndAnswers, getScores, addScore} from '../../server/db/db'
 
 
-
-// test('GET v1 works as well', () => {
-//     getQuestionsAndAnswers.mockImplementation(() => 
-//         request(server)
-//         .get('/api/v1')
-//         .expect(200)
-//         .then(res => {
-//             expect(res.body.length).toBeGreaterThan(0)
-//         })
-//         .catch(err => {
-//             expect(err).toBeFalsy()
-//         })
-//     )
-// })
-
-// test('/v2 returns all scores', () => {
-//     const expected = 2
-
-//     getScores.mockImplementation(() => 
-//         request(server)
-//         .get('/api/v2')
-//         .expect('Content-Type', /json/)
-//         .expect(200) //203 when adding something
-//         .then(res => {
-//             expect(res.body.length).toBe(expected)
-//         })
-//         .catch(err => {
-//             expect(err).toBeFalsy()
-//         })
-//     )
-// })
-
-// test('POST /v2 works', () => {
-//     addScore.mockImplementation(() => 
-//         request(server)
-//         .post('/api/v2')
-//         .send()
-//         .expect(201)
-//         .then(res => {
-//             expect(res.body).toBeTruthy() //.length when testing on a webpage, on api only when return a body (here object). Truthy to check that anyhing gets returned.
-//         })
-//         .catch((err, res) => {
-//             expect(err).toBeFalsy()
-//         })
-//     )
-// })
-
-// test('POST /v2 works', () => {
-//     addScore.mockImplementation(() => 
-//         request(server)
-//         .post('/api/v2')
-//         .send()
-//         .expect(500)
-//         .catch((err, res) => {
-//             expect(err).toBeFalsy()
-//         })
-//     )
-// })
-
-
-////----* The tests below worked fine until I tried to test for both expect 200 and 500 responses in my POST route. Had to rewrite as above to be able to run all tests. The above example has just request server, not return request(server)
+////----* The tests below work fine until I triy to test for both expect 200 and 500 responses in my POST route.
 
 jest.mock('../../server/db/db', () => ({
     getQuestionsAndAnswers: () => Promise.resolve([
@@ -84,7 +15,8 @@ jest.mock('../../server/db/db', () => ({
         {"id":1,"user_id":1,"score":80,"name":"Player1"},
         {"id":2,"user_id":2,"score":75,"name":"Player2"} 
     ]),
-    addScore: () => Promise.resolve([])
+    addScore: () => Promise.resolve([]),
+    // addScore: () => Promise.reject([])
 }))
 
 //need return request if testing async
@@ -115,21 +47,22 @@ test('/v2 returns all scores', () => {
       })
   })
 
-  test('POST /v2 works', () => {
+  test('POST /v2 201 works', () => {
     return request(server)
         .post('/api/v2')
         .send()
         .expect(201)
         .then(res => {
             console.log('then', res.body)
-            expect(res.body).toBeTruthy() //.length when testing on a webpage, on api only when return a body (here object). Truthy to check that anyhing gets returned.
+            expect(res.body).toBeTruthy() //.length when testing on a webpage, on api only when return a body (here object). Just truthy to check that something gets returned.
         })
         .catch((err, res) => {
             expect(err).toBeFalsy()
         })
 })
 
-test('POST /v2 works', () => {
+//this test fails as current response is 201 (as above), Promise.resolve in jest.mock - will pass if using Promise.reject - which then fails above test
+test('POST /v2 500 works', () => {
     return request(server)
         .post('/api/v2')
         .send()
@@ -138,3 +71,5 @@ test('POST /v2 works', () => {
             expect(err).toBeFalsy()
         })
 })
+
+
