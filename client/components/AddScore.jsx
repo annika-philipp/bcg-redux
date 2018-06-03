@@ -10,7 +10,7 @@ export class AddScore extends React.Component {
         super(props)
         this.state = {
             name: '',
-            score: this.props.score.totalScore
+            score: props.score.totalScore
         }
         this.handleChange = this.handleChange.bind(this)
         this.addScore = this.addScore.bind(this)
@@ -38,7 +38,7 @@ export class AddScore extends React.Component {
         <div>
             <div className="addScore">
             <h3>Well done!</h3>
-            <h3>Deploy yourself into phase 3</h3> 
+            <h3>Deploy yourself into phase 3</h3>
             <p>Your totalscore is: {this.props.score.totalScore}</p>
             {this.props.score.isTopScore && <div><form onSubmit={this.addScore}>
             <p>Add your name to the scoreboard</p>
@@ -53,8 +53,8 @@ export class AddScore extends React.Component {
             {this.props.score.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>}
             <div className="row">
                 <button onClick={this.playAgain.bind(this)} className="button">Play again</button>
-            </div> 
-            </div>    
+            </div>
+            </div>
         </div> )
     }
 }
