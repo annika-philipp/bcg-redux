@@ -48,7 +48,7 @@ test('getScoresApi will dispatch RECEIVE_TOPSCORES_API action on success', () =>
   ]
 
   const scope = nock('http://localhost:80')
-    .get('/api/v2')
+    .get('/api/scores')
     .reply(200, fakeScores)
 
   const dispatch = jest.fn()
@@ -68,7 +68,7 @@ test('getScoresApi will dispatch SHOW_ERROR action if error', () => {
     ]
 
   const scope = nock('http://localhost:80')
-    .get('/api/v2')
+    .get('/api/scores')
     .reply(500, fakeScores)
 
   const dispatch = jest.fn()
@@ -90,7 +90,7 @@ test('addScoreApi will dispatch RECEIVE_TOPSCORES_API action on success', () => 
   ]
 
   const scope = nock('http://localhost:80')
-    .get('/api/v2')
+    .get('/api/scores')
     .reply(200, fakeScores)
 
   const dispatch = jest.fn()
@@ -108,7 +108,7 @@ test('addScoreApi will dispatch ADD_NEW_TOPSCORE action on success', () => {
     {name: 'Player 1', score: 170}
     
   const scope = nock('http://localhost:80')
-    .post('/api/v2')
+    .post('/api/scores')
     .reply(200, topScore);
 
   const dispatch = jest.fn()
@@ -126,7 +126,7 @@ test('addScoreApi will dispatch SHOW_ERROR action on error', () => {
     {name: 'Player 1', score: 170}
     
   const scope = nock('http://localhost:80')
-    .post('/api/v2')
+    .post('/api/scores')
     .reply(500, topScore);
 
   const dispatch = jest.fn()

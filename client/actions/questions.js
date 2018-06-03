@@ -10,7 +10,7 @@ export function receiveQuestions(questionsarray) {
 export function fetchQuestions() {
     return(dispatch) => {
         return request
-        .get('/api/v1')
+        .get('/api/questions')
         .then(res => {
             dispatch(receiveQuestions(res.body))
         })

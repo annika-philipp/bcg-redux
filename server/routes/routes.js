@@ -7,7 +7,7 @@ const db = require('../db/db')
 
 router.use(bodyParser.json())
 
-router.get('/v1', (req, res) => {
+router.get('/questions', (req, res) => {
     db.getQuestionsAndAnswers()
     .then(questions => {
         let questionsList = []
@@ -35,7 +35,7 @@ router.get('/v1', (req, res) => {
     })
 })
 
-router.get('/v2', (req, res) => {
+router.get('/scores', (req, res) => {
     db.getScores()
     .then(scores => {
         res.json(scores)
@@ -45,7 +45,7 @@ router.get('/v2', (req, res) => {
     })
 })
 
-router.post('/v2', (req, res) => {
+router.post('/scores', (req, res) => {
     const newScore = req.body
     console.log("new Score, ", newScore)
     db.addScore(newScore)

@@ -37,7 +37,7 @@ test('fetchQuestions will dispatch RECEIVE_QUESTIONS action on success', () => {
     ]
 
   const scope = nock('http://localhost:80')
-    .get('/api/v1')
+    .get('/api/questions')
     .reply(200, fakeQuestions)
 
   const dispatch = jest.fn()
@@ -58,7 +58,7 @@ test('fetchQuestions will dispatch SHOW_ERROR action if error', () => {
     ]
 
   const scope = nock('http://localhost:80')
-    .get('/api/v1')
+    .get('/api/questions')
     .reply(500, fakeQuestions)
 
   const dispatch = jest.fn()

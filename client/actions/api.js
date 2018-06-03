@@ -1,7 +1,7 @@
 import request from 'superagent'
 
-const url = '/api/v1'
-const scores = 'api/v2'
+const url = '/api/questions'
+const scores = 'api/scores'
 
 
 export function getQuestions (callback) {

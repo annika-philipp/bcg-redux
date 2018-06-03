@@ -61,7 +61,7 @@ export const showError = (message) => {
 export function getScoresApi (callback) {
     return(dispatch) => {
         return request
-        .get('/api/v2')
+        .get('/api/scores')
         .then(items => {
             // console.log("hitting the scores api")
             // console.log("items.body ", items.body)
@@ -87,7 +87,7 @@ export function getScoresApi (callback) {
     // console.log("score in api, ", topScore)
     return (dispatch) =>
         request
-            .post('/api/v2')
+            .post('/api/scores')
             .send(topScore)
             .then(dispatch(addNewTopScore(topScore)))
             .catch(err => {

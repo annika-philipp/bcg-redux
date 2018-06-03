@@ -12,7 +12,7 @@ import './setup-dom'
 
 import configureStore from  'redux-mock-store'
 
-// const mockStore = configureStore([])
+const mockStore = configureStore([])
 // //creates a fake store, with no configuartion
 // //required as react Welcome expects a dispatch
 // //making sure that dispatch works is part of React's work - interpreting it Redux job and tested there
@@ -46,6 +46,9 @@ test('Test Suite Working', () => {
 })
 
 test('Text renders on AddScore', () => {
-  const wrapper = shallow(<AddScore />)
+    const totalScore = 100
+      const store = mockStore() //instantiates store for test
+
+  const wrapper = shallow(<AddScore store={store}/>)
   expect(wrapper.find('h3').text()).toBe ('Well done!')
 })
