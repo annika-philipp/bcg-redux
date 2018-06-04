@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-import {AddScore} from '../../../client/components/AddScore.jsx' 
+import {AddScore} from '../../../client/components/AddScore.jsx'
 import './setup-dom'
 
 import configureStore from  'redux-mock-store'
@@ -47,8 +47,14 @@ test('Test Suite Working', () => {
 
 test('Text renders on AddScore', () => {
     const totalScore = 100
-      const store = mockStore() //instantiates store for test
+    const score = {
+      totalScore,
+      topScores: [
+        100
+      ]
+    }
 
-  const wrapper = shallow(<AddScore store={store}/>)
-  expect(wrapper.find('h3').text()).toBe ('Well done!')
+    const wrapper = shallow(<AddScore score={score}/>)
+    expect(wrapper.find('h3').first().text()).toBe ('Well done!')
+    expect(wrapper.find('h3').last().text()).toBe ('Deploy yourself into phase 3')
 })
