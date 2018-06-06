@@ -1,5 +1,5 @@
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('answers').del()
     .then(function () {
@@ -28,7 +28,7 @@ exports.seed = function(knex, Promise) {
         {id: 21, answer: 'Match', question_id: 11, score: -15},
         {id: 22, answer: 'Piet', question_id: 11, score: +20},
         {id: 23, answer: 'Event Bus', question_id: 12, score: +15},
-        {id: 24, answer: 'Party Bus', question_id: 12, score: +5},
-      ]);
-    });
-};
+        {id: 24, answer: 'Party Bus', question_id: 12, score: +5}
+      ])
+    })
+}
