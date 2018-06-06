@@ -11,4 +11,3 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use('/api', router)
 
 module.exports = server
-

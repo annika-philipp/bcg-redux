@@ -42,7 +42,7 @@ test('addNewTopScore works', () => {
 test('getScoresApi will dispatch RECEIVE_TOPSCORES_API action on success', () => {
   const fakeScores = [
     {name: 'Kelly', score: 100},
-    {name: 'Ross', score: 90},
+    {name: 'Ross', score: 90}
   ]
 
   const scope = nock('http://localhost:80')

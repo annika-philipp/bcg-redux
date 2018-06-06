@@ -1,14 +1,14 @@
 import { navigate } from '../../../client/actions/navigate'
 
 test('navigate works', () => {
-const location = 'welcome'
+  const location = 'welcome'
 
-const expected = {
+  const expected = {
     type: 'NAVIGATE',
     destination: location
-}
+  }
 
-const actual = navigate(location)
+  const actual = navigate(location)
 
-expect(actual).toEqual(expected)
+  expect(actual).toEqual(expected)
 })

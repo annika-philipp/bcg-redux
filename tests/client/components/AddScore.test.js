@@ -1,6 +1,6 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
-//shallow - unit testing this particular file and what it does
+import { shallow } from 'enzyme'
+// shallow - unit testing this particular file and what it does
 
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
@@ -42,13 +42,13 @@ const mockStore = configureStore([])
 // })
 
 test('Test Suite Working', () => {
-    expect(true).toBe(true)
+  expect(true).toBe(true)
 })
 
 test('Text renders on AddScore', () => {
-    const totalScore = 100
-      const store = mockStore() //instantiates store for test
+  const totalScore = 100
+  const store = mockStore() // instantiates store for test
 
-  const wrapper = shallow(<AddScore store={store}/>)
+  const wrapper = shallow(<AddScore store={store} />)
   expect(wrapper.find('h3').text()).toBe ('Well done!')
 })

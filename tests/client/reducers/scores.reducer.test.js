@@ -14,7 +14,7 @@ test('Score Reducer initial state', () => {
 
   expect(actual).toEqual(expected)
 })
-  
+
 test('ADD_TO_TOTALSCORE adds new score value to totalscore', () => {
   const scoreValue = 10
   const expected = {

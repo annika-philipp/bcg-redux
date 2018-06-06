@@ -11,9 +11,6 @@ test('Questions Reducer initial state', () => {
 
 test('RECEIVE_QUESTIONS', () => {
   const questionsarray = [{name: 'Harrison'}, {name: 'Kelly'}]
-  const expected = [
-    questionsarray
-  ]
 
   const action = {
     type: 'RECEIVE_QUESTIONS',
@@ -25,7 +22,6 @@ test('RECEIVE_QUESTIONS', () => {
   expect(actual).toEqual(questionsarray)
   expect(actual).toHaveLength(2)
   expect(actual[0].name === 'Kelly').toBeFalsy()
-
 })
 
 test('SHOW_ERROR brings up error message', () => {
