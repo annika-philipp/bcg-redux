@@ -9,7 +9,7 @@ export class AddScore extends React.Component {
     super(props)
     this.state = {
       name: '',
-      score: this.props.score.totalScore
+      score: props.score.totalScore
     }
     this.handleChange = this.handleChange.bind(this)
     this.addScore = this.addScore.bind(this)

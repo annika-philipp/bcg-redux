@@ -23961,7 +23961,7 @@ var AddScore = exports.AddScore = function (_React$Component) {
 
     _this.state = {
       name: '',
-      score: _this.props.score.totalScore
+      score: props.score.totalScore
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.addScore = _this.addScore.bind(_this);
