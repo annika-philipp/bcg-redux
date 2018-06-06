@@ -604,7 +604,7 @@ var navigate = exports.navigate = function navigate(destination) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.showError = exports.scoreIncreased = exports.isTopScore = exports.reset = exports.isPositiveTotalscore = exports.addToTotalscore = exports.addNewTopScore = exports.receiveScoresFromAPI = undefined;
 exports.getScoresApi = getScoresApi;
@@ -617,88 +617,88 @@ var _superagent2 = _interopRequireDefault(_superagent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var receiveScoresFromAPI = exports.receiveScoresFromAPI = function receiveScoresFromAPI(topScoresApi) {
-    return {
-        type: 'RECEIVE_TOPSCORES_API',
-        topScoresApi: topScoresApi
-    };
+  return {
+    type: 'RECEIVE_TOPSCORES_API',
+    topScoresApi: topScoresApi
+  };
 };
 
 var addNewTopScore = exports.addNewTopScore = function addNewTopScore(topScore) {
-    return {
-        type: 'ADD_NEW_TOPSCORE',
-        topScore: topScore
-    };
+  return {
+    type: 'ADD_NEW_TOPSCORE',
+    topScore: topScore
+  };
 };
 
 var addToTotalscore = exports.addToTotalscore = function addToTotalscore(scoreValue) {
-    return {
-        type: 'ADD_TO_TOTALSCORE',
-        scoreValue: scoreValue
-    };
+  return {
+    type: 'ADD_TO_TOTALSCORE',
+    scoreValue: scoreValue
+  };
 };
 
 var isPositiveTotalscore = exports.isPositiveTotalscore = function isPositiveTotalscore() {
-    return {
-        type: 'IS_POSITIVE_TOTALSCORE'
-    };
+  return {
+    type: 'IS_POSITIVE_TOTALSCORE'
+  };
 };
 
 var reset = exports.reset = function reset() {
-    return {
-        type: 'RESET'
-    };
+  return {
+    type: 'RESET'
+  };
 };
 
 var isTopScore = exports.isTopScore = function isTopScore(totalScore) {
-    return {
-        type: 'IS_TOPSCORE',
-        totalScore: totalScore
-    };
+  return {
+    type: 'IS_TOPSCORE',
+    totalScore: totalScore
+  };
 };
 
 var scoreIncreased = exports.scoreIncreased = function scoreIncreased(scoreValue) {
-    return {
-        type: 'SCORE_INCREASED',
-        scoreValue: scoreValue
-    };
+  return {
+    type: 'SCORE_INCREASED',
+    scoreValue: scoreValue
+  };
 };
 
 var showError = exports.showError = function showError(message) {
-    return {
-        type: 'SHOW_ERROR',
-        message: message
-    };
+  return {
+    type: 'SHOW_ERROR',
+    message: message
+  };
 };
 
 function getScoresApi(callback) {
-    return function (dispatch) {
-        return _superagent2.default.get('/api/scores').then(function (items) {
-            // console.log("hitting the scores api")
-            // console.log("items.body ", items.body)
-            var data = items.body;
-            var scoreList = data.sort(function (a, b) {
-                return b.score - a.score;
-            });
-            var topScoresApi = [];
-            for (var i = 0; i < 10; i++) {
-                topScoresApi.push(scoreList[i]);
-            }
-            // console.log({scoreList})
-            // console.log("Api Topscores, ", topScoresApi)
-            dispatch(receiveScoresFromAPI(topScoresApi));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
+  return function (dispatch) {
+    return _superagent2.default.get('/api/scores').then(function (items) {
+      // console.log("hitting the scores api")
+      // console.log("items.body ", items.body)
+      var data = items.body;
+      var scoreList = data.sort(function (a, b) {
+        return b.score - a.score;
+      });
+      var topScoresApi = [];
+      for (var i = 0; i < 10; i++) {
+        topScoresApi.push(scoreList[i]);
+      }
+      // console.log({scoreList})
+      // console.log("Api Topscores, ", topScoresApi)
+      dispatch(receiveScoresFromAPI(topScoresApi));
+    }).catch(function (err) {
+      dispatch(showError(err.message));
+    });
+  };
 }
 
 function addScoreApi(topScore) {
-    // console.log("score in api, ", topScore)
-    return function (dispatch) {
-        return _superagent2.default.post('/api/scores').send(topScore).then(dispatch(addNewTopScore(topScore))).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
+  // console.log("score in api, ", topScore)
+  return function (dispatch) {
+    return _superagent2.default.post('/api/scores').send(topScore).then(dispatch(addNewTopScore(topScore))).catch(function (err) {
+      dispatch(showError(err.message));
+    });
+  };
 }
 
 /***/ }),
@@ -3181,7 +3181,7 @@ module.exports = isObject;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(1);
@@ -3197,39 +3197,38 @@ var _navigate = __webpack_require__(8);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function GameOver(props) {
+  function playAgain() {
+    props.dispatch((0, _score.reset)());
+    props.dispatch((0, _navigate.navigate)('welcome'));
+  }
 
-    function playAgain() {
-        props.dispatch((0, _score.reset)());
-        props.dispatch((0, _navigate.navigate)('welcome'));
-    }
-
-    return _react2.default.createElement(
-        'div',
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'gameOver' },
+      _react2.default.createElement(
+        'h3',
         null,
-        _react2.default.createElement(
-            'div',
-            { className: 'gameOver' },
-            _react2.default.createElement(
-                'h3',
-                null,
-                'GAME OVER'
-            ),
-            _react2.default.createElement(
-                'h3',
-                null,
-                'Consult your nearest handbook...'
-            )
-        ),
-        _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-                'button',
-                { onClick: playAgain, className: 'button' },
-                'Play again'
-            )
-        )
-    );
+        'GAME OVER'
+      ),
+      _react2.default.createElement(
+        'h3',
+        null,
+        'Consult your nearest handbook...'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'row' },
+      _react2.default.createElement(
+        'button',
+        { onClick: playAgain, className: 'button' },
+        'Play again'
+      )
+    )
+  );
 }
 
 exports.default = (0, _reactRedux.connect)()(GameOver);
@@ -22509,10 +22508,6 @@ var _Display = __webpack_require__(75);
 
 var _Display2 = _interopRequireDefault(_Display);
 
-var _GameOver = __webpack_require__(29);
-
-var _GameOver2 = _interopRequireDefault(_GameOver);
-
 var _AddScore = __webpack_require__(82);
 
 var _AddScore2 = _interopRequireDefault(_AddScore);
@@ -22544,8 +22539,8 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
-//exporting App as const to allow for React unit testing
-//exporting the whole component as default connect to test for React/Redux
+// exporting App as const to allow for React unit testing
+// exporting the whole component as default connect to test for React/Redux
 
 /***/ }),
 /* 74 */
@@ -22555,7 +22550,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Welcome = undefined;
 
@@ -22570,36 +22565,36 @@ var _navigate = __webpack_require__(8);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Welcome = exports.Welcome = function Welcome(props) {
-    //changed this from class to export const so I can test this both React specifically as well as connected with Redux
+  // changed this from class to export const so I can test this both React specifically as well as connected with Redux
 
-    return _react2.default.createElement(
-        'div',
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'welcome' },
+      _react2.default.createElement(
+        'h3',
         null,
-        _react2.default.createElement(
-            'div',
-            { className: 'welcome' },
-            _react2.default.createElement(
-                'h3',
-                null,
-                '6 weeks of EDA Bootcamp fun starts here ...'
-            )
-        ),
-        _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            _react2.default.createElement(
-                'button',
-                { onClick: function onClick() {
-                        return props.dispatch((0, _navigate.navigate)('display'));
-                    }, className: 'button' },
-                'Start Game'
-            )
-        )
-    );
+        '6 weeks of EDA Bootcamp fun starts here ...'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'row' },
+      _react2.default.createElement(
+        'button',
+        { onClick: function onClick() {
+            return props.dispatch((0, _navigate.navigate)('display'));
+          }, className: 'button' },
+        'Start Game'
+      )
+    )
+  );
 };
 
 exports.default = (0, _reactRedux.connect)()(Welcome);
-//this second export allows me to test this component as react/redux connect
+// this second export allows me to test this component as react/redux connect
 
 /***/ }),
 /* 75 */
@@ -23874,7 +23869,7 @@ module.exports = Agent;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.receiveQuestions = receiveQuestions;
 exports.fetchQuestions = fetchQuestions;
@@ -23888,34 +23883,34 @@ var _superagent2 = _interopRequireDefault(_superagent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function receiveQuestions(questionsarray) {
-    return {
-        type: 'RECEIVE_QUESTIONS',
-        questionsarray: questionsarray
-    };
+  return {
+    type: 'RECEIVE_QUESTIONS',
+    questionsarray: questionsarray
+  };
 }
 
 function fetchQuestions() {
-    return function (dispatch) {
-        return _superagent2.default.get('/api/questions').then(function (res) {
-            dispatch(receiveQuestions(res.body));
-        }).catch(function (err) {
-            dispatch(showError(err.message));
-        });
-    };
+  return function (dispatch) {
+    return _superagent2.default.get('/api/questions').then(function (res) {
+      dispatch(receiveQuestions(res.body));
+    }).catch(function (err) {
+      dispatch(showError(err.message));
+    });
+  };
 }
 
 function increaseIndex(num) {
-    return {
-        type: 'INCREASE_INDEX',
-        num: num
-    };
+  return {
+    type: 'INCREASE_INDEX',
+    num: num
+  };
 }
 
 function showError(message) {
-    return {
-        type: 'SHOW_ERROR',
-        message: message
-    };
+  return {
+    type: 'SHOW_ERROR',
+    message: message
+  };
 }
 
 /***/ }),
@@ -23926,7 +23921,7 @@ function showError(message) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.AddScore = undefined;
 
@@ -23957,106 +23952,106 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AddScore = exports.AddScore = function (_React$Component) {
-    _inherits(AddScore, _React$Component);
+  _inherits(AddScore, _React$Component);
 
-    function AddScore(props) {
-        _classCallCheck(this, AddScore);
+  function AddScore(props) {
+    _classCallCheck(this, AddScore);
 
-        var _this = _possibleConstructorReturn(this, (AddScore.__proto__ || Object.getPrototypeOf(AddScore)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (AddScore.__proto__ || Object.getPrototypeOf(AddScore)).call(this, props));
 
-        _this.state = {
-            name: '',
-            score: _this.props.score.totalScore
-        };
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.addScore = _this.addScore.bind(_this);
-        return _this;
+    _this.state = {
+      name: '',
+      score: _this.props.score.totalScore
+    };
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.addScore = _this.addScore.bind(_this);
+    return _this;
+  }
+
+  _createClass(AddScore, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
     }
-
-    _createClass(AddScore, [{
-        key: 'handleChange',
-        value: function handleChange(e) {
-            this.setState(_defineProperty({}, e.target.name, e.target.value));
-        }
-    }, {
-        key: 'addScore',
-        value: function addScore(e) {
-            e.preventDefault();
-            this.props.dispatch((0, _score.addScoreApi)(this.state));
-        }
-    }, {
-        key: 'playAgain',
-        value: function playAgain() {
-            this.props.dispatch((0, _score.reset)());
-            this.props.dispatch((0, _navigate.navigate)('welcome'));
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
+  }, {
+    key: 'addScore',
+    value: function addScore(e) {
+      e.preventDefault();
+      this.props.dispatch((0, _score.addScoreApi)(this.state));
+    }
+  }, {
+    key: 'playAgain',
+    value: function playAgain() {
+      this.props.dispatch((0, _score.reset)());
+      this.props.dispatch((0, _navigate.navigate)('welcome'));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'addScore' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Well done!'
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Deploy yourself into phase 3'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Your totalscore is: ',
+            this.props.score.totalScore
+          ),
+          this.props.score.isTopScore && _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'form',
+              { onSubmit: this.addScore },
+              _react2.default.createElement(
+                'p',
                 null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'addScore' },
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Well done!'
-                    ),
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Deploy yourself into phase 3'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Your totalscore is: ',
-                        this.props.score.totalScore
-                    ),
-                    this.props.score.isTopScore && _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'form',
-                            { onSubmit: this.addScore },
-                            _react2.default.createElement(
-                                'p',
-                                null,
-                                'Add your name to the scoreboard'
-                            ),
-                            _react2.default.createElement('input', { placeholder: 'Player', name: 'name', onChange: this.handleChange, value: this.state.name }),
-                            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-                        )
-                    ),
-                    !this.props.score.isTopScore && _react2.default.createElement('div', { className: 'row' })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
-                    this.props.score.topScores.length > 0 && _react2.default.createElement(_Scoreboard2.default, { topScores: this.props.topScores }),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(
-                            'button',
-                            { onClick: this.playAgain.bind(this), className: 'button' },
-                            'Play again'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
+                'Add your name to the scoreboard'
+              ),
+              _react2.default.createElement('input', { placeholder: 'Player', name: 'name', onChange: this.handleChange, value: this.state.name }),
+              _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+            )
+          ),
+          !this.props.score.isTopScore && _react2.default.createElement('div', { className: 'row' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          this.props.score.topScores.length > 0 && _react2.default.createElement(_Scoreboard2.default, { topScores: this.props.topScores }),
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'button',
+              { onClick: this.playAgain.bind(this), className: 'button' },
+              'Play again'
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return AddScore;
+  return AddScore;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
-    return {
-        score: state.score
-    };
+  return {
+    score: state.score
+  };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
@@ -24069,7 +24064,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddScore);
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Scoreboard = undefined;
 
@@ -24084,55 +24079,54 @@ var _score = __webpack_require__(9);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Scoreboard = exports.Scoreboard = function Scoreboard(props) {
+  function componentDidMount() {
+    props.dispatch((0, _score.getScoresApi)());
+  }
 
-    function componentDidMount() {
-        props.dispatch((0, _score.getScoresApi)());
-    }
-
-    return _react2.default.createElement(
-        'div',
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'scoreboard' },
+      _react2.default.createElement(
+        'h4',
         null,
-        _react2.default.createElement(
+        'Top Scores'
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'topscores' },
+        props.score.topScores.map(function (score) {
+          return [_react2.default.createElement(
             'div',
-            { className: 'scoreboard' },
+            { className: 'topscoresnames' },
             _react2.default.createElement(
-                'h4',
-                null,
-                'Top Scores'
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'topscores' },
-                props.score.topScores.map(function (score) {
-                    return [_react2.default.createElement(
-                        'div',
-                        { className: 'topscoresnames' },
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            ' ',
-                            score.score,
-                            ' - ',
-                            score.name,
-                            ' '
-                        )
-                    )];
-                })
+              'p',
+              null,
+              ' ',
+              score.score,
+              ' - ',
+              score.name,
+              ' '
             )
-        )
-    );
+          )];
+        })
+      )
+    )
+  );
 };
 
 function mapStateToProps(state) {
-    return {
-        score: state.score
-    };
+  return {
+    score: state.score
+  };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Scoreboard);
 
-//exporting Scoreboard as const to allow for React unit testing
-//exporting the whole component as default connect to test for React/Redux
+// exporting Scoreboard as const to allow for React unit testing
+// exporting the whole component as default connect to test for React/Redux
 
 /***/ })
 /******/ ]);

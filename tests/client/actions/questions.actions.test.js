@@ -1,40 +1,37 @@
 import {
-    receiveQuestions,
-    increaseIndex,
-    fetchQuestions,
-    showError
+  receiveQuestions,
+  increaseIndex,
+  fetchQuestions,
+  showError
 
 } from '../../../client/actions/questions'
 
 import nock from 'nock'
 
-
 test('receiveQuestions works', () => {
-  //Arrange
+  // Arrange
   const questionsarray = [
-    {id: 1, question: "First day of bootcamp, you feel...", week: 1},
-    {id: 2, question: "function getGreeting (name) {", week: 1}
+    {id: 1, question: 'First day of bootcamp, you feel...', week: 1},
+    {id: 2, question: 'function getGreeting (name) {', week: 1}
   ]
 
   const expected = {
-        type: 'RECEIVE_QUESTIONS',
-        questionsarray
+    type: 'RECEIVE_QUESTIONS',
+    questionsarray
   }
 
-  //Act
+  // Act
   const actual = receiveQuestions(questionsarray)
-  //Assert
-  expect(actual).toEqual(expected)  
+  // Assert
+  expect(actual).toEqual(expected)
   expect(actual.questionsarray.length).toBe(2)
- 
 })
-
 
 test('fetchQuestions will dispatch RECEIVE_QUESTIONS action on success', () => {
   const fakeQuestions = [
-      {id: 1, question: "First day of bootcamp, you feel...", week: 1},
-      {id: 2, question: "function getGreeting (name) {", week: 1}
-    ]
+    {id: 1, question: 'First day of bootcamp, you feel...', week: 1},
+    {id: 2, question: 'function getGreeting (name) {', week: 1}
+  ]
 
   const scope = nock('http://localhost:80')
     .get('/api/questions')
@@ -50,12 +47,11 @@ test('fetchQuestions will dispatch RECEIVE_QUESTIONS action on success', () => {
     })
 })
 
-
 test('fetchQuestions will dispatch SHOW_ERROR action if error', () => {
   const fakeQuestions = [
-      {id: 1, question: "First day of bootcamp, you feel...", week: 1},
-      {id: 2, question: "function getGreeting (name) {", week: 1}
-    ]
+    {id: 1, question: 'First day of bootcamp, you feel...', week: 1},
+    {id: 2, question: 'function getGreeting (name) {', week: 1}
+  ]
 
   const scope = nock('http://localhost:80')
     .get('/api/questions')
@@ -66,7 +62,7 @@ test('fetchQuestions will dispatch SHOW_ERROR action if error', () => {
   return fetchQuestions()(dispatch)
     .catch(() => {
       expect(dispatch.mock.calls.length).toBe(1)
-      expect(dispatch.mock.calls[0][0].type).toBe('SHOW_ERROR')  
+      expect(dispatch.mock.calls[0][0].type).toBe('SHOW_ERROR')
       scope.done()
     })
 })
@@ -75,8 +71,8 @@ test('increaseIndex is totally correct', () => {
   const num = 1
 
   const expected = {
-        type: 'INCREASE_INDEX',
-        num: num
+    type: 'INCREASE_INDEX',
+    num: num
   }
 
   const actual = increaseIndex(num)
@@ -85,14 +81,14 @@ test('increaseIndex is totally correct', () => {
 })
 
 test('showError works', () => {
-    const message = "Oh no"
-  
-    const expected = {
-          type: 'SHOW_ERROR',
-          message: "Oh no"
-    }
-  
-    const actual = showError(message)
-  
-    expect(actual).toEqual(expected)
-  })
+  const message = 'Oh no'
+
+  const expected = {
+    type: 'SHOW_ERROR',
+    message: 'Oh no'
+  }
+
+  const actual = showError(message)
+
+  expect(actual).toEqual(expected)
+})
