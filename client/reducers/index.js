@@ -5,8 +5,8 @@ import location from './location'
 import score from './score'
 
 export default combineReducers({
-questions,
-index,
-location,
-score
+  questions,
+  index,
+  location,
+  score
 })
