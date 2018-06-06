@@ -105,42 +105,60 @@ test('ADD_NEW_TOPSCORE adds new topscore to topScores array in state', () => {
   expect(actual).toEqual(expected)
 })
 
-test('IS_POSITIVE_TOTALSCORE returns true if positive - EXPECT THIS TO FAIL IN TEST, Fixed through componentWillReceiveProps', () => {
-    const totalScore = 0
+test('IS_POSITIVE_TOTALSCORE returns true if positive totalscore', () => {
+
+  const testState = {
+      totalScore: 10,
+      topScores: [],
+      isPositiveTotalScore: false,
+      isTopScore: false,
+      scoreIncreased: false
+    }
+
     const expected = {
-      totalScore: 0,
+      totalScore: 10,
       topScores: [],
       isPositiveTotalScore: true,
       isTopScore: false,
       scoreIncreased: false
     }
 
+
     const action = {
-        type: 'IS_POSITIVE_TOTALSCORE'
+        type: 'IS_POSITIVE_TOTALSCORE',
     }
 
-    const actual = score(undefined, action)
+    const actual = score(testState, action)
   
     expect(actual).toEqual(expected)
 })
 
-test('IS_POSITIVE_TOTALSCORE returns false if negative totalscore - EXPECT THIS TO FAIL IN TEST, Fixed through componentWillReceiveProps', () => {
-  // const totalScore =  -10
-  const expected = {
-    totalScore: -12,
-    topScores: [],
-    isPositiveTotalScore: false,
-    isTopScore: false,
-    scoreIncreased: false
-  }
+test('IS_POSITIVE_TOTALSCORE returns false if negative totalscore', () => {
 
-  const action = {
-    type: 'IS_POSITIVE_TOTALSCORE',
-  }
+  const testState = {
+      totalScore: -10,
+      topScores: [],
+      isPositiveTotalScore: true,
+      isTopScore: false,
+      scoreIncreased: false
+    }
 
-  const actual = score(undefined, action)
+    const expected = {
+      totalScore: -10,
+      topScores: [],
+      isPositiveTotalScore: false,
+      isTopScore: false,
+      scoreIncreased: false
+    }
 
-  expect(actual).toEqual(expected)
+
+    const action = {
+        type: 'IS_POSITIVE_TOTALSCORE',
+    }
+
+    const actual = score(testState, action)
+  
+    expect(actual).toEqual(expected)
 })
 
 test('SCORE_INCREASED returns true if positive', () => {

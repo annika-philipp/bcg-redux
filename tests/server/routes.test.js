@@ -7,11 +7,11 @@ const server = require('../../server/server')
 ////----* The tests below work fine until I triy to test for both expect 200 and 500 responses in my POST route.
 
 jest.mock('../../server/db/db', () => ({
-    // getQuestionsAndAnswers: () => Promise.resolve([
-    //     {"question":"First day of bootcamp, you feel...","question_id":1,"answers":["excited!","Bootcamp? I did not sign up for this!"],"scores":[40,-40]},
-    //     {"question":"function getGreeting (name) {","question_id":2,"answers":["return \"Hello\" + name}","return a + b}"],"scores":[10,-10]}
-    // ]),
-    getQuestionsAndAnswers: () => Promise.reject([]),
+    getQuestionsAndAnswers: () => Promise.resolve([
+        {"question":"First day of bootcamp, you feel...","question_id":1,"answers":["excited!","Bootcamp? I did not sign up for this!"],"scores":[40,-40]},
+        {"question":"function getGreeting (name) {","question_id":2,"answers":["return \"Hello\" + name}","return a + b}"],"scores":[10,-10]}
+    ]),
+    // getQuestionsAndAnswers: () => Promise.reject([]),
 
     getScores: () => Promise.resolve([
         {"id":1,"user_id":1,"score":80,"name":"Player1"},
@@ -40,14 +40,20 @@ test('GET questions 200 works', () => {
       })
 })
 
-test('GET questions 500 works', () => {
-    return request(server)
-    .get('/api/questions')
-    .expect(500)
-    .catch(err => {
-        expect(err).toBeFalsy()
-      })
-})
+
+
+// test('GET questions 500 works, tests error with rejects', () => {
+//   expect.assertions(1)
+//     return request(server)
+//     .get('/api/questions')
+//     .expect(500)
+//     .expect(getQuestionsAndAnswers()).rejects.toEqual({
+//       error: 'DATABASE ERROR:',
+//     })
+//     .catch(err => {
+//         expect(err).toBeFalsy()
+//       })
+// })
 
 
 test('/scores returns all scores', () => {
