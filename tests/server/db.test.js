@@ -12,68 +12,59 @@ beforeEach(() => {
 afterEach(() => testEnv.cleanup(testDb))
 
 test('getScores gets all scores', () => {
-  //Arrange
+  // Arrange
   const expected = 10
-  //Act - need to use return when testing with Promises
+  // Act - need to use return when testing with Promises
   return db.getScores(testDb)
     .then(scores => {
-      // console.log("Scores", scores)
       const actual = scores.length
-      //Assert
+      // Assert
       expect(actual).toBe(expected)
     })
     .catch(err => expect(err).toBeNull())
 })
 
 test('getScores gets 2nd score', () => {
-    //Arrange
-    const expected = 75
-    //Act - need to use return when testing with Promises
-    return db.getScores(testDb)
-      .then(scores => {
-        // console.log(scores)
-        const actual = scores[1].score
-        //Assert
-        expect(actual).toBe(expected)
-      })
-      .catch(err => expect(err).toBeNull())
-  })
+  // Arrange
+  const expected = 75
+  // Act - need to use return when testing with Promises
+  return db.getScores(testDb)
+    .then(scores => {
+      const actual = scores[1].score
+      // Assert
+      expect(actual).toBe(expected)
+    })
+    .catch(err => expect(err).toBeNull())
+})
 
 test('getQuestionsAndAnswers gets all question/answer pairs', () => {
-  //Arrange
-
+  // Arrange
   const expected = 24
-  //Act - need to use return when testing with Promises
+  // Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
       const actual = question.length
-      //Assert
+      // Assert
       expect(actual).toBe(expected)
     })
     .catch(err => expect(err).toBeNull())
 })
 
 test('getQuestionsAndAnswers gets the first answer to question 1', () => {
-  //Arrange
-
+  // Arrange
   const expected = 'excited!'
-  //Act - need to use return when testing with Promises
+  // Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
       const actual = question[0].answer
-      //Assert
+      // Assert
       expect(actual).toBe(expected)
     })
     .catch(err => expect(err).toBeNull())
 })
 
 test('addScore adds new score to db ', () => {
-  //Arrange
-  const expected = 11
-  //Act - need to use return when testing with Promises
-  return db.addScore({name: "me", score: '100'}, testDb)
+  return db.addScore({name: 'me', score: '100'}, testDb)
     .then(actual => expect(actual).toBeFalsy())
     .catch(err => expect(err).toBeTruthy())
 })
-
-

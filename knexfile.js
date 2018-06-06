@@ -1,5 +1,3 @@
-// Update with your config settings.
-
 module.exports = {
 
   development: {
@@ -15,12 +13,8 @@ module.exports = {
     connection: {
       filename: ':memory:'
     },
-    // seeds: {
-    //   directory: './tests/seeds'
-    // },
     useNullAsDefault: true
   },
-
 
   production: {
     client: 'postgresql',
@@ -33,5 +27,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
-};
+}

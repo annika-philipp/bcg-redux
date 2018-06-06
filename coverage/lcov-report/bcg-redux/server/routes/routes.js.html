@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">92% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>24/27</span>
+        <span class='fraction'>23/25</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">77.78% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/9</span>
+        <span class='fraction'>7/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">92% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>24/27</span>
+        <span class='fraction'>23/25</span>
       </div>
     </div>
     <p class="quiet">
@@ -101,17 +101,10 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,83 +149,75 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express')
-const server = require('../server')
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express')
 const bodyParser = require('body-parser')
 const router = express.Router()
 const db = require('../db/db')
 &nbsp;
-&nbsp;
 router.use(bodyParser.json())
 &nbsp;
-router.get('/v1', (req, res) =&gt; {
-    db.getQuestionsAndAnswers()
+router.get('/questions', (req, res) =&gt; {
+  db.getQuestionsAndAnswers()
     .then(questions =&gt; {
-        let questionsList = []
-        for(var i = 0; i &lt; questions.length; i=i+2) {
-            let question = questions[i]
-            let nextQuestion = questions[i+1]
-            let q = {
-                question: question.question,
-                question_id: question.question_id,
-                answers: [ 
-                    question.answer,
-                    nextQuestion.answer
-                ],
-                scores: [
-                    question.score,
-                    nextQuestion.score
-                ]
-            }
-            questionsList.push(q)
+      let questionsList = []
+      for (var i = 0; i &lt; questions.length; i = i + 2) {
+        let question = questions[i]
+        let nextQuestion = questions[i + 1]
+        let q = {
+          question: question.question,
+          question_id: question.question_id,
+          answers: [
+            question.answer,
+            nextQuestion.answer
+          ],
+          scores: [
+            question.score,
+            nextQuestion.score
+          ]
         }
-        res.json(questionsList)
+        questionsList.push(q)
+      }
+      res.json(questionsList)
     })
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >        res.status(500).send('DATABASE ERROR: ' + err.message)</span>
+<span class="cstat-no" title="statement not covered" >      res.status(500).send('DATABASE ERROR: ' + err.message)</span>
     })
 })
 &nbsp;
-router.get('/v2', (req, res) =&gt; {
-    db.getScores()
+router.get('/scores', (req, res) =&gt; {
+  db.getScores()
     .then(scores =&gt; {
-        res.json(scores)
+      res.json(scores)
     })
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >        res.status(500).send('DATABASE ERROR: ' + err.message)</span>
+<span class="cstat-no" title="statement not covered" >      res.status(500).send('DATABASE ERROR: ' + err.message)</span>
     })
 })
 &nbsp;
-router.post('/v2', (req, res) =&gt; {
-    const newScore = req.body
-    console.log("new Score, ", newScore)
-    db.addScore(newScore)
-    // .then(scoreIds =&gt; {
-    //     res.json({scoreIds: {id:scoreIds[0]}}) //what the what is going on here?
-    // })
-    .then(score =&gt; { res.sendStatus(201) }) //sendStatus sets status as 201 and no body in response.
-    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >        res.status(500).send('DATABASE ERROR: ' + err.message)</span>
+router.post('/scores', (req, res) =&gt; {
+  const newScore = req.body
+  db.addScore(newScore)
+    .then(score =&gt; { res.sendStatus(201) }) // sendStatus sets status as 201 and no body in response.
+    .catch(err =&gt; {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
 &nbsp;
-module.exports = router</pre></td></tr>
+module.exports = router
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 02 2018 17:10:52 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jun 06 2018 14:09:12 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
