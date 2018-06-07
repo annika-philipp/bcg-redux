@@ -59,8 +59,6 @@ export function getScoresApi (callback) {
     return request
       .get('/api/scores')
       .then(items => {
-        // console.log("hitting the scores api")
-        // console.log("items.body ", items.body)
         let data = items.body
         let scoreList = data.sort(function (a, b) {
           return b.score - a.score
@@ -69,8 +67,6 @@ export function getScoresApi (callback) {
         for (var i = 0; i < 10; i++) {
           topScoresApi.push(scoreList[i])
         }
-        // console.log({scoreList})
-        // console.log("Api Topscores, ", topScoresApi)
         dispatch(receiveScoresFromAPI(topScoresApi))
       })
       .catch(err => {
@@ -80,7 +76,6 @@ export function getScoresApi (callback) {
 }
 
 export function addScoreApi (topScore) {
-  // console.log("score in api, ", topScore)
   return (dispatch) =>
     request
       .post('/api/scores')
