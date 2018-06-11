@@ -20,7 +20,6 @@
 // const mockStore = configureStore([])
 // const store = mockStore() //instantiates store for test
 
-
 // // nope, not working
 // // describe('<App />', () => {
 
