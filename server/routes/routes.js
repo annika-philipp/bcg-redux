@@ -6,7 +6,7 @@ const db = require('../db/db')
 router.use(bodyParser.json())
 
 router.get('/questions', (req, res) => {
-  db.getQuestionsAndAnswers()
+  db.getQuestionsAndAnswers ()
     .then(questions => {
       let questionsList = []
       for (var i = 0; i < questions.length; i = i + 2) {
@@ -48,6 +48,7 @@ router.post('/scores', (req, res) => {
   db.addScore(newScore)
     .then(score => { res.sendStatus(201) }) // sendStatus sets status as 201 and no body in response.
     .catch(err => {
+      console.log("ERR ", err)
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })

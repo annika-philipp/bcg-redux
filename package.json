@@ -1,8 +1,8 @@
 {
   "name": "BCG3000REDUX",
   "version": "0.1.0",
-  "description": "Personal Bootcamp Project",
-  "repository": "https://github.com/annika-philipp/bcg3000.git",
+  "description": "React/Redux version of my personal project game, built as part of EDA course",
+  "repository": "https://github.com/annika-philipp/bcg-redux.git",
   "main": "server/index.js",
   "scripts": {
     "postinstall": "webpack && knex migrate:latest",
@@ -37,7 +37,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.2",
-    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
     "knex": "^0.14.2",
     "nock": "^9.2.6",

@@ -12,7 +12,6 @@ import {App} from '../../../client/components/App.jsx'
 //import App would be the connected default export of App.jsx
 import './setup-dom'
 
-
 const wrapper = shallow(<App />)
 
 

@@ -133,17 +133,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -178,15 +168,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -201,14 +182,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -217,13 +202,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -240,107 +222,98 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import request from 'superagent'
 &nbsp;
-&nbsp;
 export const receiveScoresFromAPI = <span class="fstat-no" title="function not covered" >(t</span>opScoresApi) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'RECEIVE_TOPSCORES_API',
-        topScoresApi
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'RECEIVE_TOPSCORES_API',
+    topScoresApi
+  }
 }
 &nbsp;
 export const addNewTopScore = <span class="fstat-no" title="function not covered" >(t</span>opScore) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'ADD_NEW_TOPSCORE',
-        topScore
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'ADD_NEW_TOPSCORE',
+    topScore
+  }
 }
 &nbsp;
 export const addToTotalscore = <span class="fstat-no" title="function not covered" >(s</span>coreValue) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'ADD_TO_TOTALSCORE',
-        scoreValue
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'ADD_TO_TOTALSCORE',
+    scoreValue
+  }
 }
 &nbsp;
 export const isPositiveTotalscore = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'IS_POSITIVE_TOTALSCORE',
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'IS_POSITIVE_TOTALSCORE'
+  }
 }
 &nbsp;
 export const reset = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'RESET'
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'RESET'
+  }
 }
-&nbsp;
 &nbsp;
 export const isTopScore = <span class="fstat-no" title="function not covered" >(t</span>otalScore) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'IS_TOPSCORE',
-        totalScore
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'IS_TOPSCORE',
+    totalScore
+  }
 }
 &nbsp;
-&nbsp;
 export const scoreIncreased = <span class="fstat-no" title="function not covered" >(s</span>coreValue) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'SCORE_INCREASED',
-        scoreValue
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'SCORE_INCREASED',
+    scoreValue
+  }
 }
 &nbsp;
 export const showError = <span class="fstat-no" title="function not covered" >(m</span>essage) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        type: 'SHOW_ERROR',
-        message
-    }
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: 'SHOW_ERROR',
+    message
+  }
 }
 &nbsp;
-&nbsp;
 export function <span class="fstat-no" title="function not covered" >getScoresApi </span>(callback) {
-<span class="cstat-no" title="statement not covered" >    return<span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        return request</span>
-        .get('/api/v2')
-        .then(<span class="fstat-no" title="function not covered" >it</span>ems =&gt; {
-            // console.log("hitting the scores api")
-            // console.log("items.body ", items.body)
-            let data  = <span class="cstat-no" title="statement not covered" >items.body</span>
-            let scoreList = <span class="cstat-no" title="statement not covered" >data.sort(<span class="fstat-no" title="function not covered" >fu</span>nction(a,b) {</span>
-<span class="cstat-no" title="statement not covered" >                return b.score - a.score</span>
-            })
-            var topScoresApi = <span class="cstat-no" title="statement not covered" >[]</span>
-<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; 10; i++){</span>
-<span class="cstat-no" title="statement not covered" >                topScoresApi.push(scoreList[i])</span>
-            }
-            // console.log({scoreList})
-            // console.log("Api Topscores, ", topScoresApi)
-<span class="cstat-no" title="statement not covered" >            dispatch(receiveScoresFromAPI(topScoresApi))</span>
-        }) 
-        .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >            dispatch(showError(err.message))</span>
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return request</span>
+      .get('/api/scores')
+      .then(<span class="fstat-no" title="function not covered" >it</span>ems =&gt; {
+        let data = <span class="cstat-no" title="statement not covered" >items.body</span>
+        let scoreList = <span class="cstat-no" title="statement not covered" >data.sort(<span class="fstat-no" title="function not covered" >fu</span>nction (a, b) {</span>
+<span class="cstat-no" title="statement not covered" >          return b.score - a.score</span>
         })
-    }
+        var topScoresApi = <span class="cstat-no" title="statement not covered" >[]</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; 10; i++) {</span>
+<span class="cstat-no" title="statement not covered" >          topScoresApi.push(scoreList[i])</span>
+        }
+<span class="cstat-no" title="statement not covered" >        dispatch(receiveScoresFromAPI(topScoresApi))</span>
+      })
+      .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
+<span class="cstat-no" title="statement not covered" >        dispatch(showError(err.message))</span>
+      })
   }
-  
-  export function <span class="fstat-no" title="function not covered" >addScoreApi </span>(topScore) {
-    // console.log("score in api, ", topScore)
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >        request</span>
-            .post('/api/v2')
-            .send(topScore)
-            .then(dispatch(addNewTopScore(topScore)))
-            .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >                dispatch(showError(err.message))</span>
-              })
-  }
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >addScoreApi </span>(topScore) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    request</span>
+      .post('/api/scores')
+      .send(topScore)
+      .then(dispatch(addNewTopScore(topScore)))
+      .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
+<span class="cstat-no" title="statement not covered" >        dispatch(showError(err.message))</span>
+      })
+}
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 03 2018 12:19:34 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 10:52:47 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

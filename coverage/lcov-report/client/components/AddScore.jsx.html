@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.18% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/11</span>
+        <span class='fraction'>0/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.18% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/11</span>
+        <span class='fraction'>0/11</span>
       </div>
     </div>
     <p class="quiet">
@@ -112,8 +112,7 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,9 +120,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,7 +143,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,6 +173,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,74 +184,73 @@ import { addScoreApi, reset } from '../actions/score'
 import {navigate} from '../actions/navigate'
 import Scoreboard from './Scoreboard'
 &nbsp;
-&nbsp;
 export class AddScore extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: '',
-            score: this.props.score.totalScore
-        }
-<span class="cstat-no" title="statement not covered" >        this.handleChange = this.handleChange.bind(this)</span>
-<span class="cstat-no" title="statement not covered" >        this.addScore = this.addScore.bind(this)</span>
+<span class="fstat-no" title="function not covered" >  co</span>nstructor (props) {
+<span class="cstat-no" title="statement not covered" >    super(props)</span>
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      name: '',
+      score: props.score.totalScore
     }
+<span class="cstat-no" title="statement not covered" >    this.handleChange = this.handleChange.bind(this)</span>
+<span class="cstat-no" title="statement not covered" >    this.addScore = this.addScore.bind(this)</span>
+  }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    ha</span>ndleChange (e) {
-<span class="cstat-no" title="statement not covered" >        this.setState({</span>
-            [e.target.name]: e.target.value
-        })
-    }
+<span class="fstat-no" title="function not covered" >  ha</span>ndleChange (e) {
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      [e.target.name]: e.target.value
+    })
+  }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    ad</span>dScore (e) {
-<span class="cstat-no" title="statement not covered" >        e.preventDefault()</span>
-<span class="cstat-no" title="statement not covered" >        this.props.dispatch(addScoreApi(this.state))</span>
-    }
+<span class="fstat-no" title="function not covered" >  ad</span>dScore (e) {
+<span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
+<span class="cstat-no" title="statement not covered" >    this.props.dispatch(addScoreApi(this.state))</span>
+  }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    pl</span>ayAgain() {
-<span class="cstat-no" title="statement not covered" >        this.props.dispatch(reset())</span>
-<span class="cstat-no" title="statement not covered" >        this.props.dispatch(navigate('welcome'))</span>
-    }
+<span class="fstat-no" title="function not covered" >  pl</span>ayAgain () {
+<span class="cstat-no" title="statement not covered" >    this.props.dispatch(reset())</span>
+<span class="cstat-no" title="statement not covered" >    this.props.dispatch(navigate('welcome'))</span>
+  }
 &nbsp;
-&nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder () {
-<span class="cstat-no" title="statement not covered" >        return (</span>
-        &lt;div&gt;
-            &lt;div className="addScore"&gt;
-            &lt;h3&gt;Well done!&lt;/h3&gt;
-            &lt;h3&gt;Deploy yourself into phase 3&lt;/h3&gt; 
-            &lt;p&gt;Your totalscore is: {this.props.score.totalScore}&lt;/p&gt;
-            {this.props.score.isTopScore &amp;&amp; &lt;div&gt;&lt;form onSubmit={this.addScore}&gt;
+<span class="fstat-no" title="function not covered" >  re</span>nder () {
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div&gt;
+        &lt;div className='addScore'&gt;
+          &lt;h3&gt;Well done!&lt;/h3&gt;
+          &lt;h3&gt;Deploy yourself into phase 3&lt;/h3&gt;
+          &lt;p&gt;Your totalscore is: {this.props.score.totalScore}&lt;/p&gt;
+          {this.props.score.isTopScore &amp;&amp; &lt;div&gt;&lt;form onSubmit={this.addScore}&gt;
             &lt;p&gt;Add your name to the scoreboard&lt;/p&gt;
             &lt;input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} /&gt;
-            &lt;input type='submit' value='Submit'/&gt;
-            &lt;/form&gt;
-            &lt;/div&gt;
-            }
-            {!this.props.score.isTopScore &amp;&amp; &lt;div className='row'&gt;&lt;/div&gt;}
-            &lt;/div&gt;
-            &lt;div className="row"&gt;
-            {this.props.score.topScores.length &gt; 0 &amp;&amp; &lt;Scoreboard topScores={this.props.topScores}/&gt;}
-            &lt;div className="row"&gt;
-                &lt;button onClick={this.playAgain.bind(this)} className="button"&gt;Play again&lt;/button&gt;
-            &lt;/div&gt; 
-            &lt;/div&gt;    
-        &lt;/div&gt; )
-    }
+            &lt;input type='submit' value='Submit' /&gt;
+          &lt;/form&gt;
+          &lt;/div&gt;}
+          {!this.props.score.isTopScore &amp;&amp; &lt;div className='row' /&gt;}
+        &lt;/div&gt;
+        &lt;div className='row'&gt;
+          {this.props.score.topScores.length &gt; 0 &amp;&amp; &lt;Scoreboard topScores={this.props.topScores}/&gt;}
+          &lt;div className='row'&gt;
+            &lt;button onClick={this.playAgain.bind(this)} className='button'&gt;Play again&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >mapStateToProps(</span>state) {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-        score: state.score
-    }
+function <span class="fstat-no" title="function not covered" >mapStateToProps </span>(state) {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    score: state.score
+  }
 }
 &nbsp;
-export default connect(mapStateToProps)(AddScore)</pre></td></tr>
+export default connect(mapStateToProps)(AddScore)
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 03 2018 12:19:34 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 10:52:47 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

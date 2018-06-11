@@ -123,10 +123,7 @@
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,7 +160,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -211,62 +207,60 @@ import { fetchQuestions, increaseIndex } from '../actions/questions'
 import {navigate} from '../actions/navigate'
 import GameOver from './GameOver'
 &nbsp;
-&nbsp;
-class Display extends React.Component{
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props){
-<span class="cstat-no" title="statement not covered" >    super(props);</span>
+class Display extends React.Component {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor (props) {
+<span class="cstat-no" title="statement not covered" >    super(props)</span>
 <span class="cstat-no" title="statement not covered" >    this.state = {</span>
       gamePlaying: true
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(nextProps) {
+<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps (nextProps) {
     var totalScoreCheck = <span class="cstat-no" title="statement not covered" >nextProps.score.isPositiveTotalScore</span>
-<span class="cstat-no" title="statement not covered" >    this.setState ({</span>
-        gamePlaying: totalScoreCheck
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      gamePlaying: totalScoreCheck
     })
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
+<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount () {
 <span class="cstat-no" title="statement not covered" >    this.props.dispatch(fetchQuestions())</span>
 <span class="cstat-no" title="statement not covered" >    this.props.dispatch(getScoresApi())</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  up</span>dateIndex(scoreValue) {
-<span class="cstat-no" title="statement not covered" >    if (this.props.index == this.props.questions.length -1){</span>
+<span class="fstat-no" title="function not covered" >  up</span>dateIndex (scoreValue) {
+<span class="cstat-no" title="statement not covered" >    if (this.props.index == this.props.questions.length - 1) {</span>
 <span class="cstat-no" title="statement not covered" >      this.props.dispatch(navigate('scoreboard'))</span>
 <span class="cstat-no" title="statement not covered" >      this.props.dispatch(isTopScore(this.props.score.totalScore))</span>
     }
-      else {
-<span class="cstat-no" title="statement not covered" >            this.props.dispatch(scoreIncreased(scoreValue))</span>
-<span class="cstat-no" title="statement not covered" >            this.props.dispatch(increaseIndex(this.props.index))</span>
-<span class="cstat-no" title="statement not covered" >            this.props.dispatch(addToTotalscore(scoreValue))</span>
-<span class="cstat-no" title="statement not covered" >            this.props.dispatch(isPositiveTotalscore())</span>
-          }
+    else {
+<span class="cstat-no" title="statement not covered" >      this.props.dispatch(scoreIncreased(scoreValue))</span>
+<span class="cstat-no" title="statement not covered" >      this.props.dispatch(increaseIndex(this.props.index))</span>
+<span class="cstat-no" title="statement not covered" >      this.props.dispatch(addToTotalscore(scoreValue))</span>
+<span class="cstat-no" title="statement not covered" >      this.props.dispatch(isPositiveTotalscore())</span>
+    }
   }
-&nbsp;
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder () {
     var question = <span class="cstat-no" title="statement not covered" >this.props.questions[this.props.index]</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
-        {this.state.gamePlaying 
+        {this.state.gamePlaying
         ?
-        &lt;div className="game"&gt;
-        &lt;div className="score"&gt;
-          &lt;h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}&gt;score: {this.props.questions.length &gt; 0 &amp;&amp; this.props.score.totalScore}&lt;/h2&gt;
-        &lt;/div&gt;
-        &lt;div className="screen"&gt;
-          &lt;div className="question"&gt;
-            &lt;h3&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.question}&lt;/h3&gt;
-          &lt;/div&gt; 
-        &lt;/div&gt;
-        &lt;div&gt;   
-        &lt;button onClick = {<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.updateIndex(question.scores[0])}</span> value="button1" className="button"&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.answers[0]}&lt;/button&gt;
-        &lt;button onClick = {<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.updateIndex(question.scores[1])}</span> value="button2" className="button"&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.answers[1]}&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;/div&gt;
+          &lt;div className='game'&gt;
+            &lt;div className='score'&gt;
+              &lt;h2 style={{color: this.props.score.scoreIncreased ? 'green' : 'red'}}&gt;score: {this.props.questions.length &gt; 0 &amp;&amp; this.props.score.totalScore}&lt;/h2&gt;
+            &lt;/div&gt;
+            &lt;div className='screen'&gt;
+              &lt;div className='question'&gt;
+                &lt;h3&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.question}&lt;/h3&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;button onClick = {<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.updateIndex(question.scores[0])}</span> value='button1' className='button'&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.answers[0]}&lt;/button&gt;
+              &lt;button onClick = {<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.updateIndex(question.scores[1])}</span> value='button2' className='button'&gt;{this.props.questions.length &gt; 0 &amp;&amp; question.answers[1]}&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
         : &lt;GameOver /&gt;
         }
       &lt;/div&gt;
@@ -274,22 +268,22 @@ class Display extends React.Component{
   }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >mapStateToProps(</span>state) {
-<span class="cstat-no" title="statement not covered" >    return {</span>
+function <span class="fstat-no" title="function not covered" >mapStateToProps </span>(state) {
+<span class="cstat-no" title="statement not covered" >  return {</span>
     questions: state.questions,
     index: state.index,
     score: state.score
-    }
+  }
 }
 &nbsp;
-&nbsp;
-export default connect(mapStateToProps)(Display)</pre></td></tr>
+export default connect(mapStateToProps)(Display)
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 03 2018 11:53:37 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 10:52:47 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

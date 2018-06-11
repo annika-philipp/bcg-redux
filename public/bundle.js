@@ -673,8 +673,6 @@ var showError = exports.showError = function showError(message) {
 function getScoresApi(callback) {
   return function (dispatch) {
     return _superagent2.default.get('/api/scores').then(function (items) {
-      // console.log("hitting the scores api")
-      // console.log("items.body ", items.body)
       var data = items.body;
       var scoreList = data.sort(function (a, b) {
         return b.score - a.score;
@@ -683,8 +681,6 @@ function getScoresApi(callback) {
       for (var i = 0; i < 10; i++) {
         topScoresApi.push(scoreList[i]);
       }
-      // console.log({scoreList})
-      // console.log("Api Topscores, ", topScoresApi)
       dispatch(receiveScoresFromAPI(topScoresApi));
     }).catch(function (err) {
       dispatch(showError(err.message));
@@ -693,7 +689,6 @@ function getScoresApi(callback) {
 }
 
 function addScoreApi(topScore) {
-  // console.log("score in api, ", topScore)
   return function (dispatch) {
     return _superagent2.default.post('/api/scores').send(topScore).then(dispatch(addNewTopScore(topScore))).catch(function (err) {
       dispatch(showError(err.message));
