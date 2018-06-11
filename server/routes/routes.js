@@ -45,6 +45,7 @@ router.get('/scores', (req, res) => {
 
 router.post('/scores', (req, res) => {
   const newScore = req.body
+  console.log("newScore ", newScore)
   db.addScore(newScore)
     .then(score => { res.sendStatus(201) }) // sendStatus sets status as 201 and no body in response.
     .catch(err => {
