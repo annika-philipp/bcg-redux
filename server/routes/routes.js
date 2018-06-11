@@ -7,25 +7,7 @@ router.use(bodyParser.json())
 
 router.get('/questions', (req, res) => {
   db.getQuestionsAndAnswers ()
-    .then(questions => {
-      let questionsList = []
-      for (var i = 0; i < questions.length; i = i + 2) {
-        let question = questions[i]
-        let nextQuestion = questions[i + 1]
-        let q = {
-          question: question.question,
-          question_id: question.question_id,
-          answers: [
-            question.answer,
-            nextQuestion.answer
-          ],
-          scores: [
-            question.score,
-            nextQuestion.score
-          ]
-        }
-        questionsList.push(q)
-      }
+    .then(questionsList => {
       res.json(questionsList)
     })
     .catch(err => {
@@ -45,11 +27,9 @@ router.get('/scores', (req, res) => {
 
 router.post('/scores', (req, res) => {
   const newScore = req.body
-  console.log("newScore ", newScore)
   db.addScore(newScore)
     .then(score => { res.sendStatus(201) }) // sendStatus sets status as 201 and no body in response.
     .catch(err => {
-      console.log("ERR ", err)
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })

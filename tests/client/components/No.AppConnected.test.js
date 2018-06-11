@@ -1,3 +1,5 @@
+// *** leave this in here for now, I am currently looking into how to test the react/redux connected component ***
+
 // import React from 'react'
 // import { shallow, mount } from 'enzyme'
 
