@@ -73,7 +73,7 @@ body {
 }
 
 .topscoresnames {
-padding: 0px 30px
+    padding: 0px 30px;
 }
 
 /* All non-game components set up */
@@ -152,28 +152,53 @@ h4 {
 }
 
 
-
 @media screen and (max-width: 600px){
-    .container {
-        width: 100%
-    }
-    .game {
-      width: 100%;
-    }
+  .container {
+    width: 100%
+  }
+  .game {
+    width: 100%;
+  }
 
-    .welcome {
-        width: 85%;
-    }
+  .welcome {
+    width: 85%;
+  }
 
-    .screen {
-        width: 85%;
-        height: 60vw
-    }    
-    .question {
-        font-size: 1em
-    }
+  .screen {
+    width: 85%;
+    height: 60vw
+  }    
 
-    .button {
+  .question {
+    font-size: 1em
+  }
+
+  h1 {
+    font-size: 2.5em
+  }
+
+  .question h3 {
+    font-size: 1.4em
+  }
+  
+  .addScore h3 {
+    font-size: 1.2em;
+    /* flex: 0 0 40% */
+  }
+
+  h4 {
     font-size: 1.2em
-    }
+  }
+
+  .topscoresnames p {
+    font-size: .6em;
+    color: yellow  }
+
+  .button {
+    font-size: 1.2em
+  }
+
+  .submit {
+    background-color: lightgrey
+  }
 }

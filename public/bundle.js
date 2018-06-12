@@ -24005,34 +24005,41 @@ var AddScore = exports.AddScore = function (_React$Component) {
             'Your totalscore is: ',
             this.props.score.totalScore
           ),
-          this.props.score.isTopScore && _react2.default.createElement(
+          _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(
-              'form',
-              { onSubmit: this.addScore },
+            this.props.score.isTopScore && _react2.default.createElement(
+              'div',
+              null,
               _react2.default.createElement(
-                'p',
-                null,
-                'Add your name to the scoreboard'
-              ),
-              _react2.default.createElement('input', { placeholder: 'Player', name: 'name', onChange: this.handleChange, value: this.state.name }),
-              _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+                'form',
+                { onSubmit: this.addScore },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Add your name to the scoreboard'
+                ),
+                _react2.default.createElement('input', { placeholder: 'Player', name: 'name', onChange: this.handleChange, value: this.state.name }),
+                _react2.default.createElement('input', { type: 'submit', className: 'submit', value: 'Submit' })
+              )
             )
-          ),
-          !this.props.score.isTopScore && _react2.default.createElement('div', { className: 'row' })
+          )
         ),
         _react2.default.createElement(
           'div',
-          { className: 'row' },
-          this.props.score.topScores.length > 0 && _react2.default.createElement(_Scoreboard2.default, { topScores: this.props.topScores }),
+          null,
           _react2.default.createElement(
             'div',
-            { className: 'row' },
+            null,
+            this.props.score.topScores.length > 0 && _react2.default.createElement(_Scoreboard2.default, { topScores: this.props.topScores }),
             _react2.default.createElement(
-              'button',
-              { onClick: this.playAgain.bind(this), className: 'button' },
-              'Play again'
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'button',
+                { onClick: this.playAgain.bind(this), className: 'button' },
+                'Play again'
+              )
             )
           )
         )

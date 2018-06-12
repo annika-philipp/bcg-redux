@@ -38,20 +38,29 @@ export class AddScore extends React.Component {
           <h3>Well done!</h3>
           <h3>Deploy yourself into phase 3</h3>
           <p>Your totalscore is: {this.props.score.totalScore}</p>
-          {this.props.score.isTopScore && <div><form onSubmit={this.addScore}>
-            <p>Add your name to the scoreboard</p>
-            <input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} />
-            <input type='submit' value='Submit' />
-          </form>
-          </div>}
-          {!this.props.score.isTopScore && <div className='row' />}
-        </div>
-        <div className='row'>
+          
+          <div>
+
+            {this.props.score.isTopScore && <div><form onSubmit={this.addScore}>
+              <p>Add your name to the scoreboard</p>
+              <input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} />
+              <input type='submit' className='submit' value='Submit' />
+              </form>
+            </div>}
+          </div>
+        
+        </div>  
+          
+        <div>  
+          <div>
           {this.props.score.topScores.length > 0 && <Scoreboard topScores={this.props.topScores}/>}
           <div className='row'>
             <button onClick={this.playAgain.bind(this)} className='button'>Play again</button>
           </div>
         </div>
+        
+        </div>
+          
       </div>
     )
   }
