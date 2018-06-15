@@ -1,54 +1,53 @@
 body {
-    background-color: white;
-    align-items: center;
-    margin: 0
+  background-color: white;
+  align-items: center;
+  margin: 0
 }
 
 .container {
-    width: 80%;
-    height: 700px;
-    justify-content: center;
-    margin: 0 auto;
+  width: 80%;
+  height: 700px;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* Game div and display set up  */
 .game {
-    width: 100%;
-    /* border: .1em dotted blue; */
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 0 auto
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto
 }
 
 .screen {
-    width: 80%;
-    height: 300px;
-    margin: 20px auto 20px auto;
-    background-color: rgb(54, 52, 52);
-    border: .5em solid goldenrod;
-    border-radius: .3em;
-    display: flex;
-    align-items: center
+  width: 80%;
+  height: 300px;
+  margin: 20px auto 20px auto;
+  background-color: rgb(54, 52, 52);
+  border: .5em solid goldenrod;
+  border-radius: .3em;
+  display: flex;
+  align-items: center
 }
 
 .question {
-    width: 80%;
-    font-size: 1.3em;
-    color: white;
-    margin: 20px auto 20px auto;  
+  width: 80%;
+  font-size: 1.3em;
+  color: white;
+  margin: 20px auto 20px auto
 }
 
 .button {
-    width: 80%;
-    height: 80px;
-    background-color: darkgray;
-    border: .2em solid rgb(83, 83, 82);
-    border-radius: .15em;
-    text-transform: none;
-    margin: 0 auto 10px auto;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5em;
+  width: 80%;
+  height: 80px;
+  background-color: darkgray;
+  border: .2em solid rgb(83, 83, 82);
+  border-radius: .15em;
+  text-transform: none;
+  margin: 0 auto 10px auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5em
 }
 
 
@@ -56,99 +55,116 @@ body {
 
 /* Scoreboard display */
 .scoreboard {
-    width: 80%;
-    height: 200px;
-    margin: 20px auto 20px auto;
-    background-color: rgb(54, 52, 52);
-    border: .4em solid goldenrod;
-    border-radius: .3em;
-    color: white;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+  width: 80%;
+  height: 200px;
+  margin: 20px auto 20px auto;
+  background-color: rgb(54, 52, 52);
+  border: .4em solid goldenrod;
+  border-radius: .3em;
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace
 }
 
 .topscores {
-    display: flex;
-    flex-flow: row wrap
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 40px
+  }
+
+.topscoresleft {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
 }
 
-.topscoresnames {
-    padding: 0px 30px;
+.topscoresnamesleft {
+  padding: 0px 40px;
+}
+
+.topscoresright {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.topscoresnamesright {
+  padding: 0px 40px;
 }
 
 /* All non-game components set up */
 
 .welcome {
-    width: 80%;
-    height: 300px;
-    margin: 20px auto 20px auto;
-    background-color: rgb(54, 52, 52);
-    border: .4em solid goldenrod;
-    border-radius: .3em;
-    color: white;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center
+  width: 80%;
+  height: 300px;
+  margin: 20px auto 20px auto;
+  background-color: rgb(54, 52, 52);
+  border: .4em solid goldenrod;
+  border-radius: .3em;
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center
 }
 
 .addScore{
-    width: 80%;
-    height: 300px;
-    margin: 20px auto 20px auto;
-    background-color: rgb(54, 52, 52);
-    border: .4em solid goldenrod;
-    border-radius: .3em;
-    color: white;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    align-items: center
+  width: 80%;
+  height: 300px;
+  margin: 20px auto 20px auto;
+  background-color: rgb(54, 52, 52);
+  border: .4em solid goldenrod;
+  border-radius: .3em;
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  align-items: center
 }
 
 .gameOver{
-    width: 80%;
-    height: 300px;
-    margin: 20px auto 20px auto;
-    background-color: rgb(54, 52, 52);
-    border: .4em solid goldenrod;
-    border-radius: .3em;
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center
+  width: 80%;
+  height: 300px;
+  margin: 20px auto 20px auto;
+  background-color: rgb(54, 52, 52);
+  border: .4em solid goldenrod;
+  border-radius: .3em;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center
 }
 
 .row {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 4em;
-    margin-top: 20px;
-    margin-bottom: 0
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 4em;
+  margin-top: 20px;
+  margin-bottom: 0
 }
 
 h2 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em
 }
 
 h3 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2em;
-    margin: 30px 32px
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em;
+  margin: 30px 32px
 }
 
 h4 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5em;
-    margin-top: 20px;
-    margin-bottom: 10px
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px
 }
 
 
@@ -156,6 +172,7 @@ h4 {
   .container {
     width: 100%
   }
+
   .game {
     width: 100%;
   }
@@ -187,12 +204,42 @@ h4 {
   }
 
   h4 {
-    font-size: 1.2em
+    font-size: 1.2em;
+    margin-top : 10px;
+    margin-bottom: 5px
   }
 
-  .topscoresnames p {
+  .topscores {
+    display: flex;
+    flex-direction: row;
+    padding: 0
+  }
+
+  .topscoresleft {
+    width: 48%;
+    padding-top: 0
+  }
+
+  .topscoresright {
+    width: 48%;
+    padding-top: 0;
+  }
+  .topscoresnamesleft {
+    width: 50%;
+    text-align: left;
+  }
+  .topscoresnamesleft p {
     font-size: .6em;
-    color: yellow  }
+    color: white  }
+
+  .topscoresnamesright {
+    width: 50%;
+    text-align: left;
+  }
+
+  .topscoresnamesright p {
+    font-size: .6em;
+    color: white  }
 
   .button {
     font-size: 1.2em
