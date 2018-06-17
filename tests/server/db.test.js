@@ -39,7 +39,7 @@ test('getScores gets 2nd score', () => {
 
 test('getQuestionsAndAnswers gets all question/answer pairs', () => {
   // Arrange
-  const expected = 24
+  const expected = 12
   // Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
@@ -56,7 +56,7 @@ test('getQuestionsAndAnswers gets the first answer to question 1', () => {
   // Act - need to use return when testing with Promises
   return db.getQuestionsAndAnswers(1, testDb)
     .then(question => {
-      const actual = question[0].answer
+      const actual = question[0].answers[0]
       // Assert
       expect(actual).toBe(expected)
     })
