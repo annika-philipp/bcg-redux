@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">54.55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/11</span>
+        <span class='fraction'>6/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">54.55% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/11</span>
+        <span class='fraction'>6/11</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,9 +112,34 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,23 +155,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,18 +203,18 @@ import {navigate} from '../actions/navigate'
 import Scoreboard from './Scoreboard'
 &nbsp;
 export class AddScore extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor (props) {
-<span class="cstat-no" title="statement not covered" >    super(props)</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+  constructor (props) {
+    super(props)
+    this.state = {
       name: '',
       score: props.score.totalScore
     }
-<span class="cstat-no" title="statement not covered" >    this.handleChange = this.handleChange.bind(this)</span>
-<span class="cstat-no" title="statement not covered" >    this.addScore = this.addScore.bind(this)</span>
+    this.handleChange = this.handleChange.bind(this)
+    this.addScore = this.addScore.bind(this)
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndleChange (e) {
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+  handleChange (e) {
+    this.setState({
       [e.target.name]: e.target.value
     })
   }
@@ -211,27 +229,36 @@ export class AddScore extends React.Component {
 <span class="cstat-no" title="statement not covered" >    this.props.dispatch(navigate('welcome'))</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder () {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  render () {
+    return (
       &lt;div&gt;
         &lt;div className='addScore'&gt;
           &lt;h3&gt;Well done!&lt;/h3&gt;
           &lt;h3&gt;Deploy yourself into phase 3&lt;/h3&gt;
           &lt;p&gt;Your totalscore is: {this.props.score.totalScore}&lt;/p&gt;
-          {this.props.score.isTopScore &amp;&amp; &lt;div&gt;&lt;form onSubmit={this.addScore}&gt;
-            &lt;p&gt;Add your name to the scoreboard&lt;/p&gt;
-            &lt;input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} /&gt;
-            &lt;input type='submit' value='Submit' /&gt;
-          &lt;/form&gt;
-          &lt;/div&gt;}
-          {!this.props.score.isTopScore &amp;&amp; &lt;div className='row' /&gt;}
-        &lt;/div&gt;
-        &lt;div className='row'&gt;
+          
+          &lt;div&gt;
+&nbsp;
+            {this.props.score.isTopScore &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;div&gt;&lt;form onSubmit={this.addScore}&gt;</span>
+              &lt;p&gt;Add your name to the scoreboard&lt;/p&gt;
+              &lt;input placeholder='Player' name='name' onChange={this.handleChange} value={this.state.name} /&gt;
+              &lt;input type='submit' className='submit' value='Submit' /&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;}
+          &lt;/div&gt;
+        
+        &lt;/div&gt;  
+          
+        &lt;div&gt;  
+          &lt;div&gt;
           {this.props.score.topScores.length &gt; 0 &amp;&amp; &lt;Scoreboard topScores={this.props.topScores}/&gt;}
           &lt;div className='row'&gt;
             &lt;button onClick={this.playAgain.bind(this)} className='button'&gt;Play again&lt;/button&gt;
           &lt;/div&gt;
         &lt;/div&gt;
+        
+        &lt;/div&gt;
+          
       &lt;/div&gt;
     )
   }
@@ -250,7 +277,7 @@ export default connect(mapStateToProps)(AddScore)
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 10:52:47 GMT+1200 (NZST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 17 2018 15:26:57 GMT+1200 (NZST)
 </div>
 </div>
 <script src="../../prettify.js"></script>
