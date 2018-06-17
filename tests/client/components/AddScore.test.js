@@ -1,54 +1,87 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-// shallow - unit testing this particular file and what it does
-
+import { shallow, mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-
 Enzyme.configure({ adapter: new Adapter() })
 
-import {AddScore} from '../../../client/components/AddScore.jsx' 
+import {AddScore} from '../../../client/components/AddScore' 
+import ScoreBoard from '../../../client/components/Scoreboard'
 import './setup-dom'
 
-import configureStore from  'redux-mock-store'
-
-const mockStore = configureStore([])
-// //creates a fake store, with no configuartion
-// //required as react Welcome expects a dispatch
-// //making sure that dispatch works is part of React's work - interpreting it Redux job and tested there
-
-// jest.mock('../../../client/actions/navigate.js', () => ({
-//   navigate: () => ({
-//     type: 'FAKE_NAVIGATE'
-//   })
-// }))
-
-// test('AddScore.jsx React', () => {
-//   const store = mockStore() //instantiates store for test
-
-//   const wrapper = shallow(<AddScore
-//     dispatch={store.dispatch}
-//   />)
-
-//   expect(wrapper.find('button').text()).toBe('Start Game')
-
-//   wrapper.find('button').simulate('click')
-//   expect(store.getActions()).toHaveLength(1)
-//   //store.getActions() function is part of mockStore()
-//   expect(store.getActions()[0]).toEqual({
-//     type: 'FAKE_NAVIGATE'
-//   })
-//   //tests dispatch click event
-// })
+// lines still to test: 25,26,30,31,70 - require react/redux connected test
 
 test('Test Suite Working', () => {
   expect(true).toBe(true)
 })
 
 test('Text renders on AddScore', () => {
-  const totalScore = 100
-  const store = mockStore() // instantiates store for test
+  const score = {
+    totalScore: 100,
+    topScores: [150, 120]
+  }
+  const wrapper = shallow(<AddScore score={score} />)
+  expect(wrapper.find('h3').first().text()).toBe('Well done!')
+})
 
-  const wrapper = shallow(<AddScore store={store} />)
-  expect(wrapper.find('h3').text()).toBe ('Well done!')
+test('totalScore gets displayed on AddScore', () => {
+  const score = {
+    totalScore: 100,
+    topScores: [150, 120]
+  }
+  const wrapper = shallow(<AddScore score={score} />)
+  expect(wrapper.find('p').text()).toBe('Your totalscore is: 100')
+
+})
+
+test('initial state returns correctly', () => {
+  const score = {
+    totalScore: 100,
+    topScores: [150, 120]
+  }
+
+  const expected = {
+    name: '',
+    score: 100
+  }
+  
+  const wrapper = shallow(<AddScore score={score} />)
+  const actual = wrapper.instance().state
+    expect(actual).toEqual(expected)
+})
+
+test('handleChange adds to state', () => {
+  const score = {
+    totalScore: 100,
+    topScores: [150, 120]
+  }
+
+  const initialState = {
+    name: ''
+  }
+  const testEvent = {
+    target: {
+      name: 'name',
+      value: 'Ben'
+    }
+  }
+  const expected = {
+    name: testEvent.target.value
+  }
+
+  const wrapper = shallow(<AddScore score={score}/>)
+  wrapper.instance().render = () => <div></div>
+  wrapper.instance().state = initialState
+  wrapper.instance().handleChange(testEvent)
+
+  const actual = wrapper.instance().state
+  expect(actual).toEqual(expected)
+})
+
+test('render <ScoreBoard /> component', () => {
+  const score = {
+    totalScore: 100,
+    topScores: [150, 120]
+  }
+  const wrapper = shallow(<AddScore score={score} />)
+  expect(wrapper.find(ScoreBoard)).toHaveLength(1)
 })
