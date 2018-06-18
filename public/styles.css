@@ -69,27 +69,30 @@ body {
 .topscores {
   display: flex;
   flex-flow: row wrap;
-  padding: 0 40px
+  padding: 0 40px;
+
   }
 
 .topscoresleft {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center
 }
 
 .topscoresnamesleft {
-  padding: 0px 30px;
+  padding: 0px 25px;  
 }
 
 .topscoresright {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center
 }
 
 .topscoresnamesright {
-  padding: 0px 30px;
+  padding: 0px 25px;
 }
 
 /* All non-game components set up */
@@ -168,7 +171,7 @@ h4 {
 }
 
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1200px){
   .container {
     width: 100%
   }
@@ -200,7 +203,6 @@ h4 {
   
   .addScore h3 {
     font-size: 1.2em;
-    /* flex: 0 0 40% */
   }
 
   h4 {
@@ -217,16 +219,18 @@ h4 {
 
   .topscoresleft {
     width: 48%;
-    padding-top: 0
+    padding-top: 0;
+    margin: 0
   }
 
   .topscoresright {
     width: 48%;
     padding-top: 0;
+    margin: 0
   }
   .topscoresnamesleft {
     width: 50%;
-    text-align: left;
+    text-align: center;
   }
   .topscoresnamesleft p {
     font-size: .6em;
@@ -234,7 +238,7 @@ h4 {
 
   .topscoresnamesright {
     width: 50%;
-    text-align: left;
+    text-align: center;
   }
 
   .topscoresnamesright p {
