@@ -171,7 +171,7 @@ h4 {
 }
 
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1080px){
   .container {
     width: 100%
   }
@@ -229,21 +229,114 @@ h4 {
     margin: 0
   }
   .topscoresnamesleft {
-    width: 50%;
-    text-align: center;
+    width: 100%;
+    text-align: left;
   }
   .topscoresnamesleft p {
     font-size: .6em;
     color: white  }
 
   .topscoresnamesright {
-    width: 50%;
-    text-align: center;
+    width: 100%;
+    text-align: left;
   }
 
   .topscoresnamesright p {
     font-size: .6em;
     color: white  }
+
+  .button {
+    font-size: 1.2em
+  }
+
+  .submit {
+    background-color: lightgrey
+  }
+}
+
+@media screen and (max-width: 374px){
+  .container {
+    width: 100%
+  }
+
+  .game {
+    width: 100%;
+  }
+
+  .welcome {
+    width: 85%;
+  }
+
+  .screen {
+    width: 85%;
+    height: 60vw
+  }    
+
+  .question {
+    font-size: 1em
+  }
+
+  h1 {
+    font-size: 2em
+  }
+
+  .welcome h3 {
+    font-size: 1.4em
+  }
+  .question h3 {
+    font-size: 1.4em
+  }
+  
+  .addScore h3 {
+    font-size: 1.2em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+    margin-top : 10px;
+    margin-bottom: 5px
+  }
+
+  .topscores {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0
+  }
+
+  .topscoresleft {
+    width: 48%;
+    padding: 0;
+    margin: 0
+  }
+
+  .topscoresright {
+    width: 48%;
+    padding: 0;
+    margin: 0
+  }
+  .topscoresnamesleft {
+    width: 100%;
+    text-align: left;
+    padding: 0px 25%
+  }
+  .topscoresnamesleft p {
+    font-size: .5em;
+    color: white;
+    padding: 0  
+  }
+
+  .topscoresnamesright {
+    width: 100%;
+    text-align: left;
+    padding: 0px 20px
+  }
+
+  .topscoresnamesright p {
+    font-size: .6em;
+    color: white;
+    padding: 0
+  }
 
   .button {
     font-size: 1.2em
